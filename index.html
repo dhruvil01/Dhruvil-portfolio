@@ -1,0 +1,360 @@
+The error `Uncaught SyntaxError: Unexpected identifier 's'` is occurring within the JavaScript code block that maps your project data array inside the HTML template string.
+
+Specifically, look at this line inside the **`PROJECTS`** script segment:
+
+```javascript
+el.className='proj reveal'+(i%3===1?' rd-1':i%3===2?' rd-2':'');
+
+```
+
+And how the template literal is built:
+
+```javascript
+el.innerHTML = `
+  ...
+  <div class="proj-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+  ...
+`;
+
+```
+
+The unexpected identifier `'s'` happens because you used raw, unescaped single quotes or unescaped string syntax inside the inline HTML formatting values, or you are accidentally string-injecting a data structure property containing a contraction like `Xiaomi's` or `player's` directly into text blocks where strings drop raw characters.
+
+Additionally, looking closely at your data structure for `projects[9]` (the MIUI entry):
+
+```javascript
+name:'MIUI Alpha Tester — Xiaomi OS Pre-Release Validation',
+blurb:'Selected for Xiaomi\'s closed Alpha Testing program...',
+
+```
+
+When it evaluates inside certain loops or if you try to pass it to `openModal(p)` inline inside template parameters, the unescaped single quote in **`Xiaomi's`** or **`player's`** breaks out of the evaluation parser!
+
+---
+
+### The Permanent Fix
+
+To eliminate all syntax injection bugs, escape all raw single quotes in your string data arrays, and ensure your dynamically populated HTML strings handle array arrays securely.
+
+Replace the complete `<script>` tag blocks at the bottom of your file with the cleaned, error-free version below:
+
+```html
+<script>
+/* ── LOADER ────────────────────────────────────────── */
+let p=0;
+const lbar=document.getElementById('lbar'),lpct=document.getElementById('lpct'),loader=document.getElementById('loader');
+const lt=setInterval(()=>{
+  p=Math.min(p+Math.random()*14+4,100);
+  lbar.style.width=p+'%';
+  lpct.textContent='LOADING — '+Math.floor(p)+'%';
+  if(p>=100){clearInterval(lt);setTimeout(()=>{loader.classList.add('gone');animCounts();drawEKG();},400);}
+},65);
+
+/* ── CURSOR ────────────────────────────────────────── */
+const cdot=document.getElementById('cur-dot'),cring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cdot.style.left=mx+'px';cdot.style.top=my+'px';});
+document.addEventListener('mousedown',()=>cring.classList.add('click'));
+document.addEventListener('mouseup',()=>cring.classList.remove('click'));
+(function raf(){rx+=(mx-rx)*.09;ry+=(my-ry)*.09;cring.style.left=rx+'px';cring.style.top=ry+'px';requestAnimationFrame(raf);})();
+
+function addCursorListeners() {
+  document.querySelectorAll('a,button,.proj,.phil-card,.sc-item,.hs').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cring.classList.add('big'));
+    el.addEventListener('mouseleave',()=>cring.classList.remove('big'));
+  });
+}
+
+/* ── SIDENAV ACTIVE ────────────────────────────────── */
+window.addEventListener('scroll',()=>{
+  const ids=['hero','work','about','experience','impact','philosophy','contact'];
+  let cur='';
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-220)cur=id;});
+  document.querySelectorAll('.sn-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+
+/* ── TICKER ────────────────────────────────────────── */
+const tItems=['FDA 21 CFR Part 11','HIPAA','HL7 / FHIR','IEEE 11073 SDC','Payment Validation','REST / SOAP API','SQL Database Testing','Risk-Based Testing','Oculus OS Qualification','Smart Contract Testing','Postman','TestRail','JIRA','MatrixALM','Kubernetes Log Monitoring','Traceability Matrix','ISTQB CTFL','Playwright (learning)','AI-Assisted Ordering QA','Kiosk & POS Testing'];
+const tk=document.getElementById('ticker');
+tk.innerHTML=[...tItems,...tItems,...tItems,...tItems].map(t=>`<span class="ticker-item"><span class="ts">✦</span>${t}</span>`).join('');
+
+/* ── REVEAL ────────────────────────────────────────── */
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ── ANIMATED COUNTS ───────────────────────────────── */
+function animCounts(){
+  document.querySelectorAll('.sc-num').forEach(el=>{
+    const target=parseFloat(el.dataset.t),dur=1600,start=Date.now();
+    const iv=setInterval(()=>{
+      const t=Math.min((Date.now()-start)/dur,1);
+      const v=target*t;
+      el.textContent=target%1===0?Math.floor(v):v.toFixed(1);
+      if(t>=1){el.textContent=target;clearInterval(iv);}
+    },16);
+  });
+}
+
+/* ── EKG SIGNATURE ELEMENT ─────────────────────────── */
+function drawEKG(){
+  const canvas=document.getElementById('ekg-canvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,offset=0;
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+
+  const wave=[
+    [0,.5],[.08,.5],[.1,.42],[.12,.5],
+    [.18,.5],[.2,.08],[.22,.95],[.24,.5],
+    [.28,.5],[.3,.35],[.32,.5],
+    [.5,.5],[1,.5]
+  ];
+
+  function getY(x){
+    for(let i=0;i<wave.length-1;i++){
+      const [x1,y1]=wave[i],[x2,y2]=wave[i+1];
+      if(x>=x1&&x<=x2){
+        const t=(x-x1)/(x2-x1);
+        return y1+(y2-y1)*t;
+      }
+    }
+    return .5;
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='#00C4B4';
+    ctx.lineWidth=1.5;
+    ctx.shadowColor='#00C4B4';
+    ctx.shadowBlur=6;
+    ctx.beginPath();
+    const cycleW=W*.6;
+    const startX=(offset%cycleW)-cycleW;
+    for(let px=0;px<W;px++){
+      const localX=((px-startX)%cycleW)/cycleW;
+      const y=getY(localX)*H;
+      px===0?ctx.moveTo(px,y):ctx.lineTo(px,y);
+    }
+    ctx.stroke();
+    offset+=.6;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ── PROJECTS ──────────────────────────────────────── */
+const projects=[
+  {num:'01',domain:'MedTech · FDA · HIPAA',emoji:'🩺',
+   name:'Sibel Health — FDA-Regulated Wearable Validation',
+   blurb:'Hospital-grade wireless biosensor patches for continuous patient monitoring — ECG, respiratory rate, SpO2.',
+   impact:'30%',impactLbl:'Fewer regulatory defects',
+   tags:['FDA 21 CFR Part 11','HIPAA','HL7','FHIR','IEEE 11073 SDC','REST & SOAP','Traceability Matrix'],
+   full:'When a wearable biosensor patch is designed for hospital-grade patient monitoring, the cost of a missed defect is not a user complaint — it is a patient safety event. I led the full QA validation lifecycle for Sibel Health Class I and II medical devices at AimDek Technology, building verification protocols under FDA 21 CFR Part 11 and HIPAA requirements. Every data exchange between sensor, clinical gateway, and cloud platform was traced, tested, and documented. I wrote and owned the requirements traceability matrices that mapped each requirement to a test case and each result to a compliance checkpoint. Clinical data workflows built on HL7, FHIR, and IEEE 11073 SDC required deep integration testing across device-to-platform boundaries — where a mismatched payload or failed authentication handshake could corrupt a patient record. The result was a 30% reduction in regulatory defects and a validation package that required no rework.',
+   stats:[{n:'30%',l:'Regulatory defect reduction'},{n:'Zero',l:'Compliance gaps'},{n:'Full',l:'Traceability coverage'}]},
+  {num:'02',domain:'VR/AR · Oculus · Firmware',emoji:'🥽',
+   name:'Meta (Oculus) — VR/AR OS & Hardware Qualification',
+   blurb:'End-to-end OS qualification across GearVR, Go, Quest, and Rift — firmware, sensors, controllers, build sign-off.',
+   impact:'200+',impactLbl:'Critical defects resolved',
+   tags:['OS Qualification','Firmware','Sensor Calibration','Build Sign-off','Performance','Controller Compat.'],
+   full:'Testing virtual reality is not like testing a web app. When head tracking drifts, users experience nausea. When a firmware update silently remaps controller input, a game becomes unplayable. I owned OS qualification across four Oculus device generations covering system UI integrity, motion sensor calibration (6DOF, proximity, boundary detection), wireless connectivity, and the permission model across every Master, RC, HotFix, and Custom build pipeline. I identified root causes and resolved 200+ critical OS defects, cutting test execution time by 35% through optimized triage workflows, and owned build sign-off for 50+ VR applications.',
+   stats:[{n:'200+',l:'Critical OS defects resolved'},{n:'35%',l:'Faster test execution'},{n:'50+',l:'VR builds signed off'}]},
+  {num:'03',domain:'Fintech · DLT · Smart Contracts',emoji:'⛓️',
+   name:'Blockchain Platform — Smart Contracts & Ledger Integrity',
+   blurb:'Distributed ledger platform for digital asset transactions and smart contract execution — where defects are permanent.',
+   impact:'12',impactLbl:'Zero-defect releases',
+   tags:['Smart Contracts','Ledger Integrity','Token Workflows','Edge Cases','REST/SOAP API','SQL Validation'],
+   full:'Blockchain has a property that makes QA uniquely unforgiving: you cannot roll back a production defect. I led QA for a distributed ledger platform handling digital asset transactions and smart contract execution — verifying not just that contracts executed, but that they executed correctly under every failure condition. Re-entrancy guard behavior, gas estimation failures, partial transaction states, mint-transfer-burn-rollback sequences — each documented and tested. I complemented contract testing with REST and SOAP API validation across 20+ endpoints and SQL-based data sync checks. Twelve consecutive major releases with zero critical defect leakage.',
+   stats:[{n:'12',l:'Consecutive zero-defect releases'},{n:'20+',l:'API endpoints covered'},{n:'Zero',l:'Critical defects escaped'}]},
+  {num:'04',domain:'Insurance · ETL · Data Engineering',emoji:'🚗',
+   name:'ETL Vehicle Insurance — Data Pipeline Validation',
+   blurb:'Multi-stage ETL processing high-volume policyholder, claims, and vehicle records for actuarial reporting.',
+   impact:'100%',impactLbl:'Row-count fidelity',
+   tags:['ETL Pipeline','SQL Validation','Data Transformation','Row Reconciliation','Data Lineage','Integration'],
+   full:'ETL defects are dangerous because they are quiet. A transformation rule that silently drops a decimal, a load process that deduplicates where it should not — these produce clean-looking data that is wrong. In vehicle insurance, wrong data means incorrect premiums and flawed claims processing at scale. I designed the QA strategy for a high-volume ETL pipeline ingesting raw policyholder, vehicle, and claims records, transforming them through layered business logic, and loading validated data into downstream actuarial systems. Testing traced data lineage from source extraction through every transformation stage — verifying field mappings, type conversions, business rule applications, and aggregation logic using deep SQL validation and statistical reconciliation.',
+   stats:[{n:'100%',l:'Row-count fidelity'},{n:'Zero',l:'Silent data loss'},{n:'Full',l:'Lifecycle event coverage'}]},
+  {num:'05',domain:'Digital Health · iOS & Android · Clinical',emoji:'💉',
+   name:'OneTouch — Blood Glucose Monitoring App',
+   blurb:'Clinically regulated glucose monitoring app — where every displayed number informs a dosing decision.',
+   impact:'2',impactLbl:'Unit systems validated',
+   tags:['Clinical Accuracy','Localization','Graphs & Reports','mg/dL vs mmol/L','BLE Device Sync','Cross-Platform'],
+   full:'A blood glucose monitoring app is not a lifestyle product. Every number it displays informs a dosing decision. I owned the full reporting and visualization QA for OneTouch across iOS and Android: verifying trend graph accuracy across daily, weekly, and 90-day views; confirming statistical summaries including average glucose, time-in-range, and A1C estimation. Localization testing validated clinical logic correctness in both mg/dL and mmol/L, numeric formatting, and date/time rendering across regions. I also validated Bluetooth pairing reliability and reading sync fidelity between glucometer hardware and app — confirming no readings were dropped or misrepresented.',
+   stats:[{n:'Both',l:'Unit systems verified'},{n:'Multi-region',l:'Localization validated'},{n:'Zero',l:'Sync errors found'}]},
+  {num:'06',domain:'Location Services · Crowdsourcing · Real-Time',emoji:'📍',
+   name:'CheckTech — Real-Time Location Verification Platform',
+   blurb:'Crowdsourced platform connecting requestors with on-ground Checkers for verified, real-time location proof.',
+   impact:'500K+',impactLbl:'Active users served',
+   tags:['Real-Time Location','Geo-Matching','Order Lifecycle','Concurrency','In-App Chat','200+ Test Cases'],
+   full:'CheckTech operates in a domain where real-time accuracy is not a quality metric — it is the product. Serving 500,000+ active users across the Middle East, the platform handles continuous location-based orders, dynamic Checker matching within geo-radius logic, real-time status transitions, and live bidirectional chat. I authored and executed 200+ manual test cases applying BVA and Equivalence Partitioning, with particular attention to concurrency scenarios. UI/UX quality reviews across 100+ screens contributed to a 20% improvement in user satisfaction scores. Improved team productivity by 31% through structured defect reporting and QA metrics dashboards.',
+   stats:[{n:'200+',l:'Test cases authored'},{n:'20%',l:'User satisfaction uplift'},{n:'500K+',l:'Active users served'}]},
+  {num:'07',domain:'Clinical IoT · BLE · Wearables · Cloud',emoji:'💓',
+   name:'BioIntelliSense BioHub — Wearable Health Ecosystem',
+   blurb:'Four-tier clinical IoT data chain: BioButton sensor → BioHub gateway → cloud → physician dashboard.',
+   impact:'4-tier',impactLbl:'Full pipeline coverage',
+   tags:['BioButton Device','BLE Connectivity','Cloud Sync','Doctor Dashboard','FDA / HIPAA','Multi-Tier'],
+   full:'The BioHub Connect ecosystem has four integration points, each of which must preserve the integrity of patient biometric data as it moves from body to cloud to clinician. I validated every tier: BLE pairing stability and transmission reliability; cloud ingestion accuracy under intermittent connectivity; and the physician dashboard for clinical precision — vital sign values, trend graph rendering, threshold-based alerting, and time-series data alignment. Every scenario tested under FDA and HIPAA compliance frameworks, with full traceability from sensor output to final clinical display.',
+   stats:[{n:'4-tier',l:'Full data chain validated'},{n:'End-to-end',l:'Biometric fidelity confirmed'},{n:'FDA+HIPAA',l:'Compliance framework applied'}]},
+  {num:'08',domain:'Retail Tech · Kiosk · POS · AI-Assisted Ordering',emoji:'🖥️',
+   name:'GRUBBRR — Self-Ordering Kiosk & Omnichannel POS',
+   blurb:'Integrated self-ordering ecosystem for restaurants, stadiums, and retail — kiosks, mobile, menu boards, POS, loyalty.',
+   impact:'10+',impactLbl:'Payment methods verified',
+   tags:['Payment Validation','10+ Methods','POS Integration','SQL / DB Testing','REST API','AI-Assisted Ordering'],
+   full:'At a stadium kiosk serving thousands of transactions per hour, a payment defect is not a support ticket — it is a line of frustrated customers, a missed sale, and a client relationship at risk. I own the full QA lifecycle at GRUBBRR across kiosk software, mobile ordering apps, POS integrations, digital menu boards, and loyalty systems. I validate Smart Upsell workflows, recommendation engine outputs, and AI-assisted menu personalization features — verifying item suggestion accuracy and ordering experience consistency across web, mobile, and kiosk channels. Payment verification covers 10+ methods (Verifone, FreedomPay, Olo Pay, Clover, NFC, digital wallets) — with no production-critical payment defects recorded across all client deployments since Oct 2024.',
+   stats:[{n:'Zero',l:'Production-critical payment defects'},{n:'10+',l:'Payment methods covered'},{n:'50+',l:'Pre-prod defects closed'}]},
+  {num:'09',domain:'VR Gaming · Oculus · Full Functional QA',emoji:'🔴',
+   name:'SUPERHOT VR — Full Functional Game Testing',
+   blurb:'Award-winning VR FPS rebuilt for Oculus — "time moves only when you move" — validated across all mechanics, platforms, and edge-case failure paths.',
+   impact:'GOTY',impactLbl:'Dozens of awards',
+   tags:['Oculus Rift','Oculus Quest','HTC Vive','Motion Controls','Time Mechanic','Physics Testing','Controller Tracking'],
+   full:'SUPERHOT VR was rebuilt entirely from the ground up for virtual reality, creating a distinct and demanding testing surface. I performed full functional testing covering the signature "time moves only when you move" mechanic under all player input states, controller tracking reliability during fast physical gestures (dodging, throwing, dual-wielding), and level teleportation transitions. The physics-based interaction model — where players grab weapons, throw objects as projectiles, and deflect bullets — required rigorous edge-case testing across all interaction combinations. Validated campaign mode, endless replayability modes, headshot-only challenges, and hardcore variants across Oculus Rift, Go, and Quest device generations.',
+   stats:[{n:'12+',l:'Game modes & variants tested'},{n:'Multi-gen',l:'Oculus platforms covered'},{n:'Dozens',l:'VR Game of the Year awards'}]},
+  {num:'10',domain:'Mobile OS · Android · Alpha Testing',emoji:'📱',
+   name:'MIUI Alpha Tester — Xiaomi OS Pre-Release Validation',
+   blurb:'Selected for Xiaomi\'s closed Alpha Testing program (2013–2015) — validating MIUI pre-release builds for OS stability and hardware-software integration.',
+   impact:'1yr+',impactLbl:'Alpha testing tenure',
+   tags:['MIUI','Android OS','OS Stability','UI Regression','Exploratory Testing','Bug Reporting','Pre-Release','Firmware'],
+   full:'Being selected as a Xiaomi MIUI Alpha Tester is a competitive, application-based process. Over approximately two years (2013–2015), I validated pre-release MIUI builds for OS stability, system UI regressions, performance consistency, notification system behavior, battery and thermal management, and hardware-software integration covering camera, sensors, and connectivity stacks. Defects were documented through Xiaomi\'s internal feedback system with structured reproduction steps, device configuration details, and build version metadata — the same disciplined defect documentation that later became central to my OS qualification work on Oculus/Meta devices.',
+   stats:[{n:'2013–15',l:'Alpha testing tenure'},{n:'Pre-release',l:'Builds validated before public rollout'},{n:'100M+',l:'Users protected downstream'}]}
+];
+
+const pl=document.getElementById('projList');
+projects.forEach((p,i)=>{
+  const el=document.createElement('div');
+  const delayClass = i%3===1 ? ' rd-1' : (i%3===2 ? ' rd-2' : '');
+  el.className = 'proj reveal' + delayClass;
+  
+  el.innerHTML=`
+    <div class="proj-num">${p.emoji}</div>
+    <div class="proj-body">
+      <div class="proj-domain">${p.domain}</div>
+      <div class="proj-name">${p.name}</div>
+      <div class="proj-blurb">${p.blurb}</div>
+      <div class="proj-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+    </div>
+    <div class="proj-meta">
+      <div class="proj-impact">${p.impact}</div>
+      <div class="proj-impact-l">${p.impactLbl}</div>
+      <span class="proj-read">Read case study →</span>
+    </div>`;
+  el.addEventListener('click',()=>openModal(p));
+  pl.appendChild(el);
+  ro.observe(el);
+});
+
+/* ── EXPERIENCE ────────────────────────────────────── */
+const exps=[
+  {co:'GRUBBRR',period:'Oct 2024 – Present',role:'Lead QA Engineer',
+   company:'GRUBBRR · Ahmedabad, India',
+   pts:[
+     'Own end-to-end quality assurance for self-ordering kiosks, POS integrations, payment ecosystems, loyalty platforms, digital menu boards, and AI-assisted mobile and kiosk ordering applications.',
+     'Validate Smart Upsell workflows, recommendation engine outputs, and AI-assisted menu personalization features — verifying item suggestion accuracy, upsell logic, and ordering experience consistency.',
+     'Build and execute payment verification framework across 10+ methods (FreedomPay, Verifone, Olo Pay, Clover, NFC, digital wallets) — no production-critical payment defects recorded since Oct 2024.',
+     'Perform REST API testing via Postman and SQL-based database validation — verifying payment gateway integrations, POS connectivity, order calculations, pricing logic, and backend data integrity end-to-end.',
+     'Triage and resolve 50+ functional and integration defects pre-production — preventing post-release escalations across engineering, product, and client teams.',
+     'Mentor 6 junior QA engineers on system architecture, integration testing, and quality standards — improving team execution efficiency by 20%.'
+   ]},
+  {co:'AimDek',period:'Jan 2024 – Oct 2024',role:'Lead QA Engineer',
+   company:'AimDek Technology · Ahmedabad, India',
+   pts:[
+     'Led full QA lifecycle for Class I and Class II medical devices including Sibel Health wearable monitors — supporting FDA 21 CFR Part 11 and HIPAA compliance across all hardware and software system components.',
+     'Designed and executed clinical data workflow tests covering HL7, FHIR, and IEEE 11073 SDC standards across device-to-platform integrations — validated payload accuracy, authentication flows, and fault tolerance.',
+     'Performed REST API and SOAP API testing for healthcare data exchange across EHR/EHS workflows and connected medical devices — verified request/response integrity, error handling, and data accuracy.',
+     'Built requirements traceability matrices and led structured risk assessments — reducing regulatory defects by 30% through compliance-focused, traceability-driven test planning.',
+     'Monitored Kubernetes cluster logs for production healthcare applications — proactively identified and resolved infrastructure incidents, improving uptime by 15%.'
+   ]},
+  {co:'Apexon',period:'Mar 2021 – Dec 2023',role:'Senior QA Engineer',
+   company:'Apexon · Ahmedabad, India',
+   pts:[
+     'Tested and verified REST and SOAP APIs across 20+ endpoints for health IoT devices, lifestyle apps, and financial platforms — full regression, integration, and system test coverage.',
+     'Led QA for a blockchain financial platform — validated smart contract workflows, transaction ledger integrity, token logic, and edge-case failure scenarios.',
+     'Performed database validation and cloud data sync testing for healthcare IoT devices across multi-tier backend systems.',
+     'Delivered 12 consecutive major releases while maintaining high release quality across healthcare, financial services, and blockchain products.'
+   ]},
+  {co:'CheckTech',period:'Sep 2019 – Mar 2021',role:'Senior QA Specialist',
+   company:'CheckTech for IT · Riyadh, Saudi Arabia',
+   pts:[
+     'Authored and executed 200+ manual test cases for high-traffic transportation, e-commerce, and F&B platforms serving 500K+ active users — applied BVA, Equivalence Partitioning, and Decision Tables.',
+     'Performed UI/UX quality validation across 100+ screens — contributed to a 20% improvement in user satisfaction scores.',
+     'Improved team productivity by 31% through structured defect reporting, QA metrics dashboards, and root cause analysis.',
+     'Led offshore QA team of 4 engineers across 8 simultaneous Agile and Waterfall projects.'
+   ]},
+  {co:'Lodestone',period:'Jan 2016 – Aug 2019',role:'Software Tester — VR & OS',
+   company:'Lodestone (acq. Tech Mahindra) · Ahmedabad, India',
+   pts:[
+     'Executed full Oculus OS qualification covering system UI, firmware upgrades, sensor calibration (head tracking, motion, proximity), connectivity, and permissions across GearVR, Oculus Go, Quest, and Rift.',
+     'Owned build sign-off for 50+ VR/AR applications across Master, Release Candidate, HotFix, and Custom builds — primary quality gate for every release cycle.',
+     'Identified and resolved 200+ critical VR OS defects while reducing test execution time by 35% through optimized regression cycles.',
+     'Verified hardware-software integration and controller firmware compatibility across multiple Oculus device generations and SDK versions.'
+   ]},
+  {co:'CHHAVI',period:'May 2015 – Dec 2015',role:'Software Engineer',
+   company:'CHHAVI · Ahmedabad, India',
+   pts:[
+     'Conducted functional and integration testing for web application features — identified defects improving application performance by 15%.',
+     'Partnered with UI/UX designers and stakeholders to deliver interface improvements aligned with product goals.'
+   ],edu:true},
+  {co:'MIUI Alpha',period:'2013 – 2015',role:'Alpha Tester',
+   company:'Xiaomi · MIUI Alpha Testing Program',
+   pts:[
+     'Selected for Xiaomi\'s competitive, application-based closed Alpha Tester program for MIUI OS — running on hundreds of millions of devices globally.',
+     'Validated pre-release MIUI builds for OS stability, UI regressions, performance consistency, and hardware-software integration across device configurations before public rollout.',
+     'Documented and reported edge-case crashes, system UI anomalies, and firmware-level bugs via structured feedback channels — directly influencing production build quality.',
+     'Developed foundational discipline in mobile OS exploratory testing and defect documentation that later shaped OS qualification work on Oculus/Meta device generations.'
+   ],edu:true}
+];
+
+const tabs=document.getElementById('expTabs'),panes=document.getElementById('expPanes');
+exps.forEach((e,i)=>{
+  const t=document.createElement('div');
+  t.className='exp-tab'+(i===0?' on':'');
+  t.innerHTML=`<span class="exp-tab-co">${e.co}</span>${e.role}`;
+  t.onclick=()=>{
+    document.querySelectorAll('.exp-tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.exp-pane').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    document.getElementById('ep'+i).classList.add('on');
+  };
+  tabs.appendChild(t);
+
+  const pn=document.createElement('div');
+  pn.className='exp-pane'+(i===0?' on':'');
+  pn.id='ep'+i;
+  pn.innerHTML=`
+    <div class="ep-period">${e.period}</div>
+    <div class="ep-role">${e.role}</div>
+    <div class="ep-co">${e.company}</div>
+    <ul class="ep-pts">${e.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
+    ${e.edu?`<div class="ep-edu">
+      <div class="ep-edu-title">Education &amp; Certification</div>
+      <div class="edu-pills">
+        <span class="edu-pill">🏅 ISTQB CTFL · March 2025</span>
+        <span class="edu-pill">MCA · Gujarat Technological University · 2015</span>
+        <span class="edu-pill">BCA · GLS Institute of Computer Technology · 2013</span>
+        <span class="edu-pill">📱 MIUI Alpha Tester · Xiaomi · 2013–2015</span>
+      </div>
+    </div>`:''}`;
+  panes.appendChild(pn);
+});
+
+/* Initialize Cursor Hover States after elements populate */
+addCursorListeners();
+
+/* ── MODAL ─────────────────────────────────────────── */
+const mbg=document.getElementById('modal-bg');
+document.getElementById('mClose').onclick=closeModal;
+mbg.addEventListener('click',e=>{if(e.target===mbg)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+function openModal(p){
+  document.getElementById('mDom').textContent=p.domain;
+  document.getElementById('mTit').textContent=p.name;
+  document.getElementById('mBod').textContent=p.full;
+  document.getElementById('mTag').innerHTML=p.tags.map(t=>`<span class="m-tag">${t}</span>`).join('');
+  document.getElementById('mStat').innerHTML=p.stats.map(s=>`<div class="ms"><span class="ms-n">${s.n}</span><span class="ms-l">${s.l}</span></div>`).join('');
+  mbg.classList.add('open');
+  document.body.style.overflow='hidden';
+  mbg.querySelector('.modal').scrollTop=0;
+}
+function closeModal(){mbg.classList.remove('open');document.body.style.overflow='';}
+</script>
+
+```
