@@ -3,385 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhruvil Parekh | QA Architect</title>
-<meta name="description" content="Lead Quality Assurance Engineer specializing in hyper-scale test automation, MedTech compliance, and platform stability.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
-
+<title>Dhruvil Parekh | Lead QA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════
-   GLOBAL VARIABLES & RESET
-═══════════════════════════════════════════════════ */
 :root {
-  --bg-dark: #050507;
-  --text-main: #F3F4F6;
-  --text-dim: #9CA3AF;
-  
-  --accent-lime: #E0FF4F;
-  --accent-purple: #8B5CF6;
-  --accent-cyan: #06B6D4;
-
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-hover: rgba(255, 255, 255, 0.06);
-
-  --font-head: 'Syne', sans-serif;
-  --font-body: 'Outfit', sans-serif;
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --text-dim: #94a3b8;
+  --accent: #22d3ee;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; background-color: var(--bg-dark); }
-body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── HARDWARE-ACCELERATED AMBIENT BACKGROUND ── */
-.ambient-bg {
-  position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--bg-dark);
-}
-.orb {
-  position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4;
-  animation: float 20s infinite alternate ease-in-out;
-}
-.orb-1 { width: 45vw; height: 45vw; background: var(--accent-purple); top: -10%; left: -10%; }
-.orb-2 { width: 35vw; height: 35vw; background: var(--accent-lime); bottom: -10%; right: -5%; animation-delay: -5s; }
-.orb-3 { width: 25vw; height: 25vw; background: var(--accent-cyan); top: 40%; left: 40%; animation-duration: 25s; opacity: 0.2; }
-
-@keyframes float {
-  100% { transform: translate(100px, 80px) scale(1.1); }
-}
-
-/* Subtle Noise Overlay for Texture */
-.noise {
-  position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.03;
-  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-}
-
-/* ── FLOATING GLASS NAVIGATION ── */
-.nav-pill {
-  position: fixed; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-  background: rgba(10, 10, 15, 0.6); border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  padding: 0.8rem 1.5rem; border-radius: 100px;
-  display: flex; gap: 2rem; z-index: 1000; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-.nav-pill a {
-  color: var(--text-main); text-decoration: none; font-size: 0.85rem;
-  font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s;
-}
-.nav-pill a:hover { color: var(--accent-lime); }
-
-/* ── LAYOUT UTILITIES ── */
-.container { max-width: 1400px; margin: 0 auto; padding: 0 4rem; }
-section { padding: 8rem 0; }
-
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ── HERO SECTION ── */
-#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
-.hero-top { display: flex; justify-content: space-between; margin-bottom: 4rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-lime); font-weight: 500; }
-.hero-title { font-family: var(--font-head); font-size: clamp(60px, 12vw, 150px); line-height: 0.9; letter-spacing: -0.02em; margin-bottom: 2rem; text-transform: uppercase; }
-.hero-title .outline { color: transparent; -webkit-text-stroke: 2px var(--text-main); }
-.hero-desc { font-size: clamp(18px, 2vw, 24px); color: var(--text-dim); max-width: 800px; font-weight: 300; line-height: 1.5; }
-.hero-desc strong { color: var(--text-main); font-weight: 500; }
-
-/* ── INFINITE MARQUEE ── */
-.marquee-wrapper { width: 100vw; overflow: hidden; background: var(--accent-lime); padding: 1rem 0; transform: rotate(-2deg) scale(1.05); margin: 4rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 10; position: relative; }
-.marquee { display: flex; white-space: nowrap; animation: scrollMarquee 25s linear infinite; }
-.marquee span { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: #000; text-transform: uppercase; padding: 0 2rem; letter-spacing: 0.05em; }
-@keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-/* ── BENTO BOX GRID (METRICS & PROJECTS) ── */
-.section-title { font-family: var(--font-head); font-size: clamp(32px, 4vw, 56px); margin-bottom: 3rem; font-weight: 700; }
-.section-title span { color: var(--accent-purple); }
-
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(280px, auto);
-  gap: 1.5rem;
-}
-.bento-card {
-  background: var(--glass-bg); border: 1px solid var(--glass-border);
-  border-radius: 32px; padding: 3rem;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  display: flex; flex-direction: column; transition: 0.4s ease;
-}
-.bento-card:hover { border-color: var(--accent-lime); background: var(--glass-hover); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-
-.col-12 { grid-column: span 12; }
-.col-8 { grid-column: span 8; }
-.col-6 { grid-column: span 6; }
-.col-4 { grid-column: span 4; }
-
-.b-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-lime); margin-bottom: 1.5rem; font-weight: 600; }
-.b-stat { font-family: var(--font-head); font-size: clamp(48px, 6vw, 80px); line-height: 1; color: var(--text-main); margin-bottom: 0.5rem; font-weight: 800; }
-.b-stat-sub { font-size: 1.1rem; color: var(--text-dim); }
-.b-title { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
-.b-desc { color: var(--text-dim); font-size: 1rem; flex-grow: 1; margin-bottom: 2rem; }
-
-.pill-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.pill { padding: 0.4rem 1rem; background: rgba(255,255,255,0.05); border-radius: 100px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.1); }
-.pill.highlight { border-color: var(--accent-lime); color: var(--accent-lime); }
-
-/* Multiple Stats Row Inside a Card */
-.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: end; }
-
-/* ── TIMELINE (EXPERIENCE) ── */
-.timeline { display: flex; flex-direction: column; gap: 2rem; }
-.timeline-item {
-  background: var(--glass-bg); border: 1px solid var(--glass-border);
-  border-radius: 24px; padding: 3rem;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  display: grid; grid-template-columns: 250px 1fr; gap: 3rem;
-  transition: 0.4s ease;
-}
-.timeline-item:hover { border-color: var(--accent-purple); background: var(--glass-hover); }
-.t-meta { border-right: 1px solid var(--glass-border); padding-right: 2rem; }
-.t-date { color: var(--accent-lime); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; text-transform: uppercase; }
-.t-role { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-.t-co { color: var(--text-dim); font-size: 1rem; }
-.t-details { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-.t-details li { position: relative; padding-left: 1.5rem; color: var(--text-dim); font-size: 1.05rem; }
-.t-details li::before { content: '✦'; position: absolute; left: 0; color: var(--accent-purple); font-size: 0.8rem; top: 4px; }
-
-/* ── CONTACT & FOOTER ── */
-#contact { text-align: center; padding: 10rem 0 12rem 0; }
-.huge-cta { font-family: var(--font-head); font-size: clamp(50px, 8vw, 120px); font-weight: 800; text-transform: uppercase; line-height: 1; margin-bottom: 3rem; text-decoration: none; color: var(--text-main); display: inline-block; transition: 0.3s; }
-.huge-cta:hover { color: var(--accent-lime); transform: scale(1.02); }
-.social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 4rem; }
-.social-links a { color: var(--text-dim); text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
-.social-links a:hover { color: var(--text-main); }
-.footer-text { color: var(--text-dim); font-size: 0.9rem; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .container { padding: 0 2rem; }
-  .col-8, .col-6, .col-4 { grid-column: span 12; }
-  .stat-row { grid-template-columns: 1fr; gap: 1.5rem; }
-  .timeline-item { grid-template-columns: 1fr; gap: 1.5rem; }
-  .t-meta { border-right: none; border-bottom: 1px solid var(--glass-border); padding-right: 0; padding-bottom: 1.5rem; }
-}
-@media (max-width: 768px) {
-  .nav-pill { width: 90%; justify-content: space-around; padding: 1rem; }
-  .hero-top { flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
-  section { padding: 5rem 0; }
-  .bento-card, .timeline-item { padding: 2rem; }
-}
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; margin: 0; padding: 4rem 2rem; }
+.wrapper { max-width: 800px; margin: 0 auto; }
+header { margin-bottom: 5rem; }
+h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+h2 { font-size: 1.2rem; font-weight: 400; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; padding: 2rem 0; border-top: 1px solid #334155; border-bottom: 1px solid #334155; }
+.stat-val { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 600; }
+.stat-lbl { font-size: 0.8rem; color: var(--text-dim); }
+.section { margin-bottom: 4rem; }
+h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+p { color: var(--text-dim); margin-bottom: 1.5rem; }
+.item { margin-bottom: 2rem; }
+.item-hdr { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+.role { font-weight: 600; }
+.period { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); }
+ul { padding-left: 1.2rem; }
+li { color: var(--text-dim); margin-bottom: 0.5rem; }
+.tech-pill { display: inline-block; background: #1e293b; padding: 0.2rem 0.6rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; margin: 0.2rem; }
 </style>
 </head>
 <body>
+<div class="wrapper">
+  <header>
+    <h1>Dhruvil Parekh</h1>
+    <h2>Lead QA Engineer | ISTQB Certified</h2>
+    <p>ISTQB Certified Lead QA Engineer with 10+ years delivering quality engineering across Healthcare & MedTech, AI-Powered Retail, Payment Ecosystems, and VR/AR. Experienced in healthcare interoperability (HL7, FHIR, IEEE 11073 SDC, HIPAA), AI-assisted ordering systems, and full-cycle API testing.</p>
+  </header>
 
-<div class="ambient-bg">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
-<div class="noise"></div>
-
-<nav class="nav-pill">
-  <a href="#hero">Home</a>
-  <a href="#impact">Matrix</a>
-  <a href="#experience">History</a>
-  <a href="#contact">Connect</a>
-</nav>
-
-<main>
-  <!-- ── HERO ── -->
-  <section id="hero" class="container">
-    <div class="hero-top reveal">
-      <div>Lead Quality Assurance Architect</div>
-      <div>[ ISTQB Certified CTFL ]</div>
-    </div>
-    <h1 class="hero-title reveal">
-      DHRUVIL<br>
-      <span class="outline">PAREKH</span>
-    </h1>
-    <p class="hero-desc reveal">
-      Over a decade engineering absolute reliability across medical software, decentralized ledgers, and foundational mobile environments. Implementing <strong>zero-tolerance quality gates</strong> to eliminate deployment risks before they reach production.
-    </p>
-  </section>
-
-  <!-- ── MARQUEE ── -->
-  <div class="marquee-wrapper">
-    <div class="marquee">
-      <span>SYSTEM STABILITY • AUTOMATION • PLAYWRIGHT • CYPRESS • API TESTING • COMPLIANCE • CI/CD INTEGRATION •</span>
-      <span>SYSTEM STABILITY • AUTOMATION • PLAYWRIGHT • CYPRESS • API TESTING • COMPLIANCE • CI/CD INTEGRATION •</span>
-    </div>
+  <div class="stats">
+    <div><div class="stat-val">60%</div><div class="stat-lbl">Regression Cycle Reduction</div></div>
+    <div><div class="stat-val">30%</div><div class="stat-lbl">Regulatory Defect Drop</div></div>
+    <div><div class="stat-val">10+</div><div class="stat-lbl">Major Releases</div></div>
   </div>
 
-  <!-- ── BENTO GRID (METRICS & PROJECTS) ── -->
-  <section id="impact" class="container">
-    <h2 class="section-title reveal">Production <span>Impact.</span></h2>
-    
-    <div class="bento-grid">
-      <!-- Mega Stats Card -->
-      <div class="bento-card col-8 reveal">
-        <div class="b-tag">Performance Optimization</div>
-        <div class="stat-row">
-          <div>
-            <div class="b-stat">10+</div>
-            <div class="b-stat-sub">Years of Precision Testing</div>
-          </div>
-          <div>
-            <div class="b-stat">60%</div>
-            <div class="b-stat-sub">Faster Validation Cycles</div>
-          </div>
-          <div>
-            <div class="b-stat">30%</div>
-            <div class="b-stat-sub">Drop in MedTech Flaws</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cert Card -->
-      <div class="bento-card col-4 reveal" style="align-items: center; justify-content: center; text-align: center;">
-        <div class="b-stat" style="color: var(--accent-purple);">20+</div>
-        <div class="b-title" style="margin:0;">Major Sweeps</div>
-        <div class="b-desc" style="margin-top: 0.5rem;">Deployed without critical production leakage.</div>
-      </div>
-
-      <!-- Project 1 -->
-      <div class="bento-card col-6 reveal">
-        <div class="b-tag">FDA Compliance & MedTech</div>
-        <h3 class="b-title">Sibel Health Wearable Telemetry</h3>
-        <p class="b-desc">Directed end-to-end verification for Class I and II continuous biological tracking hardware. Engineered strict traceability pathways connecting physical sensors to clinical dashboards under HIPAA and FDA guidelines.</p>
-        <div class="pill-container">
-          <span class="pill">IEEE 11073</span><span class="pill">HL7 / FHIR</span><span class="pill">Data Tracing</span>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="bento-card col-6 reveal">
-        <div class="b-tag">Virtual Reality OS Kernel</div>
-        <h3 class="b-title">Meta Oculus System Qualification</h3>
-        <p class="b-desc">Diagnosed and cleared over two hundred severe system-level vulnerabilities across immersive reality hardware. Validated latency-optimized motion controller inputs, spatial positioning loops, and baseline shell integrity.</p>
-        <div class="pill-container">
-          <span class="pill">Firmware QA</span><span class="pill">Sensor Calibration</span><span class="pill">OS Flash</span>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="bento-card col-4 reveal">
-        <div class="b-tag">AI Retail Systems</div>
-        <h3 class="b-title">Omnichannel Kiosk Networks</h3>
-        <p class="b-desc">Guarded complex payment processing frameworks routing over ten distinct financial mechanisms, maintaining perfect security records in live retail environments.</p>
-        <div class="pill-container">
-          <span class="pill">Gateway Security</span><span class="pill">POS Validation</span>
-        </div>
-      </div>
-
-      <!-- Skills Card -->
-      <div class="bento-card col-8 reveal">
-        <div class="b-tag">Technology Registry</div>
-        <h3 class="b-title">The Engineering Stack</h3>
-        <p class="b-desc">Expanding standard validation methodologies with modern programmatic automation tools.</p>
-        <div class="pill-container" style="gap: 0.8rem;">
-          <span class="pill highlight">Playwright</span><span class="pill highlight">Cypress</span>
-          <span class="pill highlight">Python</span><span class="pill highlight">TypeScript</span>
-          <span class="pill">PostgreSQL</span><span class="pill">AWS S3</span>
-          <span class="pill">Postman / APIs</span><span class="pill">CI/CD Deployments</span>
-          <span class="pill">Charles Proxy</span><span class="pill">Docker/K8s Telemetry</span>
-        </div>
-      </div>
+  <section class="section">
+    <h3>Professional Experience</h3>
+    <div class="item">
+      <div class="item-hdr"><span class="role">Lead QA Engineer, GRUBBRR</span><span class="period">2024-Present</span></div>
+      <ul>
+        <li>Own end-to-end quality for self-ordering kiosks, POS integrations, and payment ecosystems.</li>
+        <li>Built payment verification framework across 10+ methods with zero production-critical defects.</li>
+        <li>Mentor junior QA engineers on system architecture and integration standards.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-hdr"><span class="role">Lead QA Engineer, AimDek</span><span class="period">2024</span></div>
+      <ul>
+        <li>Led QA for FDA-regulated medical devices and clinical data exchange platforms.</li>
+        <li>Reduced regulatory defects by 30% through compliance-focused test planning.</li>
+        <li>Validated interoperability standards including HL7 and FHIR.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ── TIMELINE ── -->
-  <section id="experience" class="container">
-    <h2 class="section-title reveal">Career <span>Chronology.</span></h2>
-    
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="t-meta">
-          <div class="t-date">Oct 2024 – Present</div>
-          <div class="t-role">Lead QA Engineer</div>
-          <div class="t-co">Retail & POS Systems Ecosystem</div>
-        </div>
-        <ul class="t-details">
-          <li>Command total quality oversight for continuous kiosk platforms, point-of-sale network nodes, and AI-driven automated menu personalization matrices.</li>
-          <li>Execute rigorous financial processing checks across multiple standard mechanisms, maintaining flawless transaction execution in live venues.</li>
-          <li>Perform deep-level relational database tracking to secure data integrity alongside extensive API synchronization validation.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="t-meta">
-          <div class="t-date">Jan 2024 – Oct 2024</div>
-          <div class="t-role">Lead QA Engineer</div>
-          <div class="t-co">AimDek Technology</div>
-        </div>
-        <ul class="t-details">
-          <li>Administered core compliance testing protocols for wearable clinical equipment mapped to uncompromising medical sector standards.</li>
-          <li>Constructed data flow validation architectures examining encrypted medical payloads between remote clinical routing nodes.</li>
-          <li>Lowered compliance failure rates significantly by authoring highly detailed requirements traceability blueprints.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="t-meta">
-          <div class="t-date">2021 – 2023</div>
-          <div class="t-role">Senior QA Engineer</div>
-          <div class="t-co">Apexon</div>
-        </div>
-        <ul class="t-details">
-          <li>Deployed functional boundary evaluations intercepting endpoint failures supplying critical healthcare network nodes.</li>
-          <li>Supervised operational verification for decentralized ledger smart contracts and token synchronization frameworks.</li>
-          <li>Secured successive faultless release pipelines across complex enterprise-level product deployments.</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="t-meta">
-          <div class="t-date">2016 – 2021</div>
-          <div class="t-role">Senior Software Tester</div>
-          <div class="t-co">CheckTech & Lodestone (Tech Mahindra)</div>
-        </div>
-        <ul class="t-details">
-          <li>Engineered specialized testing strategies targeting high-concurrency transport platforms managing vast networks of active mobile users.</li>
-          <li>Owned firmware evaluation sweeps determining virtual reality calibration accuracy, perimeter mapping, and headset coordinate rendering.</li>
-          <li>Operated as the absolute final release authority signing off build safety parameters for over fifty immersive digital targets.</li>
-        </ul>
-      </div>
-    </div>
+  <section class="section">
+    <h3>Core Technical Expertise</h3>
+    <div class="tech-pill">Manual & Regression</div><div class="tech-pill">API Testing</div><div class="tech-pill">Playwright</div><div class="tech-pill">Cypress</div><div class="tech-pill">Python</div><div class="tech-pill">TypeScript</div><div class="tech-pill">SQL</div><div class="tech-pill">JIRA</div><div class="tech-pill">Postman</div>
   </section>
-
-  <!-- ── CONTACT & FOOTER ── -->
-  <section id="contact" class="container">
-    <div class="reveal">
-      <a href="mailto:dhruvil.parekh3@gmail.com" class="huge-cta">LET'S TALK ↗</a>
-      <div class="social-links">
-        <a href="https://linkedin.com/in/dhruvilparekh" target="_blank">LinkedIn Profile</a>
-        <a href="tel:+918000164009">Phone: +91 80001 64009</a>
-      </div>
-      <p class="footer-text">© 2026 Dhruvil Parekh. Built for precision.</p>
-    </div>
-  </section>
-
-</main>
-
-<script>
-/* ── SCROLL REVEAL ANIMATION ── */
-document.addEventListener("DOMContentLoaded", () => {
-  const revealElements = document.querySelectorAll(".reveal");
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-});
-</script>
-
+</div>
 </body>
 </html>
