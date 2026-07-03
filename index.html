@@ -3,87 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhruvil Parekh | QA Engineering Lead</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>Dhruvil Parekh | QA Engineering Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #f1f5f9;
+  --bg: #030712;
+  --surface: rgba(30, 41, 59, 0.5);
+  --accent: #22d3ee;
+  --text: #f8fafc;
   --text-dim: #94a3b8;
-  --cyan: #22d3ee;
 }
-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; margin: 0; padding: 4rem 2rem; }
-.wrapper { max-width: 900px; margin: 0 auto; }
+body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; line-height: 1.7; margin: 0; }
 
-/* Typography */
-h1 { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-h2 { font-size: 1rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 3rem; }
-h3 { font-size: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--cyan); padding-left: 1rem; }
+/* Elegant Navigation */
+nav { position: fixed; top: 0; width: 100%; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(3,7,18,0.8); backdrop-filter: blur(10px); }
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: var(--accent); }
+.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; margin-left: 2rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent); }
 
-/* Stats */
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 4rem 0; }
-.stat-item { background: var(--card); padding: 2rem; border-radius: 8px; text-align: center; }
-.stat-val { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 600; color: var(--cyan); }
-.stat-lbl { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; }
+/* Hero */
+.hero { padding: 15rem 5% 10rem; max-width: 1200px; }
+.hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1; margin-bottom: 2rem; }
+.hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 600px; }
 
-/* Content */
-.section { margin-bottom: 5rem; }
-.job { margin-bottom: 3rem; }
-.job-hdr { display: flex; justify-content: space-between; margin-bottom: 1rem; }
-.job-title { font-weight: 600; font-size: 1.1rem; }
-.job-date { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--cyan); }
-.job-desc { color: var(--text-dim); margin-bottom: 1rem; }
-ul { padding-left: 1.2rem; color: var(--text-dim); }
-li { margin-bottom: 0.5rem; }
+/* Section Styles */
+section { padding: 8rem 5%; }
+h2 { font-size: 2.5rem; margin-bottom: 4rem; text-align: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+.card { background: var(--surface); border: 1px solid rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; transition: 0.4s; }
+.card:hover { border-color: var(--accent); transform: translateY(-10px); }
+.card h4 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--accent); }
 
-/* Skills */
-.tech-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.pill { background: #334155; padding: 0.4rem 0.8rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+/* Experience */
+.exp-container { max-width: 900px; margin: 0 auto; }
+.exp-item { border-bottom: 1px solid #1e293b; padding: 2rem 0; }
+.exp-item h4 { display: flex; justify-content: space-between; font-size: 1.2rem; margin-bottom: 1rem; }
+.exp-item span { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); }
 </style>
 </head>
 <body>
-<div class="wrapper">
-  <header>
-    <h1>Dhruvil Parekh</h1>
-    <h2>Lead QA Engineer | ISTQB Certified</h2>
-    <p>Ten-year veteran in quality engineering, specializing in high-stakes environments including medical device compliance, automated retail systems, and complex financial ecosystems. Proven expertise in reducing regulatory exposure and stabilizing production pipelines through rigorous, data-driven methodologies.</p>
-  </header>
+<nav>
+  <div class="logo">DP<span>.</span></div>
+  <div class="nav-links"><a href="#work">Projects</a><a href="#experience">History</a><a href="#contact">Contact</a></div>
+</nav>
 
-  <div class="stats-grid">
-    <div class="stat-item"><div class="stat-val">60%</div><div class="stat-lbl">Regression Cycle Cut</div></div>
-    <div class="stat-item"><div class="stat-val">30%</div><div class="stat-lbl">Regulatory Flaws Dropped</div></div>
-    <div class="stat-item"><div class="stat-val">10+</div><div class="stat-lbl">Major Releases</div></div>
+<header class="hero">
+  <h1>Dhruvil Parekh.</h1>
+  <p>Lead QA Engineer with 10+ years driving software stability across regulated MedTech, distributed payment systems, and core mobile operating systems. Utilizing a deterministic approach to mitigate production risks.</p>
+</header>
+
+<section id="work">
+  <h2>Verification Vectors</h2>
+  <div class="grid">
+    <div class="card">
+      <h4>Wearable Biological Telemetry</h4>
+      <p>Regulated Class I/II continuous biological tracking infrastructure. Directed QA cycles and engineered traceability architectures under strict FDA/HIPAA compliance boundaries.</p>
+    </div>
+    <div class="card">
+      <h4>Oculus OS Qualification</h4>
+      <p>OS configuration validation across multiple device iterations, resolving over 200 system faults pre-release to optimize verification runtimes.</p>
+    </div>
+    <div class="card">
+      <h4>Smart Contract Validation</h4>
+      <p>Validation matrices tracking transaction logging persistence layers for distributed ledger systems executing multi-tiered asset distributions.</p>
+    </div>
   </div>
+</section>
 
-  <section class="section">
-    <h3>Professional Deployments</h3>
-    <div class="job">
-      <div class="job-hdr"><span class="job-title">Lead QA Engineer, GRUBBRR</span><span class="job-date">2024-Present</span></div>
-      <p class="job-desc">Overseeing quality assurance for self-ordering kiosks and omnichannel POS solutions.</p>
+<section id="experience">
+  <h2>Deployment History</h2>
+  <div class="exp-container">
+    <div class="exp-item">
+      <h4><span>GRUBBRR</span><span>2024 - Present</span></h4>
       <ul>
-        <li>Architected payment verification frameworks covering over ten distinct transaction methods, maintaining flawless production stability.</li>
-        <li>Directing team productivity improvements and mentoring engineering staff on advanced testing architecture.</li>
-        <li>Validating AI-driven recommendation logic and personalized menu systems for global deployments.</li>
+        <li>Directing quality for kiosk platforms, POS network nodes, and AI-assisted menu personalization.</li>
+        <li>Architected payment verification frameworks across ten+ transaction methods with zero critical leakage.</li>
       </ul>
     </div>
-    <div class="job">
-      <div class="job-hdr"><span class="job-title">Lead QA Engineer, AimDek</span><span class="job-date">2024</span></div>
-      <p class="job-desc">Leading QA lifecycle for FDA-regulated medical devices and health monitoring equipment.</p>
+    <div class="exp-item">
+      <h4><span>AimDek</span><span>2024</span></h4>
       <ul>
-        <li>Delivered rigorous verification protocols for Class I and II medical devices under strict regulatory compliance frameworks.</li>
-        <li>Reduced regulatory audit findings by optimizing requirements traceability matrices and risk-based validation plans.</li>
-        <li>Led interoperability validation for clinical data exchange protocols, ensuring data accuracy for mission-critical health applications.</li>
+        <li>Managed assurance for wearable wellness pipelines under FDA 21 CFR Part 11 parameters.</li>
+        <li>Constructed integration data flow validation suites for HL7, FHIR, and IEEE 11073 standards.</li>
       </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section">
-    <h3>Technical Registry</h3>
-    <div class="tech-grid">
-      <div class="pill">Playwright</div><div class="pill">Cypress</div><div class="pill">Python</div><div class="pill">TypeScript</div><div class="pill">API Testing</div><div class="pill">SQL</div><div class="pill">Postman</div><div class="pill">JIRA</div><div class="pill">FDA/HIPAA Compliance</div>
-    </div>
-  </section>
-</div>
+<section id="contact" style="text-align: center;">
+  <h2>Let's Collaborate</h2>
+  <p>Looking for a QA leader to stabilize your production pipeline?</p>
+  <a href="mailto:dhruvil.parekh3@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 1.5rem;">dhruvil.parekh3@gmail.com</a>
+</section>
+
 </body>
 </html>
