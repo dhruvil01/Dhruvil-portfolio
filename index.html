@@ -4,17 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dhruvil Parekh — Lead QA Engineer</title>
-<meta name="description" content="Lead QA Engineer specializing in Healthcare MedTech, AI Retail, and Payment Ecosystems.">
+<meta name="description" content="Lead QA Engineer with 10+ years across Healthcare & MedTech, AI-Powered Retail, Payment Ecosystems, and VR/AR. ISTQB Certified.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
    UI ARCHITECTURE: Deep State Node
+   — Optimized for zero-latency scrolling
+   — High-contrast IDE aesthetic for technical screeners
    ═══════════════════════════════════════════════════ */
 :root {
   --bg-void:    #090E17;
   --bg-surface: #111827;
   --bg-elevate: #1F2937;
+  
   --border-dim: rgba(6, 182, 212, 0.15);
   --border-lit: rgba(6, 182, 212, 0.4);
 
@@ -24,9 +27,10 @@
 
   --cyan:       #06B6D4;
   --cyan-dim:   rgba(6, 182, 212, 0.1);
+  --cyan-hover: #08C8EA;
   
   --f-ui:       'Inter', sans-serif;
-  --f-mono:     'Fira Code', monospace;
+  --f-mono:     'JetBrains Mono', monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
@@ -49,13 +53,13 @@ body {
   transition:opacity 0.4s ease, visibility 0.4s;
 }
 #loader.gone { opacity:0; visibility:hidden; }
-.l-name { font-family:var(--f-mono); font-size:16px; font-weight:600; letter-spacing:0.1em; }
+.l-name { font-family:var(--f-mono); font-size:16px; font-weight:700; letter-spacing:0.1em; color:var(--text-main); }
 .l-name span { color:var(--cyan); }
 .l-track { width:240px; height:2px; background:rgba(255,255,255,0.05); }
-.l-fill  { height:100%; background:var(--cyan); width:0; transition:width 0.05s linear; }
+.l-fill  { height:100%; background:var(--cyan); width:0; transition:width 0.05s linear; box-shadow: 0 0 8px var(--cyan); }
 .l-pct { font-family:var(--f-mono); font-size:11px; color:var(--text-mute); }
 
-/* ── NAVIGATION ───────────────────────────── */
+/* ── EDGE NAVIGATION ──────────────────────── */
 #sidenav {
   position:fixed; left:0; top:0; bottom:0; width:88px;
   z-index:400; display:flex; flex-direction:column;
@@ -86,7 +90,7 @@ section { position:relative; border-bottom:1px solid var(--border-dim); }
 .delay-2 { transition-delay: 0.2s; }
 
 .section-tag {
-  font-family:var(--f-mono); font-size:11px; letter-spacing:0.2em;
+  font-family:var(--f-mono); font-size:12px; letter-spacing:0.2em; font-weight:500;
   text-transform:uppercase; color:var(--cyan); margin-bottom:3rem; display:flex; align-items:center; gap:1rem;
 }
 .section-tag::before { content:''; width:40px; height:1px; background:var(--cyan); }
@@ -105,7 +109,7 @@ section { position:relative; border-bottom:1px solid var(--border-dim); }
   letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:all 0.2s; font-weight:600; border-radius:4px;
 }
 .btn-primary { background:var(--cyan); color:var(--bg-void); }
-.btn-primary:hover { background:#08C8EA; transform:translateY(-2px); }
+.btn-primary:hover { background:var(--cyan-hover); transform:translateY(-2px); box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3); }
 .btn-outline { border:1px solid var(--border-lit); color:var(--text-main); }
 .btn-outline:hover { background:var(--cyan-dim); border-color:var(--cyan); }
 
@@ -120,34 +124,36 @@ section { position:relative; border-bottom:1px solid var(--border-dim); }
 .m-card { padding:3rem 2rem; border-right:1px solid var(--border-dim); text-align:center; transition:background 0.2s; }
 .m-card:last-child { border-right:none; }
 .m-card:hover { background:var(--cyan-dim); }
-.m-num { font-family:var(--f-mono); font-size:40px; font-weight:600; color:var(--text-main); line-height:1; margin-bottom:0.75rem; }
+.m-num { font-family:var(--f-mono); font-size:40px; font-weight:700; color:var(--text-main); line-height:1; margin-bottom:0.75rem; }
 .m-num span { color:var(--cyan); font-size:24px; vertical-align:super; }
 .m-lbl { font-family:var(--f-mono); font-size:11px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.1em; }
 
-/* ── MATRIX / WORK ────────────────────────── */
+/* ── MATRIX / BENTO BOX GRID ──────────────── */
 #matrix { background:var(--bg-void); }
-.matrix-list { display:flex; flex-direction:column; gap:1rem; }
-.matrix-item {
-  display:grid; grid-template-columns:60px 1fr 120px; gap:2rem; padding:2.5rem;
+.bento-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(380px, 1fr)); gap:1.5rem; }
+.bento-card {
   background:var(--bg-surface); border:1px solid var(--border-dim); border-radius:8px;
-  align-items:center; cursor:pointer; transition:all 0.2s ease;
+  padding:2.5rem; cursor:pointer; transition:all 0.2s ease; display:flex; flex-direction:column;
 }
-.matrix-item:hover { border-color:var(--cyan); background:var(--bg-elevate); transform:translateX(8px); }
-.mi-icon { font-size:28px; }
-.mi-domain { font-family:var(--f-mono); font-size:11px; color:var(--cyan); text-transform:uppercase; margin-bottom:0.5rem; letter-spacing:0.05em; }
-.mi-title { font-size:20px; font-weight:600; color:var(--text-main); margin-bottom:0.5rem; }
-.mi-desc { font-size:15px; color:var(--text-mute); }
-.mi-stat { text-align:right; }
-.mi-stat-val { font-family:var(--f-mono); font-size:24px; font-weight:600; color:var(--text-main); }
-.mi-stat-lbl { font-family:var(--f-mono); font-size:10px; color:var(--text-dark); text-transform:uppercase; }
+.bento-card:hover { border-color:var(--cyan); background:var(--bg-elevate); transform:translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.bc-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; }
+.bc-icon { font-size:28px; }
+.bc-impact { text-align:right; }
+.bc-impact-val { font-family:var(--f-mono); font-size:20px; font-weight:700; color:var(--cyan); }
+.bc-impact-lbl { font-family:var(--f-mono); font-size:10px; color:var(--text-mute); text-transform:uppercase; }
+.bc-domain { font-family:var(--f-mono); font-size:11px; color:var(--text-dark); text-transform:uppercase; margin-bottom:0.5rem; letter-spacing:0.05em; }
+.bc-title { font-size:20px; font-weight:600; color:var(--text-main); margin-bottom:0.75rem; line-height:1.3; }
+.bc-desc { font-size:15px; color:var(--text-mute); line-height:1.6; margin-bottom:1.5rem; flex-grow:1; }
+.bc-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:auto; }
+.bc-tag { font-family:var(--f-mono); font-size:10px; padding:0.25rem 0.6rem; background:var(--bg-void); border:1px solid var(--border-dim); color:var(--text-mute); border-radius:4px; }
 
-/* ── EXPERIENCE ───────────────────────────── */
+/* ── EXPERIENCE CHRONOLOGY ────────────────── */
 #experience { background:var(--bg-surface); }
 .exp-layout { display:grid; grid-template-columns:300px 1fr; gap:5rem; }
 .exp-sidebar { position:sticky; top:6rem; display:flex; flex-direction:column; gap:0.5rem; }
 .exp-tab {
   padding:1.25rem 1.5rem; background:transparent; border:none; border-left:2px solid var(--border-dim);
-  text-align:left; cursor:pointer; transition:all 0.2s;
+  text-align:left; cursor:pointer; transition:all 0.2s; border-radius:0 4px 4px 0;
 }
 .exp-tab:hover { background:var(--bg-elevate); }
 .exp-tab.active { border-color:var(--cyan); background:var(--cyan-dim); }
@@ -159,11 +165,27 @@ section { position:relative; border-bottom:1px solid var(--border-dim); }
 .exp-panel { display:none; animation:fadeIn 0.4s ease; }
 .exp-panel.active { display:block; }
 @keyframes fadeIn { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
-.panel-title { font-size:32px; font-weight:700; margin-bottom:0.5rem; }
+.panel-title { font-size:32px; font-weight:700; margin-bottom:0.5rem; color:var(--text-main); }
 .panel-meta { font-family:var(--f-mono); font-size:13px; color:var(--cyan); margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border-dim); }
 .panel-list { list-style:none; display:flex; flex-direction:column; gap:1.25rem; }
 .panel-list li { position:relative; padding-left:2rem; font-size:16px; color:var(--text-mute); line-height:1.7; }
-.panel-list li::before { content:'→'; position:absolute; left:0; top:2px; color:var(--cyan); font-family:var(--f-mono); }
+.panel-list li::before { content:'→'; position:absolute; left:0; top:2px; color:var(--cyan); font-family:var(--f-mono); font-weight:700; }
+
+.edu-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-top:5rem; padding-top:4rem; border-top:1px dashed var(--border-dim); }
+.edu-card { background:var(--bg-void); border:1px solid var(--border-dim); padding:2rem; border-radius:8px; }
+.edu-card-date { font-family:var(--f-mono); font-size:11px; color:var(--cyan); margin-bottom:0.5rem; }
+.edu-card-title { font-size:16px; font-weight:600; color:var(--text-main); margin-bottom:0.25rem; }
+.edu-card-sub { font-size:14px; color:var(--text-mute); }
+
+/* ── REGISTRY (SKILLS) ────────────────────── */
+#skills { background:var(--bg-void); }
+.skills-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+.sk-box { background:var(--bg-surface); border:1px solid var(--border-dim); padding:2.5rem; border-radius:8px; }
+.sk-label { font-family:var(--f-mono); font-size:12px; color:var(--cyan); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--border-dim); font-weight:600; }
+.sk-group { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.sk-item { font-family:var(--f-mono); font-size:11px; padding:0.35rem 0.75rem; background:var(--bg-void); border:1px solid var(--border-dim); color:var(--text-mute); border-radius:4px; transition:all 0.2s; }
+.sk-item:hover { color:var(--text-main); border-color:var(--cyan); background:var(--cyan-dim); }
+.sk-item.highlight { border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim); }
 
 /* ── MODAL ────────────────────────────────── */
 #modal-layer {
@@ -174,38 +196,43 @@ section { position:relative; border-bottom:1px solid var(--border-dim); }
 .modal-box {
   background:var(--bg-surface); border:1px solid var(--border-lit); border-radius:8px;
   max-width:800px; width:100%; max-height:85vh; overflow-y:auto; padding:3.5rem;
-  transform:translateY(20px); transition:transform 0.3s;
+  transform:translateY(20px); transition:transform 0.3s; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 #modal-layer.open .modal-box { transform:none; }
-.m-close { position:absolute; top:1.5rem; right:1.5rem; background:none; border:none; font-family:var(--f-mono); color:var(--text-mute); cursor:pointer; font-size:14px; }
+.m-close { position:absolute; top:1.5rem; right:1.5rem; background:none; border:none; font-family:var(--f-mono); color:var(--text-mute); cursor:pointer; font-size:14px; transition:color 0.2s; }
 .m-close:hover { color:var(--cyan); }
-.m-dom { font-family:var(--f-mono); font-size:12px; color:var(--cyan); text-transform:uppercase; margin-bottom:1rem; }
-.m-tit { font-size:32px; font-weight:700; margin-bottom:1.5rem; line-height:1.2; }
+.m-dom { font-family:var(--f-mono); font-size:12px; color:var(--cyan); text-transform:uppercase; margin-bottom:1rem; letter-spacing:0.05em; }
+.m-tit { font-size:32px; font-weight:700; margin-bottom:1.5rem; line-height:1.2; color:var(--text-main); }
 .m-bod { font-size:16px; color:var(--text-mute); line-height:1.8; margin-bottom:2.5rem; }
 .m-stats-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--border-dim); border:1px solid var(--border-dim); border-radius:6px; overflow:hidden; }
 .m-stat-box { background:var(--bg-void); padding:1.5rem; text-align:center; }
-.m-stat-box strong { display:block; font-family:var(--f-mono); font-size:24px; color:var(--cyan); margin-bottom:0.25rem; }
+.m-stat-box strong { display:block; font-family:var(--f-mono); font-size:24px; color:var(--cyan); margin-bottom:0.25rem; font-weight:700; }
 .m-stat-box span { font-family:var(--f-mono); font-size:10px; color:var(--text-mute); text-transform:uppercase; }
 
 /* ── FOOTER & RESPONSIVE ──────────────────── */
 #contact { text-align:center; padding:8rem 2rem; background:var(--bg-void); }
-.contact-hl { font-size:clamp(32px, 5vw, 64px); font-weight:700; margin-bottom:3rem; }
-footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text-align:center; margin-top:5rem; }
+.contact-hl { font-size:clamp(36px, 5vw, 64px); font-weight:700; margin-bottom:3rem; letter-spacing:-0.02em; }
+.contact-hl span { color:var(--cyan); }
+footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text-align:center; margin-top:6rem; }
 
 @media(max-width: 1024px) {
   .hero-grid, .exp-layout { grid-template-columns: 1fr; gap:3rem; }
   .exp-sidebar { position:static; flex-direction:row; overflow-x:auto; border-bottom:1px solid var(--border-dim); padding-bottom:1rem; }
-  .exp-tab { border-left:none; border-bottom:2px solid transparent; padding:1rem; white-space:nowrap; }
+  .exp-tab { border-left:none; border-bottom:2px solid transparent; padding:1rem; white-space:nowrap; border-radius:4px 4px 0 0; }
   .exp-tab.active { border-bottom-color:var(--cyan); border-left-color:transparent; background:transparent; }
   .metrics-bar { grid-template-columns: repeat(3, 1fr); }
+  .bento-grid { grid-template-columns: 1fr; }
+  .edu-grid, .skills-grid { grid-template-columns: 1fr; }
 }
 @media(max-width: 768px) {
   #sidenav { display:none; }
   main { margin-left:0; }
   .container { padding:5rem 2rem; }
-  .matrix-item { grid-template-columns: 1fr; text-align:center; gap:1.5rem; }
-  .mi-stat { text-align:center; }
   .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+  .m-card:last-child { border-right:1px solid var(--border-dim); }
+  .btn-group { flex-direction:column; width:100%; }
+  .btn { justify-content:center; }
+  .m-stats-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -218,7 +245,7 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
   <div class="l-pct" id="lpct">SYS_BOOT // 0%</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Dialog -->
 <div id="modal-layer">
   <div class="modal-box">
     <button class="m-close" id="mClose">[ ESC ]</button>
@@ -229,15 +256,16 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
   </div>
 </div>
 
-<!-- Sidebar -->
+<!-- Edge Sidebar -->
 <nav id="sidenav">
   <a href="#hero" class="sn-logo">DP<span>_</span></a>
   <ul class="sn-links">
     <li><a href="#matrix">Matrix</a></li>
     <li><a href="#experience">History</a></li>
+    <li><a href="#skills">Registry</a></li>
     <li><a href="#contact">Signal</a></li>
   </ul>
-  <div class="sn-pulse"></div>
+  <div class="sn-pulse" title="System Online"></div>
 </nav>
 
 <main>
@@ -249,10 +277,10 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
         <div class="reveal">
           <h1 class="hero-title">Lead QA<br><span>Engineer.</span></h1>
           <p class="hero-desc">
-            Over a decade of driving software stability across highly regulated MedTech platforms, financial gateways, and core mobile operating systems. Utilizing a deterministic approach to mitigate production risks.
+            Over a decade driving software stability across highly regulated MedTech platforms, financial gateways, and core mobile operating systems. Utilizing deterministic strategies to mitigate production risks.
           </p>
           <div class="btn-group">
-            <a href="#matrix" class="btn btn-primary">Inspect Matrix</a>
+            <a href="#matrix" class="btn btn-primary">Inspect Test Matrix</a>
             <a href="mailto:dhruvil.parekh3@gmail.com" class="btn btn-outline">Initialize Comms</a>
           </div>
         </div>
@@ -264,7 +292,7 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
           <div class="spec-row"><span class="spec-lbl">LOCATION:</span><span class="spec-val">Ahmedabad, IN</span></div>
           <div class="spec-row"><span class="spec-lbl">DOMAINS:</span><span class="spec-val">MedTech, FinTech, VR OS</span></div>
           <div class="spec-row"><span class="spec-lbl">COMPLIANCE:</span><span class="spec-val hl">FDA 21 CFR, HIPAA, HL7</span></div>
-          <div class="spec-row"><span class="spec-lbl">EXECUTION:</span><span class="spec-val">API & System Native</span></div>
+          <div class="spec-row"><span class="spec-lbl">EXECUTION:</span><span class="spec-val">API & Integration Native</span></div>
         </div>
       </div>
     </div>
@@ -278,11 +306,11 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
     </div>
   </section>
 
-  <!-- MATRIX -->
+  <!-- MATRIX (BENTO BOX) -->
   <section id="matrix">
     <div class="container">
       <div class="section-tag reveal">Verification Vectors</div>
-      <div class="matrix-list" id="matrixContainer"></div>
+      <div class="bento-grid" id="matrixContainer"></div>
     </div>
   </section>
 
@@ -293,6 +321,69 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
       <div class="exp-layout reveal delay-1">
         <div class="exp-sidebar" id="expNavContainer"></div>
         <div class="exp-content" id="expContentContainer"></div>
+      </div>
+
+      <div class="edu-grid reveal delay-2">
+        <div class="edu-card">
+          <div class="edu-card-date">March 2025</div>
+          <div class="edu-card-title">ISTQB Certified Tester</div>
+          <div class="edu-card-sub">Foundation Level (CTFL)</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-card-date">Graduated 2015</div>
+          <div class="edu-card-title">Master of Computer Applications</div>
+          <div class="edu-card-sub">Gujarat Technological University</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-card-date">Graduated 2013</div>
+          <div class="edu-card-title">Bachelor of Computer Applications</div>
+          <div class="edu-card-sub">GLS Institute of Computer Technology</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS REGISTRY -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-tag reveal">Technology Registry</div>
+      <div class="skills-grid reveal delay-1">
+        <div class="sk-box">
+          <div class="sk-label">Testing Disciplines</div>
+          <div class="sk-group">
+            <span class="sk-item">Manual Regression</span><span class="sk-item">Integration Validation</span><span class="sk-item">API Verification</span><span class="sk-item">Mobile & Kiosk OS</span><span class="sk-item">Risk-Based Testing</span>
+          </div>
+        </div>
+        <div class="sk-box">
+          <div class="sk-label">Automation Engineering</div>
+          <div class="sk-group">
+            <span class="sk-item highlight">Playwright</span><span class="sk-item highlight">Cypress</span><span class="sk-item highlight">Python</span><span class="sk-item highlight">TypeScript</span><span class="sk-item">CI/CD Pipelines</span>
+          </div>
+        </div>
+        <div class="sk-box">
+          <div class="sk-label">Compliance & Healthcare</div>
+          <div class="sk-group">
+            <span class="sk-item">FDA 21 CFR Part 11</span><span class="sk-item">HIPAA Standards</span><span class="sk-item">HL7 & FHIR</span><span class="sk-item">IEEE 11073 SDC</span><span class="sk-item">Requirements Traceability</span>
+          </div>
+        </div>
+        <div class="sk-box">
+          <div class="sk-label">Transactional & Retail</div>
+          <div class="sk-group">
+            <span class="sk-item">FreedomPay</span><span class="sk-item">Verifone Integrations</span><span class="sk-item">Olo Pay Architecture</span><span class="sk-item">AI Menu Personalization</span><span class="sk-item">Smart Upsell Assertions</span>
+          </div>
+        </div>
+        <div class="sk-box">
+          <div class="sk-label">Firmware & Hardware</div>
+          <div class="sk-group">
+            <span class="sk-item">Oculus OS Qualification</span><span class="sk-item">MIUI Alpha Validation</span><span class="sk-item">Sensor Calibration Logic</span><span class="sk-item">BLE Pairing Streams</span>
+          </div>
+        </div>
+        <div class="sk-box">
+          <div class="sk-label">Data & Infrastructure</div>
+          <div class="sk-group">
+            <span class="sk-item">MySQL / PostgreSQL</span><span class="sk-item">Kubernetes Telemetry</span><span class="sk-item">AWS S3</span><span class="sk-item">Postman Engines</span><span class="sk-item">Charles Proxy</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -312,7 +403,7 @@ footer { font-family:var(--f-mono); font-size:12px; color:var(--text-dark); text
 </main>
 
 <script>
-/* ── PRELOADER & COUNTERS ────────────────────── */
+/* ── PRELOADER & COUNTERS (Optimized) ────────── */
 let loadAmount = 0;
 const lBar = document.getElementById('lbar'), lPct = document.getElementById('lpct'), sysLoader = document.getElementById('loader');
 const bootTimer = setInterval(() => {
@@ -341,7 +432,7 @@ function runCounters() {
 
 /* ── SCROLL & REVEAL ─────────────────────────── */
 window.addEventListener('scroll', () => {
-  const sections = ['hero', 'matrix', 'experience', 'contact'];
+  const sections = ['hero', 'matrix', 'experience', 'skills', 'contact'];
   let current = '';
   sections.forEach(id => {
     const el = document.getElementById(id);
@@ -357,12 +448,13 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* ── DATA INJECTION (Zero-Citation Design) ───── */
+/* ── DATA INJECTION (Strictly Formatted) ─────── */
 const projectData = [
   {
     domain: 'MedTech Compliance', emoji: '🩺', name: 'Wearable Biological Telemetry',
     blurb: 'Regulated Class I/II continuous biological tracking infrastructure.',
     impact: '30%', impactLbl: 'Defect Reduction',
+    tags: ['FDA Part 11', 'HIPAA', 'HL7/FHIR'],
     full: 'Directed QA verification cycles across continuous healthcare telemetry monitoring units. Engineered traceability architectures verifying critical data transit pathways, mapping hardware patches to clinical dashboards under strict regulatory compliance boundaries.',
     stats: [{n: '30%', l: 'Fewer Defects'}, {n: '100%', l: 'Traceability'}, {n: 'Zero', l: 'Escaped Gaps'}]
   },
@@ -370,6 +462,7 @@ const projectData = [
     domain: 'VR / AR Ecosystems', emoji: '🥽', name: 'Core Operating System Qualification',
     blurb: 'OS configuration validation across multiple immersive device iterations.',
     impact: '200+', impactLbl: 'Faults Resolved',
+    tags: ['Firmware QA', 'Sensor Calib', 'Build Sign-off'],
     full: 'Oversaw full OS release qualification sweeps covering baseline shell integrity, latency-optimized motion controller inputs, spatial positioning tracking loops, and sensor registration layers across hardware generations.',
     stats: [{n: '200+', l: 'Flaws Cleared'}, {n: '35%', l: 'Faster Runs'}, {n: '50+', l: 'Build Sign-offs'}]
   },
@@ -377,6 +470,7 @@ const projectData = [
     domain: 'FinTech Ledger', emoji: '⛓️', name: 'Smart Contract & Transaction Validation',
     blurb: 'Validation matrices tracking transaction logging persistence layers.',
     impact: '12', impactLbl: 'Perfect Releases',
+    tags: ['Smart Contracts', 'Ledger Sync', 'Token Logic'],
     full: 'Created complete transactional assertion sweeps for distributed ledger systems executing multi-tiered asset distributions. Validated immutability routines, regression boundaries, and state synchronization anomalies across high-throughput endpoint infrastructure.',
     stats: [{n: '12', l: 'Major Deliveries'}, {n: '20+', l: 'Endpoints Tested'}, {n: 'Zero', l: 'State Mismatches'}]
   },
@@ -384,6 +478,7 @@ const projectData = [
     domain: 'AI Retail Systems', emoji: '🖥️', name: 'Automated POS Kiosk Frameworks',
     blurb: 'Deep payment framework verification processing machine recommendation paths.',
     impact: '10+', impactLbl: 'Gateways Secured',
+    tags: ['Payment Security', 'POS Integration', 'AI Engine QA'],
     full: 'Managed operational quality metrics spanning smart menu distribution clusters, terminal POS hardware connectivity interfaces, and backend recommendation paths. Established validation architectures mapping numerous modern transaction mechanisms simultaneously.',
     stats: [{n: '10+', l: 'Methods Guarded'}, {n: 'Zero', l: 'Escrow Flaws'}, {n: '50+', l: 'Bugs Closed'}]
   },
@@ -391,26 +486,36 @@ const projectData = [
     domain: 'Mobile OS Kernel', emoji: '📱', name: 'Closed Alpha System Validation',
     blurb: 'Pre-release firmware regression and low-level subsystem validation metrics.',
     impact: '100M+', impactLbl: 'Users Protected',
+    tags: ['Kernel Triage', 'System UI', 'Alpha Testing'],
     full: 'Participated in exclusive exploratory testing on pre-release operating system builds. Validated platform-level regressions across core feature sets, memory leaks, notification stack allocations, and thermal performance under intense device utilization profiles.',
     stats: [{n: '2 yrs', l: 'Alpha Run Term'}, {n: 'Pre-Rel', l: 'Builds Cleared'}, {n: 'Zero', l: 'Blockers Escaped'}]
+  },
+  {
+    domain: 'Data Engineering', emoji: '🚗', name: 'High-Volume ETL Data Pipeline',
+    blurb: 'Data transformation testing processing dense transactional user matrices.',
+    impact: '100%', impactLbl: 'Data Integrity',
+    tags: ['ETL Pipeline', 'SQL Joins', 'Row Match'],
+    full: 'Developed target tracking methodologies for large-scale data pipeline engines ingesting unstructured actuarial claims profiles. Constructed complex SQL multi-join trace passes to intercept structural conversion drops or invalid data truncations.',
+    stats: [{n: '100%', l: 'Row Fidelity'}, {n: 'Zero', l: 'Data Loss'}, {n: 'Full', l: 'Lineage Checks'}]
   }
 ];
 
 const matrixBox = document.getElementById('matrixContainer');
 projectData.forEach((p, i) => {
   const el = document.createElement('div');
-  el.className = `matrix-item reveal delay-${(i%2)+1}`;
+  el.className = `bento-card reveal delay-${(i%2)+1}`;
   el.innerHTML = `
-    <div class="mi-icon">${p.emoji}</div>
-    <div>
-      <div class="mi-domain">${p.domain}</div>
-      <div class="mi-title">${p.name}</div>
-      <div class="mi-desc">${p.blurb}</div>
+    <div class="bc-header">
+      <div class="bc-icon">${p.emoji}</div>
+      <div class="bc-impact">
+        <div class="bc-impact-val">${p.impact}</div>
+        <div class="bc-impact-lbl">${p.impactLbl}</div>
+      </div>
     </div>
-    <div class="mi-stat">
-      <div class="mi-stat-val">${p.impact}</div>
-      <div class="mi-stat-lbl">${p.impactLbl}</div>
-    </div>
+    <div class="bc-domain">${p.domain}</div>
+    <div class="bc-title">${p.name}</div>
+    <div class="bc-desc">${p.blurb}</div>
+    <div class="bc-tags">${p.tags.map(t => `<span class="bc-tag">${t}</span>`).join('')}</div>
   `;
   el.onclick = () => openModal(p);
   matrixBox.appendChild(el);
