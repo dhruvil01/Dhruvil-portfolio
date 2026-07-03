@@ -1,101 +1,136 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhruvil Parekh | QA Engineering Architect</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dhruvil Parekh | Lead QA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #030712;
-  --surface: rgba(30, 41, 59, 0.5);
-  --accent: #22d3ee;
-  --text: #f8fafc;
-  --text-dim: #94a3b8;
+:root{
+--bg:#0b1020;--card:#131b33;--line:#263250;--txt:#eef2ff;--muted:#a8b3cf;--accent:#4f8cff;--accent2:#19c3b3;
 }
-body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; line-height: 1.7; margin: 0; }
-
-/* Elegant Navigation */
-nav { position: fixed; top: 0; width: 100%; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(3,7,18,0.8); backdrop-filter: blur(10px); }
-.logo { font-size: 1.5rem; font-weight: 800; }
-.logo span { color: var(--accent); }
-.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; margin-left: 2rem; transition: 0.3s; }
-.nav-links a:hover { color: var(--accent); }
-
-/* Hero */
-.hero { padding: 15rem 5% 10rem; max-width: 1200px; }
-.hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1; margin-bottom: 2rem; }
-.hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 600px; }
-
-/* Section Styles */
-section { padding: 8rem 5%; }
-h2 { font-size: 2.5rem; margin-bottom: 4rem; text-align: center; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-.card { background: var(--surface); border: 1px solid rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; transition: 0.4s; }
-.card:hover { border-color: var(--accent); transform: translateY(-10px); }
-.card h4 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--accent); }
-
-/* Experience */
-.exp-container { max-width: 900px; margin: 0 auto; }
-.exp-item { border-bottom: 1px solid #1e293b; padding: 2rem 0; }
-.exp-item h4 { display: flex; justify-content: space-between; font-size: 1.2rem; margin-bottom: 1rem; }
-.exp-item span { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:linear-gradient(180deg,#0b1020,#111827);color:var(--txt);line-height:1.6}
+header{position:sticky;top:0;background:rgba(11,16,32,.8);backdrop-filter:blur(10px);border-bottom:1px solid #1d2945;z-index:5}
+nav{max-width:1200px;margin:auto;padding:18px 28px;display:flex;justify-content:space-between}
+nav a{color:#d8e2ff;text-decoration:none;margin-left:18px}
+.hero{max-width:1200px;margin:auto;padding:90px 28px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px}
+.badge{display:inline-block;padding:8px 14px;border:1px solid #33519b;border-radius:999px;color:#7db2ff;margin-bottom:20px}
+h1{font-family:"Space Grotesk";font-size:64px;line-height:1}
+.gradient{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent}
+.hero p{margin-top:24px;color:var(--muted);font-size:18px}
+.btns{margin-top:30px}
+.btn{display:inline-block;padding:14px 22px;border-radius:10px;text-decoration:none;margin-right:14px}
+.primary{background:var(--accent);color:white}
+.secondary{border:1px solid var(--line);color:white}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;max-width:1200px;margin:0 auto;padding:20px 28px 70px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}
+.metric h2{font-size:34px;color:#71a8ff}
+section{max-width:1200px;margin:auto;padding:70px 28px}
+.title{font:700 38px "Space Grotesk";margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.card h3{margin-bottom:8px}
+.tags span{display:inline-block;background:#1a2746;padding:6px 10px;border-radius:999px;margin:4px;color:#9ec0ff;font-size:13px}
+.timeline{border-left:2px solid #28417b;padding-left:24px}
+.item{margin-bottom:36px;position:relative}
+.item:before{content:"";width:14px;height:14px;border-radius:50%;background:var(--accent);position:absolute;left:-32px;top:6px}
+footer{text-align:center;padding:60px;color:var(--muted)}
+@media(max-width:900px){
+.hero,.grid,.metrics{grid-template-columns:1fr}
+.metrics{grid-template-columns:repeat(2,1fr)}
+h1{font-size:46px}
+}
 </style>
 </head>
 <body>
+<header>
 <nav>
-  <div class="logo">DP<span>.</span></div>
-  <div class="nav-links"><a href="#work">Projects</a><a href="#experience">History</a><a href="#contact">Contact</a></div>
+<strong>Dhruvil Parekh</strong>
+<div>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
-
-<header class="hero">
-  <h1>Dhruvil Parekh.</h1>
-  <p>Lead QA Engineer with 10+ years driving software stability across regulated MedTech, distributed payment systems, and core mobile operating systems. Utilizing a deterministic approach to mitigate production risks.</p>
 </header>
 
-<section id="work">
-  <h2>Verification Vectors</h2>
-  <div class="grid">
-    <div class="card">
-      <h4>Wearable Biological Telemetry</h4>
-      <p>Regulated Class I/II continuous biological tracking infrastructure. Directed QA cycles and engineered traceability architectures under strict FDA/HIPAA compliance boundaries.</p>
-    </div>
-    <div class="card">
-      <h4>Oculus OS Qualification</h4>
-      <p>OS configuration validation across multiple device iterations, resolving over 200 system faults pre-release to optimize verification runtimes.</p>
-    </div>
-    <div class="card">
-      <h4>Smart Contract Validation</h4>
-      <p>Validation matrices tracking transaction logging persistence layers for distributed ledger systems executing multi-tiered asset distributions.</p>
-    </div>
-  </div>
+<section class="hero">
+<div>
+<div class="badge">Lead QA Engineer • ISTQB Certified</div>
+<h1>Engineering <span class="gradient">Quality</span><br>Before Production.</h1>
+<p>Lead QA Engineer with 10+ years of experience across Healthcare & MedTech, AI Retail, Payment Systems, VR/AR, Mobile OS, APIs, SQL, Kubernetes production support and enterprise platforms.</p>
+<div class="btns">
+<a class="btn primary" href="#">Download Resume</a>
+<a class="btn secondary" href="mailto:dhruvil.parekh3@gmail.com">Contact</a>
+</div>
+</div>
+<div class="panel">
+<h3>Professional Snapshot</h3>
+<ul>
+<li>10+ Years Experience</li>
+<li>ISTQB Certified</li>
+<li>Healthcare & FDA Compliance</li>
+<li>Retail POS & Payment Systems</li>
+<li>API • SQL • Kubernetes</li>
+<li>Playwright Learning</li>
+</ul>
+</div>
+</section>
+
+<div class="metrics">
+<div class="metric"><h2>10+</h2><p>Years</p></div>
+<div class="metric"><h2>60%</h2><p>Regression Reduction</p></div>
+<div class="metric"><h2>30%</h2><p>Regulatory Defects Reduced</p></div>
+<div class="metric"><h2>200+</h2><p>Critical VR Bugs</p></div>
+<div class="metric"><h2>15+</h2><p>QA Engineers Mentored</p></div>
+<div class="metric"><h2>10+</h2><p>Payment Methods</p></div>
+</div>
+
+<section id="about">
+<div class="title">Domain Expertise</div>
+<div class="grid">
+<div class="card"><h3>Healthcare & MedTech</h3><p>FDA, HIPAA, HL7, FHIR, IEEE11073 SDC, Medical Devices.</p></div>
+<div class="card"><h3>Retail & AI Ordering</h3><p>Kiosk, POS, Loyalty, Payment Gateways, Recommendation Engine validation.</p></div>
+<div class="card"><h3>VR / AR</h3><p>Meta Oculus OS, Firmware, Sensor Validation, Device Qualification.</p></div>
+<div class="card"><h3>Production Quality</h3><p>API, SQL, Kubernetes Logs, Integration Testing, Monitoring.</p></div>
+</div>
 </section>
 
 <section id="experience">
-  <h2>Deployment History</h2>
-  <div class="exp-container">
-    <div class="exp-item">
-      <h4><span>GRUBBRR</span><span>2024 - Present</span></h4>
-      <ul>
-        <li>Directing quality for kiosk platforms, POS network nodes, and AI-assisted menu personalization.</li>
-        <li>Architected payment verification frameworks across ten+ transaction methods with zero critical leakage.</li>
-      </ul>
-    </div>
-    <div class="exp-item">
-      <h4><span>AimDek</span><span>2024</span></h4>
-      <ul>
-        <li>Managed assurance for wearable wellness pipelines under FDA 21 CFR Part 11 parameters.</li>
-        <li>Constructed integration data flow validation suites for HL7, FHIR, and IEEE 11073 standards.</li>
-      </ul>
-    </div>
-  </div>
+<div class="title">Career Journey</div>
+<div class="timeline">
+<div class="item"><h3>Lead QA Engineer • GRUBBRR</h3><p>2024–Present • AI Retail, Kiosk, POS, Payments, REST APIs, SQL.</p></div>
+<div class="item"><h3>Lead QA Engineer • AimDek</h3><p>Healthcare, FDA, HIPAA, HL7, FHIR, Kubernetes.</p></div>
+<div class="item"><h3>Senior QA Engineer • Apexon</h3><p>Healthcare, Blockchain, APIs, Cloud.</p></div>
+<div class="item"><h3>Senior QA • CheckTech</h3><p>Transportation, E-Commerce, F&B.</p></div>
+<div class="item"><h3>Software Tester • Lodestone (Tech Mahindra)</h3><p>Meta Oculus, VR/AR OS, Firmware Validation.</p></div>
+</div>
 </section>
 
-<section id="contact" style="text-align: center;">
-  <h2>Let's Collaborate</h2>
-  <p>Looking for a QA leader to stabilize your production pipeline?</p>
-  <a href="mailto:dhruvil.parekh3@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 1.5rem;">dhruvil.parekh3@gmail.com</a>
+<section id="skills">
+<div class="title">Technology Stack</div>
+<div class="card">
+<div class="tags">
+<span>API Testing</span><span>Postman</span><span>SQL</span><span>MySQL</span><span>PostgreSQL</span><span>AWS S3</span><span>Kubernetes</span><span>Charles Proxy</span><span>Jira</span><span>Playwright</span><span>REST</span><span>SOAP</span><span>Manual Testing</span><span>Regression</span><span>Mobile</span><span>Automation</span>
+</div>
+</div>
 </section>
 
+<section id="contact">
+<div class="title">Contact</div>
+<div class="card">
+<h3>Dhruvil Parekh</h3>
+<p>Ahmedabad, India</p>
+<p>Email: dhruvil.parekh3@gmail.com</p>
+<p>Phone: +91 8000164009</p>
+<p>LinkedIn: linkedin.com/in/dhruvilparekh</p>
+</div>
+</section>
+
+<footer>© Dhruvil Parekh • Lead QA Engineer Portfolio</footer>
 </body>
 </html>
