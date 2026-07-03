@@ -3,33 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhruvil Parekh | Lead QA Engineer</title>
+<title>Dhruvil Parekh | QA Engineering Lead</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #0f172a;
-  --text: #f8fafc;
+  --card: #1e293b;
+  --text: #f1f5f9;
   --text-dim: #94a3b8;
-  --accent: #22d3ee;
+  --cyan: #22d3ee;
 }
 body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; margin: 0; padding: 4rem 2rem; }
-.wrapper { max-width: 800px; margin: 0 auto; }
-header { margin-bottom: 5rem; }
-h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 0.5rem; }
-h2 { font-size: 1.2rem; font-weight: 400; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; padding: 2rem 0; border-top: 1px solid #334155; border-bottom: 1px solid #334155; }
-.stat-val { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 600; }
-.stat-lbl { font-size: 0.8rem; color: var(--text-dim); }
-.section { margin-bottom: 4rem; }
-h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
-p { color: var(--text-dim); margin-bottom: 1.5rem; }
-.item { margin-bottom: 2rem; }
-.item-hdr { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
-.role { font-weight: 600; }
-.period { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); }
-ul { padding-left: 1.2rem; }
-li { color: var(--text-dim); margin-bottom: 0.5rem; }
-.tech-pill { display: inline-block; background: #1e293b; padding: 0.2rem 0.6rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; margin: 0.2rem; }
+.wrapper { max-width: 900px; margin: 0 auto; }
+
+/* Typography */
+h1 { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+h2 { font-size: 1rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 3rem; }
+h3 { font-size: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--cyan); padding-left: 1rem; }
+
+/* Stats */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 4rem 0; }
+.stat-item { background: var(--card); padding: 2rem; border-radius: 8px; text-align: center; }
+.stat-val { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 600; color: var(--cyan); }
+.stat-lbl { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; }
+
+/* Content */
+.section { margin-bottom: 5rem; }
+.job { margin-bottom: 3rem; }
+.job-hdr { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+.job-title { font-weight: 600; font-size: 1.1rem; }
+.job-date { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--cyan); }
+.job-desc { color: var(--text-dim); margin-bottom: 1rem; }
+ul { padding-left: 1.2rem; color: var(--text-dim); }
+li { margin-bottom: 0.5rem; }
+
+/* Skills */
+.tech-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pill { background: #334155; padding: 0.4rem 0.8rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
 </style>
 </head>
 <body>
@@ -37,38 +47,42 @@ li { color: var(--text-dim); margin-bottom: 0.5rem; }
   <header>
     <h1>Dhruvil Parekh</h1>
     <h2>Lead QA Engineer | ISTQB Certified</h2>
-    <p>ISTQB Certified Lead QA Engineer with 10+ years delivering quality engineering across Healthcare & MedTech, AI-Powered Retail, Payment Ecosystems, and VR/AR. Experienced in healthcare interoperability (HL7, FHIR, IEEE 11073 SDC, HIPAA), AI-assisted ordering systems, and full-cycle API testing.</p>
+    <p>Ten-year veteran in quality engineering, specializing in high-stakes environments including medical device compliance, automated retail systems, and complex financial ecosystems. Proven expertise in reducing regulatory exposure and stabilizing production pipelines through rigorous, data-driven methodologies.</p>
   </header>
 
-  <div class="stats">
-    <div><div class="stat-val">60%</div><div class="stat-lbl">Regression Cycle Reduction</div></div>
-    <div><div class="stat-val">30%</div><div class="stat-lbl">Regulatory Defect Drop</div></div>
-    <div><div class="stat-val">10+</div><div class="stat-lbl">Major Releases</div></div>
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-val">60%</div><div class="stat-lbl">Regression Cycle Cut</div></div>
+    <div class="stat-item"><div class="stat-val">30%</div><div class="stat-lbl">Regulatory Flaws Dropped</div></div>
+    <div class="stat-item"><div class="stat-val">10+</div><div class="stat-lbl">Major Releases</div></div>
   </div>
 
   <section class="section">
-    <h3>Professional Experience</h3>
-    <div class="item">
-      <div class="item-hdr"><span class="role">Lead QA Engineer, GRUBBRR</span><span class="period">2024-Present</span></div>
+    <h3>Professional Deployments</h3>
+    <div class="job">
+      <div class="job-hdr"><span class="job-title">Lead QA Engineer, GRUBBRR</span><span class="job-date">2024-Present</span></div>
+      <p class="job-desc">Overseeing quality assurance for self-ordering kiosks and omnichannel POS solutions.</p>
       <ul>
-        <li>Own end-to-end quality for self-ordering kiosks, POS integrations, and payment ecosystems.</li>
-        <li>Built payment verification framework across 10+ methods with zero production-critical defects.</li>
-        <li>Mentor junior QA engineers on system architecture and integration standards.</li>
+        <li>Architected payment verification frameworks covering over ten distinct transaction methods, maintaining flawless production stability.</li>
+        <li>Directing team productivity improvements and mentoring engineering staff on advanced testing architecture.</li>
+        <li>Validating AI-driven recommendation logic and personalized menu systems for global deployments.</li>
       </ul>
     </div>
-    <div class="item">
-      <div class="item-hdr"><span class="role">Lead QA Engineer, AimDek</span><span class="period">2024</span></div>
+    <div class="job">
+      <div class="job-hdr"><span class="job-title">Lead QA Engineer, AimDek</span><span class="job-date">2024</span></div>
+      <p class="job-desc">Leading QA lifecycle for FDA-regulated medical devices and health monitoring equipment.</p>
       <ul>
-        <li>Led QA for FDA-regulated medical devices and clinical data exchange platforms.</li>
-        <li>Reduced regulatory defects by 30% through compliance-focused test planning.</li>
-        <li>Validated interoperability standards including HL7 and FHIR.</li>
+        <li>Delivered rigorous verification protocols for Class I and II medical devices under strict regulatory compliance frameworks.</li>
+        <li>Reduced regulatory audit findings by optimizing requirements traceability matrices and risk-based validation plans.</li>
+        <li>Led interoperability validation for clinical data exchange protocols, ensuring data accuracy for mission-critical health applications.</li>
       </ul>
     </div>
   </section>
 
   <section class="section">
-    <h3>Core Technical Expertise</h3>
-    <div class="tech-pill">Manual & Regression</div><div class="tech-pill">API Testing</div><div class="tech-pill">Playwright</div><div class="tech-pill">Cypress</div><div class="tech-pill">Python</div><div class="tech-pill">TypeScript</div><div class="tech-pill">SQL</div><div class="tech-pill">JIRA</div><div class="tech-pill">Postman</div>
+    <h3>Technical Registry</h3>
+    <div class="tech-grid">
+      <div class="pill">Playwright</div><div class="pill">Cypress</div><div class="pill">Python</div><div class="pill">TypeScript</div><div class="pill">API Testing</div><div class="pill">SQL</div><div class="pill">Postman</div><div class="pill">JIRA</div><div class="pill">FDA/HIPAA Compliance</div>
+    </div>
   </section>
 </div>
 </body>
