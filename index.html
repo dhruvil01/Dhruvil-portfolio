@@ -12,7 +12,1696 @@
 /* ═══════════════════════════════════════════════════
    THE ARCHITECTURE: Liquid Glassmorphic Control Panel
    — Dynamic floating glass panes over ambient fluid orbs
-   — Performance-optimized native acceleration rendering
+   — Performance-optimized native acceleration rendering<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhruvil Parekh · Lead QA Engineer · Quality Architect</title>
+<meta name="description" content="ISTQB Certified Lead QA Engineer with 10+ years in Healthcare MedTech, AI Retail, Payment Ecosystems & VR/AR. Quality Engineering Leader.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM: "The Quality Architect"
+   — Deep navy base with warm charcoal accents
+   — Electric cyan (#00D4FF) as primary action
+   — Gold accent (#F5A623) for achievements
+   — Clean Inter sans-serif + JetBrains Mono for code
+   — Immersive glassmorphism with subtle gradients
+   — Full responsive with print optimization
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --bg-primary: #0A0F1A;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1A2332;
+  --bg-card: rgba(17, 24, 39, 0.85);
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --accent-cyan: #00D4FF;
+  --accent-cyan-dim: rgba(0, 212, 255, 0.12);
+  --accent-gold: #F5A623;
+  --accent-gold-dim: rgba(245, 166, 35, 0.12);
+  --shadow-glow: 0 8px 32px rgba(0, 212, 255, 0.08);
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #F4F7FA;
+  --bg-secondary: #E8EDF2;
+  --bg-tertiary: #DCE3E9;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #94A3B8;
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-medium: rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 8px 32px rgba(0, 212, 255, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 20px; }
+
+/* ── GLASS EFFECT ── */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.glass:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── NAVIGATION ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 15, 26, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s ease;
+}
+
+[data-theme="light"] .nav {
+  background: rgba(244, 247, 250, 0.9);
+}
+
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.nav-logo .highlight {
+  color: var(--accent-cyan);
+}
+
+.nav-logo .sub {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all var(--transition);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-pad {
+  padding: 80px 0;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.section-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+
+.section-title .highlight {
+  color: var(--accent-cyan);
+}
+
+.section-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  margin-bottom: 24px;
+}
+
+.hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22C55E;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin-bottom: 20px;
+}
+
+.hero-title .highlight {
+  color: var(--accent-cyan);
+  position: relative;
+}
+
+.hero-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--accent-cyan);
+  opacity: 0.15;
+  border-radius: 4px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.hero-sub strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 36px;
+}
+
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.hero-tag:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.hero-tag.primary {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-primary {
+  background: var(--accent-cyan);
+  color: #0A0F1A;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.35);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+.hero-stat {
+  background: var(--bg-card);
+  padding: 20px 16px;
+  text-align: center;
+  transition: background var(--transition);
+}
+
+.hero-stat:hover {
+  background: var(--bg-secondary);
+}
+
+.hero-stat-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 700;
+  color: var(--accent-cyan);
+  line-height: 1;
+}
+
+.hero-stat-number .suffix {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.hero-stat-label {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+/* Hero Profile Card */
+.hero-profile {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-profile .badge-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.hero-profile .badge-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--accent-gold-dim);
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  color: var(--accent-gold);
+}
+
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px;
+}
+
+.profile-item:last-child {
+  border-bottom: none;
+}
+
+.profile-item .label {
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+.profile-item .value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.profile-item .value.highlight {
+  color: var(--accent-cyan);
+}
+
+/* ═══════════════════════════════════════════════════
+   EXPERIENCE TIMELINE
+═══════════════════════════════════════════════════ */
+#experience {
+  background: var(--bg-secondary);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  border: 3px solid var(--bg-secondary);
+  box-shadow: 0 0 0 4px var(--accent-cyan-dim);
+}
+
+.timeline-item .period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--accent-cyan);
+  font-weight: 500;
+}
+
+.timeline-item .role {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 4px 0 2px;
+}
+
+.timeline-item .company {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.timeline-item .company .location {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.timeline-item ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timeline-item ul li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.timeline-item ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-size: 12px;
+}
+
+/* ═══════════════════════════════════════════════════
+   PROJECTS GRID
+═══════════════════════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  padding: 28px;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+}
+
+.project-card .domain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+.project-card .icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.project-card .title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.project-card .blurb {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.project-card .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 16px;
+}
+
+.project-card .impact {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  line-height: 1;
+}
+
+.project-card .impact-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+
+.project-card .action {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--accent-cyan);
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+
+.project-card:hover .action {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════════════ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.skill-category {
+  padding: 24px;
+}
+
+.skill-category .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-cyan);
+  margin-bottom: 16px;
+  display: block;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 10px;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.skill-item:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* ═══════════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════════ */
+#contact {
+  background: var(--bg-secondary);
+  text-align: center;
+}
+
+.contact-channels {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.contact-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.contact-channel:hover {
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.contact-channel.primary {
+  background: var(--accent-cyan);
+  color: #0A0F1A;
+  border-color: var(--accent-cyan);
+}
+
+.contact-channel.primary:hover {
+  background: #00E5FF;
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 32px 0 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 48px;
+}
+
+.footer span {
+  margin: 0 12px;
+}
+
+/* ═══════════════════════════════════════════════════
+   MODAL OVERLAY
+═══════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 15, 26, 0.92);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  max-width: 700px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 20px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  transition: color var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-domain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-cyan);
+  margin-bottom: 4px;
+}
+
+.modal-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.modal-body {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.modal-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-tertiary);
+}
+
+.modal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.modal-stat {
+  background: var(--bg-card);
+  padding: 16px;
+  text-align: center;
+}
+
+.modal-stat .number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  display: block;
+}
+
+.modal-stat .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 9px;
+  }
+
+  .section-pad {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .timeline-item .role {
+    font-size: 17px;
+  }
+
+  .modal-content {
+    padding: 24px;
+  }
+
+  .modal-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-channels {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-stat {
+    padding: 12px;
+  }
+
+  .hero-stat-number {
+    font-size: 20px;
+  }
+
+  .project-card {
+    padding: 20px;
+    min-height: 220px;
+  }
+
+  .timeline {
+    padding-left: 24px;
+  }
+
+  .timeline-item {
+    padding-left: 12px;
+  }
+
+  .timeline-item::before {
+    left: -20px;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ── PRINT OPTIMIZATION ── */
+@media print {
+  .nav,
+  .theme-toggle,
+  .hero-actions,
+  .modal-overlay {
+    display: none !important;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero-profile {
+    border: 1px solid #ddd;
+  }
+
+  .glass {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: none !important;
+  }
+
+  .section-pad {
+    padding: 40px 0;
+  }
+
+  .project-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .timeline-item {
+    break-inside: avoid;
+  }
+
+  .hero-title .highlight::after {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  [data-theme="light"] .nav {
+    background: #fff !important;
+  }
+
+  .text-secondary {
+    color: #555 !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav">
+  <a href="#hero" class="nav-logo">
+    DP<span class="highlight">_</span>
+    <span class="sub">// QA_ARCH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#experience" class="active">History</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Stack</a></li>
+    <li><a href="#contact">Connect</a></li>
+    <li>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-domain" id="modalDomain"></div>
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <p class="modal-body" id="modalBody"></p>
+    <div class="modal-tags" id="modalTags"></div>
+    <div class="modal-stats" id="modalStats"></div>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Open to Lead QA Roles · Remote & India
+        </div>
+        <h1 class="hero-title">
+          Quality<br>
+          <span class="highlight">Architect.</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>ISTQB Certified Lead QA Engineer</strong> with 10+ years delivering excellence across
+          Healthcare &amp; MedTech, AI Retail, Payment Ecosystems, and VR/AR platforms.
+          Ahmedabad, India.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag primary">FDA 21 CFR</span>
+          <span class="hero-tag">HL7 · FHIR</span>
+          <span class="hero-tag">HIPAA</span>
+          <span class="hero-tag">Payment Gateways</span>
+          <span class="hero-tag">AI Retail</span>
+          <span class="hero-tag">VR/AR OS</span>
+          <span class="hero-tag">ISTQB CTFL</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Case Studies →</a>
+          <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+        </div>
+      </div>
+
+      <div class="glass hero-profile">
+        <div class="badge-row">
+          <span class="badge-item">🏅 ISTQB CTFL · 2025</span>
+          <span class="badge-item">⭐ Bright Spark Award</span>
+          <span class="badge-item">📱 MIUI Alpha Tester</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Title</span>
+          <span class="value">Lead QA Engineer</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Experience</span>
+          <span class="value">10+ Years</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Location</span>
+          <span class="value">Ahmedabad, India</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Specialization</span>
+          <span class="value highlight">Integration & API Native</span>
+        </div>
+        <div class="profile-item">
+          <span class="label">Email</span>
+          <span class="value" style="font-size:12px;word-break:break-all;">dhruvil.parekh3@gmail.com</span>
+        </div>
+        <div class="profile-item" style="border-bottom:none;padding-bottom:0;">
+          <span class="label">Phone</span>
+          <span class="value">+91 80001 64009</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number"><span class="counter" data-target="10">0</span><span class="suffix">+</span></div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number"><span class="counter" data-target="20">0</span><span class="suffix">+</span></div>
+        <div class="hero-stat-label">Major Releases</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number"><span class="counter" data-target="60">0</span><span class="suffix">%</span></div>
+        <div class="hero-stat-label">Regression Reduction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number"><span class="counter" data-target="15">0</span><span class="suffix">+</span></div>
+        <div class="hero-stat-label">Engineers Mentored</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section class="section-pad" id="experience" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-label reveal">Career History</div>
+    <h2 class="section-title reveal">Engineering Quality <span class="highlight">Across Domains</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
+      A decade of delivering mission-critical quality in regulated environments.
+    </p>
+
+    <div class="timeline reveal">
+      <!-- GRUBBRR -->
+      <div class="timeline-item">
+        <div class="period">Oct 2024 – Present</div>
+        <div class="role">Lead QA Engineer</div>
+        <div class="company">GRUBBRR · Ahmedabad, India <span class="location">(Retail Tech)</span></div>
+        <ul>
+          <li>Own end-to-end quality for self-ordering kiosks, POS integrations, payment ecosystems, loyalty platforms, and AI-assisted ordering applications.</li>
+          <li>Validate Smart Upsell workflows, recommendation engine outputs, and menu personalization features across web, mobile, and kiosk.</li>
+          <li>Payment verification across 10+ methods — no production-critical payment defects since Oct 2024.</li>
+          <li>REST API testing via Postman and SQL-based database validation for order calculations and backend integrity.</li>
+          <li>Triage 50+ functional defects pre-production; mentor 6 junior QA engineers.</li>
+        </ul>
+      </div>
+
+      <!-- AimDek -->
+      <div class="timeline-item">
+        <div class="period">Jan 2024 – Oct 2024</div>
+        <div class="role">Lead QA Engineer</div>
+        <div class="company">AimDek Technology · Ahmedabad, India <span class="location">(MedTech)</span></div>
+        <ul>
+          <li>Led QA lifecycle for Class I &amp; II medical devices — FDA 21 CFR Part 11 and HIPAA compliance.</li>
+          <li>Clinical data workflow testing covering HL7, FHIR, and IEEE 11073 SDC standards.</li>
+          <li>REST &amp; SOAP API testing for healthcare data exchange across EHR/EHS workflows.</li>
+          <li>Built requirements traceability matrices — reduced regulatory defects by 30%.</li>
+          <li>Monitored Kubernetes logs — improved uptime by 15%.</li>
+        </ul>
+      </div>
+
+      <!-- Apexon -->
+      <div class="timeline-item">
+        <div class="period">Mar 2021 – Dec 2023</div>
+        <div class="role">Senior Software Engineer QA</div>
+        <div class="company">Apexon · Ahmedabad, India <span class="location">(FinTech · HealthTech)</span></div>
+        <ul>
+          <li>Tested REST and SOAP APIs across 20+ endpoints for health IoT and financial platforms.</li>
+          <li>Led QA for blockchain financial platform — smart contracts, ledger integrity, token logic.</li>
+          <li>Database validation and cloud data sync for healthcare IoT devices.</li>
+          <li>Delivered 12 consecutive major releases with zero critical defects.</li>
+        </ul>
+      </div>
+
+      <!-- CheckTech -->
+      <div class="timeline-item">
+        <div class="period">Sep 2019 – Mar 2021</div>
+        <div class="role">Senior Quality Assurance Specialist</div>
+        <div class="company">CheckTech for IT · Riyadh, Saudi Arabia <span class="location">(Transportation · E-commerce)</span></div>
+        <ul>
+          <li>Authored and executed 200+ manual test cases for platforms serving 500K+ active users.</li>
+          <li>UI/UX validation across 100+ screens — improved user satisfaction by 20%.</li>
+          <li>Improved team productivity by 31% via structured defect reporting and QA dashboards.</li>
+          <li>Led offshore QA team of 4 engineers across 8 simultaneous projects.</li>
+        </ul>
+      </div>
+
+      <!-- Lodestone -->
+      <div class="timeline-item">
+        <div class="period">Jan 2016 – Aug 2019</div>
+        <div class="role">Software Tester — VR Platform & OS</div>
+        <div class="company">Lodestone (Acq. Tech Mahindra) · Ahmedabad, India <span class="location">(VR/AR)</span></div>
+        <ul>
+          <li>Full Oculus OS qualification — system UI, firmware upgrades, sensor calibration across GearVR, Go, Quest, Rift.</li>
+          <li>Build sign-off for 50+ VR/AR applications across Master, RC, HotFix, Custom builds.</li>
+          <li>Identified and resolved 200+ critical VR OS defects — reduced test execution by 35%.</li>
+        </ul>
+      </div>
+
+      <!-- CHHAVI + MIUI -->
+      <div class="timeline-item">
+        <div class="period">2013 – 2015</div>
+        <div class="role">Software Engineer &amp; MIUI Alpha Tester</div>
+        <div class="company">CHHAVI · Xiaomi MIUI Alpha Program <span class="location">(Web · Mobile OS)</span></div>
+        <ul>
+          <li>Functional and integration testing for web applications — improved performance by 15%.</li>
+          <li>Selected for Xiaomi's closed Alpha Tester program — validated pre-release MIUI builds.</li>
+          <li>Tested OS stability, UI regressions, performance, and hardware-software integration.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="section-pad" id="projects">
+  <div class="container">
+    <div class="section-label reveal">Case Studies</div>
+    <h2 class="section-title reveal">Impact <span class="highlight">Delivered.</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
+      Each project represents a measurable quality outcome across regulated domains.
+    </p>
+
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section class="section-pad" id="skills" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-label reveal">Technical Stack</div>
+    <h2 class="section-title reveal">Core <span class="highlight">Competencies</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
+      Technologies, frameworks, and compliance standards mastered across industries.
+    </p>
+
+    <div class="skills-grid reveal">
+      <div class="glass skill-category">
+        <span class="label">Testing Disciplines</span>
+        <div class="skill-items">
+          <span class="skill-item">Manual</span>
+          <span class="skill-item">Regression</span>
+          <span class="skill-item">API</span>
+          <span class="skill-item">Integration</span>
+          <span class="skill-item">Mobile</span>
+          <span class="skill-item">Kiosk</span>
+          <span class="skill-item">Medical Device</span>
+          <span class="skill-item">Payment</span>
+          <span class="skill-item">VR/AR OS</span>
+          <span class="skill-item">Risk-Based</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">Compliance &amp; Standards</span>
+        <div class="skill-items">
+          <span class="skill-item">FDA 21 CFR Part 11</span>
+          <span class="skill-item">HIPAA</span>
+          <span class="skill-item">HL7</span>
+          <span class="skill-item">FHIR</span>
+          <span class="skill-item">IEEE 11073 SDC</span>
+          <span class="skill-item">Class I &amp; II</span>
+          <span class="skill-item">Traceability Matrix</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">Tools &amp; Platforms</span>
+        <div class="skill-items">
+          <span class="skill-item">JIRA</span>
+          <span class="skill-item">TestRail</span>
+          <span class="skill-item">Postman</span>
+          <span class="skill-item">MatrixALM</span>
+          <span class="skill-item">Charles Proxy</span>
+          <span class="skill-item">Confluence</span>
+          <span class="skill-item">AWS S3</span>
+          <span class="skill-item">Kubernetes</span>
+          <span class="skill-item">BrowserStack</span>
+          <span class="skill-item">Playwright (Learning)</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">Payments, Devices &amp; OS</span>
+        <div class="skill-items">
+          <span class="skill-item">Verifone</span>
+          <span class="skill-item">FreedomPay</span>
+          <span class="skill-item">Olo Pay</span>
+          <span class="skill-item">Clover</span>
+          <span class="skill-item">NFC</span>
+          <span class="skill-item">Digital Wallets</span>
+          <span class="skill-item">Oculus OS</span>
+          <span class="skill-item">GearVR/Quest/Rift</span>
+          <span class="skill-item">MIUI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="section-pad" id="contact">
+  <div class="container">
+    <div class="section-label reveal">Connect</div>
+    <h2 class="section-title reveal">Ready to Ship <span class="highlight">Zero Defects?</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="max-width:500px;margin:0 auto 40px;text-align:center;">
+      Looking for a QA lead who owns quality from strategy through production? Let's talk.
+    </p>
+
+    <div class="contact-channels reveal reveal-delay-2">
+      <a href="mailto:dhruvil.parekh3@gmail.com" class="contact-channel primary">
+        ✉ dhruvil.parekh3@gmail.com
+      </a>
+      <a href="#" class="contact-channel" target="_blank">
+        LinkedIn ↗
+      </a>
+      <a href="tel:+918000164009" class="contact-channel">
+        📞 +91 80001 64009
+      </a>
+    </div>
+
+    <div class="footer">
+      <span>© 2026 Dhruvil Parekh</span>
+      <span>·</span>
+      <span>ISTQB Certified · CTFL</span>
+      <span>·</span>
+      <span>Ahmedabad → Worldwide</span>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   SCRIPTS
+═══════════════════════════════════════════════════ */
+
+// ── THEME TOGGLE ──
+const themeToggle = document.getElementById('themeToggle');
+let isDark = true;
+
+themeToggle.addEventListener('click', () => {
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  themeToggle.textContent = isDark ? '🌙' : '☀️';
+});
+
+// ── COUNTER ANIMATION ──
+function animateCounters() {
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const duration = 1600;
+    const start = Date.now();
+
+    const update = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      counter.textContent = current;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = target;
+      }
+    };
+    update();
+  });
+}
+
+// ── REVEAL OBSERVER ──
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  },
+  { threshold: 0.08 }
+);
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── PROJECTS DATA ──
+const projects = [
+  {
+    domain: 'MedTech · FDA · HIPAA',
+    icon: '🩺',
+    title: 'Sibel Health — FDA-Regulated Wearable Validation',
+    blurb: 'Hospital-grade wireless biosensor patches for continuous patient monitoring — ECG, respiratory rate, SpO2.',
+    impact: '30%',
+    impactLabel: 'Regulatory Defect Reduction',
+    tags: ['FDA 21 CFR Part 11', 'HIPAA', 'HL7', 'FHIR', 'IEEE 11073 SDC', 'Traceability Matrix'],
+    full: 'Led full QA validation lifecycle for Class I and II medical devices. Built verification protocols under FDA 21 CFR Part 11 and HIPAA. Clinical data workflows covering HL7, FHIR, and IEEE 11073 SDC. Reduced regulatory defects by 30% with zero compliance gaps.',
+    stats: [{ n: '30%', l: 'Defect Reduction' }, { n: 'Zero', l: 'Compliance Gaps' }, { n: 'Full', l: 'Traceability' }]
+  },
+  {
+    domain: 'VR/AR · Oculus · Firmware',
+    icon: '🥽',
+    title: 'Meta (Oculus) — VR/AR OS & Hardware Qualification',
+    blurb: 'End-to-end OS qualification across GearVR, Go, Quest, and Rift — firmware, sensors, controllers, build sign-off.',
+    impact: '200+',
+    impactLabel: 'Critical Defects Resolved',
+    tags: ['OS Qualification', 'Firmware', 'Sensor Calibration', 'Build Sign-off', 'Performance'],
+    full: 'Owned OS qualification across four Oculus device generations. System UI integrity, motion sensor calibration (6DOF, proximity), wireless connectivity, permission model. Resolved 200+ critical OS defects, cut test execution by 35%, signed off 50+ VR builds.',
+    stats: [{ n: '200+', l: 'Defects Resolved' }, { n: '35%', l: 'Faster Execution' }, { n: '50+', l: 'Builds Signed' }]
+  },
+  {
+    domain: 'FinTech · DLT · Smart Contracts',
+    icon: '⛓️',
+    title: 'Blockchain Platform — Smart Contracts & Ledger Integrity',
+    blurb: 'Distributed ledger platform for digital asset transactions and smart contract execution.',
+    impact: '12',
+    impactLabel: 'Zero-Defect Releases',
+    tags: ['Smart Contracts', 'Ledger Integrity', 'Token Workflows', 'Edge Cases', 'REST/SOAP API'],
+    full: 'Led QA for distributed ledger platform handling digital asset transactions. Verified smart contract execution, gas estimation, re-entrancy guard behavior, mint-transfer-burn-rollback sequences. REST and SOAP API validation across 20+ endpoints. Twelve consecutive major releases with zero critical defects.',
+    stats: [{ n: '12', l: 'Zero-Defect Releases' }, { n: '20+', l: 'APIs Covered' }, { n: 'Zero', l: 'Defects Escaped' }]
+  },
+  {
+    domain: 'Retail · AI · Payments',
+    icon: '🖥️',
+    title: 'GRUBBRR — Self-Ordering Kiosk & Omnichannel POS',
+    blurb: 'Integrated self-ordering ecosystem for restaurants, stadiums, retail — kiosks, mobile, menu boards, POS.',
+    impact: '10+',
+    impactLabel: 'Payment Methods Verified',
+    tags: ['Payment Validation', 'POS Integration', 'SQL/DB Testing', 'REST API', 'AI-Assisted Ordering'],
+    full: 'Own full QA lifecycle across kiosk, mobile, POS, digital menu boards, and loyalty systems. Validate Smart Upsell, recommendation engine, and AI-assisted personalization. Payment verification across 10+ methods — no production-critical payment defects since Oct 2024.',
+    stats: [{ n: 'Zero', l: 'Payment Defects' }, { n: '10+', l: 'Methods Covered' }, { n: '50+', l: 'Pre-Prod Bugs' }]
+  },
+  {
+    domain: 'Mobile OS · Android · Alpha Testing',
+    icon: '📱',
+    title: 'MIUI Alpha Tester — Xiaomi OS Pre-Release Validation',
+    blurb: 'Selected for Xiaomi\'s closed Alpha Testing program — validating pre-release builds for OS stability.',
+    impact: '100M+',
+    impactLabel: 'Users Protected',
+    tags: ['MIUI', 'Android OS', 'OS Stability', 'UI Regression', 'Exploratory Testing'],
+    full: 'Selected as Xiaomi MIUI Alpha Tester (2013–2015). Validated pre-release builds for OS stability, UI regressions, performance, battery management, hardware-software integration. Documented defects with structured reproduction steps — built foundation for later OS qualification work.',
+    stats: [{ n: '2 Yrs', l: 'Alpha Testing' }, { n: 'Pre-Rel', l: 'Builds Validated' }, { n: '100M+', l: 'Users Protected' }]
+  },
+  {
+    domain: 'Insurance · ETL · Data Engineering',
+    icon: '🚗',
+    title: 'ETL Vehicle Insurance — Data Pipeline Validation',
+    blurb: 'Multi-stage ETL processing high-volume policyholder, claims, and vehicle records for actuarial reporting.',
+    impact: '100%',
+    impactLabel: 'Row-Count Fidelity',
+    tags: ['ETL Pipeline', 'SQL Validation', 'Data Transformation', 'Data Lineage', 'Integration'],
+    full: 'Designed QA strategy for high-volume ETL pipeline. Traced data lineage from source extraction through transformation stages — field mappings, type conversions, business rules, aggregation logic. Deep SQL validation and statistical reconciliation ensured zero silent data loss.',
+    stats: [{ n: '100%', l: 'Row-Count Fidelity' }, { n: 'Zero', l: 'Silent Data Loss' }, { n: 'Full', l: 'Coverage' }]
+  }
+];
+
+// ── RENDER PROJECTS ──
+const projectsGrid = document.getElementById('projectsGrid');
+
+projects.forEach((p, i) => {
+  const card = document.createElement('div');
+  const delay = i % 3 === 0 ? '' : (i % 3 === 1 ? ' reveal-delay-1' : ' reveal-delay-2');
+  card.className = `glass project-card reveal${delay}`;
+  card.innerHTML = `
+    <div>
+      <div class="domain">${p.domain}</div>
+      <div class="icon">${p.icon}</div>
+      <div class="title">${p.title}</div>
+      <div class="blurb">${p.blurb}</div>
+    </div>
+    <div class="footer">
+      <div>
+        <div class="impact">${p.impact}</div>
+        <div class="impact-label">${p.impactLabel}</div>
+      </div>
+      <span class="action">Expand →</span>
+    </div>
+  `;
+  card.addEventListener('click', () => openModal(p));
+  projectsGrid.appendChild(card);
+  revealObserver.observe(card);
+});
+
+// ── MODAL ──
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalDomain = document.getElementById('modalDomain');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalTags = document.getElementById('modalTags');
+const modalStats = document.getElementById('modalStats');
+
+function openModal(p) {
+  modalDomain.textContent = p.domain;
+  modalTitle.textContent = p.title;
+  modalBody.textContent = p.full;
+  modalTags.innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+  modalStats.innerHTML = p.stats.map(s => `
+    <div class="modal-stat">
+      <span class="number">${s.n}</span>
+      <span class="label">${s.l}</span>
+    </div>
+  `).join('');
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ── NAV SCROLL SPY ──
+const sections = ['hero', 'experience', 'projects', 'skills', 'contact'];
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 200) {
+      current = id;
+    }
+  });
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').replace('#', '');
+    link.classList.toggle('active', href === current);
+  });
+});
+
+// ── INIT COUNTERS ON LOAD ──
+setTimeout(animateCounters, 600);
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
    ═══════════════════════════════════════════════════ */
 
 :root[data-theme="dark"] {
