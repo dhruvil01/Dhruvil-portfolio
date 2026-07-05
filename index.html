@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhruvil Parekh — Quality Engineering Lead</title>
-<meta name="description" content="Lead QA Engineer with 10+ years across Healthcare & MedTech, AI-Powered Retail, Payment Ecosystems, and VR/AR. ISTQB Certified.">
+<title>Dhruvil Parekh — Lead QA Engineer · ISTQB Certified</title>
+<meta name="description" content="Lead QA Engineer with 10+ years across Healthcare & MedTech, AI-Powered Retail, Payment Ecosystems, and VR/AR. ISTQB Certified. Ahmedabad, India.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
    THE ARCHITECTURE: Liquid Glassmorphic Control Panel
@@ -15,621 +14,710 @@
    — Performance-optimized native acceleration rendering
    ═══════════════════════════════════════════════════ */
 
-:root[data-theme="dark"] {
-  --bg-base: #060913;
-  --text-main: #F8FAFC;
-  --text-mute: #94A3B8;
-  --text-dark: #475569;
-  
-  --cyan: #06B6D4;
-  --purple: #8B5CF6;
-  --neon: #22C55E;
-  
-  --glass-fill: rgba(15, 23, 42, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-hover: rgba(255, 255, 255, 0.12);
-  --panel-mix: rgba(10, 15, 30, 0.7);
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg:        #080B14;
+  --bg2:       #0C1020;
+  --bg3:       #060810;
+  --glass:     rgba(255,255,255,0.04);
+  --glass2:    rgba(255,255,255,0.07);
+  --gBorder:   rgba(255,255,255,0.09);
+  --gBorderH:  rgba(167,139,250,0.4);
+  --shimmer:   rgba(167,139,250,0.06);
+  --text:      #EDF0FF;
+  --text2:     #8B90B8;
+  --text3:     #454870;
+  --inv:       #080B14;
+  --blob1:     rgba(109,40,217,0.20);
+  --blob2:     rgba(6,182,212,0.12);
+  --blob3:     rgba(139,92,246,0.10);
+  --navBg:     rgba(8,11,20,0.90);
+  --ldrBg:     #060810;
+  --shadow:    0 8px 40px rgba(0,0,0,0.6);
+  --shadowSm:  0 2px 16px rgba(0,0,0,0.4);
+  --glow:      0 0 40px rgba(139,92,246,0.18);
+  --cardFlip:  rgba(14,18,36,0.95);
 }
 
-:root[data-theme="light"] {
-  --bg-base: #F4F7FA;
-  --text-main: #0F172A;
-  --text-mute: #475569;
-  --text-dark: #94A3B8;
-  
-  --cyan: #0891B2;
-  --purple: #7C3AED;
-  --neon: #16A34A;
-  
-  --glass-fill: rgba(255, 255, 255, 0.45);
-  --glass-border: rgba(15, 23, 42, 0.08);
-  --glass-hover: rgba(15, 23, 42, 0.04);
-  --panel-mix: rgba(240, 244, 248, 0.7);
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg:        #F4F3FF;
+  --bg2:       #FAFAFF;
+  --bg3:       #EEEEFF;
+  --glass:     rgba(255,255,255,0.65);
+  --glass2:    rgba(255,255,255,0.85);
+  --gBorder:   rgba(139,92,246,0.18);
+  --gBorderH:  rgba(109,40,217,0.5);
+  --shimmer:   rgba(139,92,246,0.06);
+  --text:      #1A1830;
+  --text2:     #5A567A;
+  --text3:     #9996B8;
+  --inv:       #F4F3FF;
+  --blob1:     rgba(109,40,217,0.07);
+  --blob2:     rgba(6,182,212,0.05);
+  --blob3:     rgba(139,92,246,0.05);
+  --navBg:     rgba(244,243,255,0.92);
+  --ldrBg:     #EEEEFF;
+  --shadow:    0 8px 40px rgba(109,40,217,0.12);
+  --shadowSm:  0 2px 16px rgba(109,40,217,0.08);
+  --glow:      0 0 40px rgba(109,40,217,0.10);
+  --cardFlip:  rgba(248,247,255,0.97);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; background: var(--bg-base); }
-body {
-  background: var(--bg-base);
-  color: var(--text-main);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-  transition: background 0.4s ease, color 0.4s ease;
+:root {
+  --v:  #8B5CF6;
+  --c:  #06B6D4;
+  --g:  linear-gradient(135deg,#8B5CF6,#06B6D4);
+  --g2: linear-gradient(135deg,#6D28D9,#8B5CF6,#06B6D4);
+  --f:  'Inter',sans-serif;
+  --fs: 'Syne',sans-serif;
+  --fm: 'JetBrains Mono',monospace;
 }
 
-/* ── FLUID AMBIENT CANVAS BACKGROUND ── */
-.liquid-canvas {
-  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
-}
-.liquid-blob {
-  position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.28;
-  animation: fluidDrift 22s infinite alternate ease-in-out;
-}
-.blob-1 { width: 50vw; height: 50vw; background: var(--cyan); top: -15%; left: -10%; }
-.blob-2 { width: 40vw; height: 40vw; background: var(--purple); bottom: -10%; right: -5%; animation-delay: -6s; }
-.blob-3 { width: 30vw; height: 30vw; background: var(--neon); top: 35%; left: 35%; animation-duration: 28s; opacity: 0.15; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);line-height:1.6;overflow-x:hidden;transition:background .45s,color .45s}
 
-@keyframes fluidDrift {
-  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  100% { transform: translate(80px, 60px) scale(1.15) rotate(120deg); }
-}
+/* ── AMBIENT BLOBS ── */
+#blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);animation:blobDrift 20s infinite alternate ease-in-out}
+.b1{width:700px;height:700px;background:var(--blob1);top:-200px;left:-150px}
+.b2{width:500px;height:500px;background:var(--blob2);top:40%;right:-100px;animation-delay:-7s}
+.b3{width:450px;height:450px;background:var(--blob3);bottom:-100px;left:35%;animation-delay:-14s}
 
-/* ── PRELOADER TELEMETRY ── */
-#loader {
-  position: fixed; inset: 0; z-index: 9000; background: var(--bg-base);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
-  transition: opacity 0.5s ease, visibility 0.5s;
-}
-#loader.gone { opacity: 0; visibility: hidden; }
-.l-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 0.05em; }
-.l-title span { color: var(--cyan); }
-.l-bar-container { width: 200px; height: 2px; background: var(--glass-border); border-radius: 4px; overflow: hidden; }
-.l-bar-fill { height: 100%; background: var(--cyan); width: 0; transition: width 0.04s linear; }
-
-/* ── HEADER FLOATING NAVIGATION ── */
-#nav-panel {
-  position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
-  width: calc(100% - 3rem); max-width: 1240px; z-index: 800;
-  background: var(--panel-mix); border: 1px solid var(--glass-border);
-  backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-  padding: 1rem 2.5rem; border-radius: 100px;
-  display: flex; justify-content: space-between; align-items: center;
-  box-shadow: 0 16px 36px rgba(0,0,0,0.15);
-}
-.nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; color: var(--text-main); }
-.nav-logo span { color: var(--cyan); }
-.nav-menu { display: flex; gap: 2rem; list-style: none; }
-.nav-menu a {
-  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-mute); text-decoration: none; transition: color 0.2s;
-}
-.nav-menu a:hover, .nav-menu a.active { color: var(--cyan); }
-
-.ctrl-btn {
-  background: transparent; border: 1px solid var(--glass-border); color: var(--text-main);
-  width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-}
-.ctrl-btn:hover { background: var(--text-main); color: var(--bg-base); border-color: var(--text-main); }
-
-/* ── LAYOUT MECHANICS ── */
-main { padding-top: 6rem; position: relative; }
-.container { padding: 6rem 3rem; max-width: 1240px; margin: 0 auto; }
-section { position: relative; }
-
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.in { opacity: 1; transform: none; }
-.d-1 { transition-delay: 0.1s; }
-.d-2 { transition-delay: 0.2s; }
-
-.section-label {
-  font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.25em;
-  text-transform: uppercase; color: var(--cyan); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem;
-}
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
-
-/* ── GLASS PANELS (BENTO/CARDS) ── */
-.glass-pane {
-  background: var(--glass-fill); border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-radius: 24px; padding: 2.5rem; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-pane:hover { border-color: var(--border-lit); background: var(--glass-hover); transform: translateY(-4px); }
-
-/* ── HERO STATION ── */
-#hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; }
-.hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4.5rem; align-items: center; }
-.hero-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(42px, 5.2vw, 76px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
-.hero-title span { color: var(--cyan); }
-.hero-tagline { font-size: clamp(16px, 1.3vw, 21px); color: var(--text-mute); font-weight: 300; margin-bottom: 2.5rem; line-height: 1.6; }
-.hero-tagline strong { color: var(--text-main); font-weight: 500; }
-
-.tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2.5rem; }
-.micro-tag {
-  font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.05em;
-  text-transform: uppercase; padding: 0.35rem 0.8rem; background: var(--glass-fill);
-  border: 1px solid var(--glass-border); color: var(--text-mute); border-radius: 50px;
-}
-.micro-tag.hot { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
-
-.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-.action-btn {
-  display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.8rem;
-  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.08em; text-decoration: none; border-radius: 50px; transition: all 0.2s; border: 1px solid transparent;
-}
-.btn-solid { background: var(--cyan); color: #060913; box-shadow: 0 8px 24px rgba(6,182,212,0.25); }
-.btn-solid:hover { background: var(--cyan-hover); transform: translateY(-1px); }
-.btn-trans { border-color: var(--glass-border); color: var(--text-main); background: var(--glass-fill); }
-.btn-trans:hover { background: var(--glass-hover); border-color: var(--text-main); }
-
-/* Cumulative Stats Strip */
-.telemetry-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 5rem; }
-.tlm-card { background: var(--glass-fill); border: 1px solid var(--glass-border); padding: 1.75rem; border-radius: 16px; text-align: center; }
-.tlm-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; line-height: 1; margin-bottom: 0.25rem; color: var(--text-main); }
-.tlm-num span { color: var(--cyan); font-size: 18px; vertical-align: super; }
-.tlm-lbl { font-family: 'Space Grotesk', sans-serif; font-size: 9px; font-weight: 500; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.1em; }
-
-/* ── WORK MATRIX GRAPH (PROJECTS) ── */
-#work { background: rgba(10, 15, 30, 0.2); border-top: 1px solid var(--glass-border); }
-.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; }
-.project-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; cursor: pointer; }
-.p-hdr { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-.p-dom { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; }
-.p-ico { font-size: 24px; opacity: 0.8; }
-.p-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.3; }
-.p-blurb { font-size: 14px; color: var(--text-mute); margin-bottom: 1.5rem; flex-grow: 1; }
-.p-foot { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--glass-border); padding-top: 1.25rem; }
-.p-metric { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: var(--text-main); line-height: 1; }
-.p-metric-lbl { font-family: 'Space Grotesk', sans-serif; font-size: 9px; color: var(--text-dark); text-transform: uppercase; margin-top: 0.2rem; }
-.p-action { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* ── CHRONOLOGY TRACK (EXPERIENCE) ── */
-.track-layout { display:grid; grid-template-columns: 280px 1fr; gap: 4.5rem; align-items: start; }
-.track-nav { position: sticky; top: 7.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.track-btn {
-  padding: 1.25rem; text-align: left; background: var(--glass-fill); border: 1px solid var(--glass-border);
-  color: var(--text-mute); font-family: 'Space Grotesk', sans-serif; font-size: 11px; cursor: pointer; transition: all 0.2s; border-radius: 12px;
-}
-.track-btn:hover { background: var(--glass-hover); color: var(--text-main); }
-.track-btn.active { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); font-weight: 600; }
-.track-btn span { display: block; font-size: 14px; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); margin-top: 0.25rem; font-weight: 500; }
-
-.track-panes { min-height: 420px; }
-.track-pane { display: none; animation: paneFadeIn 0.35s ease forwards; }
-.track-pane.active { display: block; }
-@keyframes paneFadeIn { from{opacity:0; transform:translateX(10px)} to{opacity:1; transform:none} }
-
-.pane-title-block { margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px dashed var(--glass-border); }
-.pane-role { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600; margin-bottom: 0.25rem; }
-.pane-company { font-size: 14px; color: var(--text-mute); }
-.pane-company span { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--cyan); margin-left: 0.75rem; }
-.pane-items { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-.pane-items li { position: relative; padding-left: 1.75rem; font-size: 15px; color: var(--text-mute); line-height: 1.65; }
-.pane-items li::before { content: '◆'; position: absolute; left: 0; top: 2px; color: var(--cyan); font-size: 11px; }
-
-/* ── TECH REGISTRY (SKILLS GRID) ── */
-#skills { background: rgba(10, 15, 30, 0.15); border-top: 1px solid var(--glass-border); }
-.registry-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.reg-box { background: var(--glass-fill); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 16px; }
-.reg-lbl { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--glass-border); font-weight: 600; }
-.reg-group { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.reg-item { font-family: 'Space Grotesk', sans-serif; font-size: 11px; padding: 0.3rem 0.65rem; background: var(--bg-base); border: 1px solid transparent; color: var(--text-mute); border-radius: 6px; }
-
-/* ── OVERLAY DIALOG MODAL ── */
-#modal-overlay {
-  position: fixed; inset: 0; z-index: 1000; background: rgba(3, 5, 10, 0.85); backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.25s;
-}
-#modal-overlay.active { opacity: 1; pointer-events: all; }
-.modal-frame {
-  background: var(--panel-mix); border: 1px solid var(--glass-border); max-width: 780px; width: 100%; max-height: 85vh;
-  overflow-y: auto; padding: 3.5rem; position: relative; border-radius: 28px; box-shadow: 0 32px 64px rgba(0,0,0,0.6);
-  transform: translateY(16px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-#modal-overlay.active .modal-frame { transform: none; }
-.modal-close { position: absolute; top: 1.75rem; right: 1.75rem; background: none; border: none; font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--text-mute); cursor: pointer; letter-spacing: 0.05em; }
-.modal-close:hover { color: var(--cyan); }
-
-.m-hdr-domain { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-.m-hdr-title { font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; line-height: 1.2; margin-bottom: 1.75rem; }
-.m-body-text { font-size: 15px; color: var(--text-mute); line-height: 1.75; margin-bottom: 2.5rem; }
-.m-stats-panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--glass-border); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; }
-.m-stat-card { background: var(--bg-base); padding: 1.5rem; text-align: center; }
-.m-stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--cyan); display: block; }
-.m-stat-lbl { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: var(--text-mute); text-transform: uppercase; margin-top: 0.25rem; }
-
-/* ── CONTACT NODE ── */
-#contact { text-align: center; padding: 10rem 0; position: relative; }
-.contact-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(38px, 6vw, 68px); font-weight: 700; text-transform: uppercase; line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-.contact-title span { color: var(--cyan); }
-.contact-p { font-size: 18px; color: var(--text-mute); font-weight: 300; margin-bottom: 3.5rem; }
-
-.contact-channels { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 5rem; }
-.channel-box {
-  display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.1rem 2rem; background: var(--glass-fill);
-  border: 1px solid var(--glass-border); font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; text-decoration: none; color: var(--text-mute); transition: all 0.2s; border-radius: 50px;
-}
-.channel-box:hover { border-color: var(--cyan); color: var(--text-main); background: var(--glass-hover); transform: translateY(-2px); }
-.channel-box.prime { background: var(--cyan); color: #060913; border-color: var(--cyan); font-weight: 600; box-shadow: 0 4px 20px rgba(6,182,212,0.2); }
-.channel-box.prime:hover { background: var(--cyan-hover); }
-
-footer { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--text-dark); display: flex; justify-content: space-between; max-width: 1240px; margin: 0 auto; padding: 0 3rem; }
-
-/* ── RESPONSIVE RESPONSIVE ADAPTATIONS ── */
-@media(max-width: 1024px) {
-  .hero-grid, .track-layout { grid-template-columns: 1fr; gap: 3.5rem; }
-  .telemetry-panel { max-width: 100%; }
-  .track-nav { position: static; flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; border-bottom: 1px solid var(--glass-border); }
-  .track-btn { border-bottom: 2px solid transparent; border-radius: 0; padding: 0.75rem 1.25rem; white-space: nowrap; }
-  .track-btn.active { border-bottom-color: var(--cyan); background: transparent; }
-  .registry-matrix { grid-template-columns: 1fr; }
-  .telemetry-strip { grid-template-columns: repeat(3, 1fr); }
-  #nav-panel { padding: 1rem 1.5rem; }
-  .nav-menu { display: none; }
+@keyframes blobDrift{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(60px,50px) scale(1.1)}
 }
 
-@media(max-width: 768px) {
-  .container { padding: 4rem 1.5rem; }
-  .telemetry-strip { grid-template-columns: repeat(2, 1fr); }
-  .m-stats-panel { grid-template-columns: 1fr; }
-  footer { padding: 0 1.5rem; flex-direction: column; gap: 1.5rem; text-align: center; }
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;z-index:9000;background:var(--ldrBg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;transition:opacity .8s,visibility .8s}
+#loader.gone{opacity:0;visibility:hidden}
+.l-brand{font-family:var(--fs);font-size:clamp(28px,5vw,52px);font-weight:800;letter-spacing:-.03em;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fUp .6s .2s ease forwards}
+.l-tag{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);opacity:0;animation:fUp .6s .35s ease forwards}
+.l-track{width:min(260px,72vw);height:1px;background:var(--gBorder);position:relative}
+.l-fill{height:1px;background:var(--g);width:0;transition:width .05s linear;position:relative}
+.l-pct{font-family:var(--fm);font-size:9px;letter-spacing:.15em;color:var(--text3)}
+@keyframes fUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── THEME TOGGLE ── */
+#thm{position:fixed;top:1rem;right:1rem;z-index:600;width:42px;height:42px;border-radius:50%;background:var(--glass2);border:1px solid var(--gBorder);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .3s;box-shadow:var(--shadowSm)}
+#thm:hover{border-color:var(--v);box-shadow:0 0 20px rgba(139,92,246,.3)}
+
+/* ── FLOATING STATS PILL ── */
+#pill{position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;background:var(--glass2);border:1px solid var(--gBorderH);backdrop-filter:blur(20px);border-radius:100px;padding:.6rem 1.2rem;display:flex;align-items:center;gap:1rem;box-shadow:var(--shadow);transform:translateY(80px);opacity:0;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s}
+#pill.show{transform:translateY(0);opacity:1}
+.pill-stat{display:flex;flex-direction:column;align-items:center;gap:1px}
+.pill-n{font-family:var(--fs);font-size:14px;font-weight:800;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.pill-l{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+.pill-div{width:1px;height:28px;background:var(--gBorder)}
+
+/* ── SIDENAV ── */
+#nav{position:fixed;left:0;top:0;bottom:0;width:62px;z-index:400;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1.4rem 0;background:var(--navBg);border-right:1px solid var(--gBorder);backdrop-filter:blur(20px);transition:background .45s,border-color .45s}
+.nav-logo{font-family:var(--fs);font-size:12px;font-weight:800;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-logo small{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;background:none;-webkit-text-fill-color:var(--text3);color:var(--text3)}
+.nav-links{list-style:none;display:flex;flex-direction:column;gap:1.4rem;align-items:center}
+.nav-links a{font-family:var(--fm);font-size:7.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--text3);text-decoration:none;writing-mode:vertical-rl;transition:color .2s;position:relative}
+.nav-links a.on{color:var(--v)}
+.nav-links a.on::before{content:'';position:absolute;left:-9px;top:50%;transform:translateY(-50%);writing-mode:horizontal-tb;width:3px;height:3px;border-radius:50%;background:var(--v);box-shadow:0 0 8px var(--v)}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:#34D399;animation:navPulse 2.5s infinite}
+@keyframes navPulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}50%{box-shadow:0 0 0 6px rgba(52,211,153,0)}}
+
+/* ── LAYOUT ── */
+main{margin-left:62px;position:relative;z-index:1}
+.wrap{padding:4.5rem 4rem;max-width:1100px}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ── KICKER ── */
+.kicker{font-family:var(--fm);font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--v);display:flex;align-items:center;gap:.65rem;margin-bottom:1.5rem}
+.kicker::before{content:'';width:22px;height:1px;background:var(--g)}
+.gt{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ══════════════   HERO ══════════════ */
+#hero{min-height:100vh;display:flex;flex-direction:column;overflow:hidden;position:relative}
+#hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--gBorder) 1px,transparent 1px),linear-gradient(90deg,var(--gBorder) 1px,transparent 1px);background-size:52px 52px;opacity:.5}
+.hero-orb{position:absolute;top:-180px;right:-180px;width:620px;height:620px;border-radius:50%;background:conic-gradient(from 0deg,rgba(109,40,217,.18),rgba(6,182,212,.12),rgba(139,92,246,.10),rgba(109,40,217,.18));filter:blur(70px);animation:orbSpin 22s linear infinite;pointer-events:none}
+@keyframes orbSpin{to{transform:rotate(360deg)}}
+canvas#ekg{position:absolute;bottom:90px;left:0;right:0;height:60px;opacity:.2;pointer-events:none}
+
+.hero-body{flex:1;display:flex;align-items:center;padding:5rem 4rem 2rem;position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center;width:100%}
+
+.hero-left{}
+.hero-avail{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:1.25rem;opacity:0;animation:fUp .7s 1s ease forwards}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#34D399;animation:navPulse 2.2s infinite}
+
+.hero-name{font-family:var(--fs);font-weight:800;font-size:clamp(34px,4vw,54px);line-height:1;letter-spacing:-.03em;margin-bottom:.35rem;overflow:hidden}
+.hn{display:block;opacity:0;transform:translateY(100%);animation:slideUp .8s cubic-bezier(.22,1,.36,1) forwards}
+.hn:nth-child(1){animation-delay:1.1s}
+.hn:nth-child(2){animation-delay:1.2s}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+
+.hero-title{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:1.5rem;opacity:0;animation:fUp .7s 1.3s ease forwards}
+.hero-summary{font-size:14px;font-weight:300;color:var(--text2);line-height:1.8;max-width:440px;margin-bottom:1.75rem;opacity:0;animation:fUp .8s 1.4s ease forwards}
+.hero-summary strong{color:var(--text);font-weight:500}
+
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.75rem;opacity:0;animation:fUp .8s 1.5s ease forwards}
+.chip{font-family:var(--fm);font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:.26rem .72rem;border-radius:100px;background:var(--glass);border:1px solid var(--gBorder);color:var(--text2);backdrop-filter:blur(8px);transition:all .2s}
+.chip.hot{background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.35);color:var(--v)}
+.chip:hover{border-color:var(--v);color:var(--v)}
+
+.hero-ctas{display:flex;gap:.6rem;flex-wrap:wrap;opacity:0;animation:fUp .8s 1.6s ease forwards}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:.75rem 1.35rem;border-radius:100px;text-decoration:none;border:none;cursor:pointer;transition:all .25s;white-space:nowrap}
+.btn-g{background:var(--g);color:#fff;font-weight:500;box-shadow:0 4px 20px rgba(109,40,217,.35)}
+.btn-g:hover{box-shadow:0 6px 28px rgba(109,40,217,.55);transform:translateY(-1px)}
+.btn-gl{background:var(--glass);color:var(--text);border:1px solid var(--gBorder);backdrop-filter:blur(12px)}
+.btn-gl:hover{border-color:var(--v);color:var(--v)}
+
+.hero-card{background:var(--glass);border:1px solid var(--gBorder);border-radius:20px;backdrop-filter:blur(24px);padding:1.75rem;box-shadow:var(--shadowSm);position:relative;overflow:hidden;opacity:0;animation:fUp .9s 1.4s ease forwards}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g2)}
+.hc-label{font-family:var(--fm);font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);margin-bottom:1.1rem}
+.hc-stats{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:1.25rem}
+.hc-stat{background:var(--shimmer);border:1px solid var(--gBorder);border-radius:12px;padding:.9rem;text-align:center}
+.hc-stat-n{font-family:var(--fs);font-size:22px;font-weight:800;line-height:1;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2px}
+.hc-stat-l{font-family:var(--fm);font-size:7px;letter-spacing:.09em;text-transform:uppercase;color:var(--text3)}
+.hc-divider{height:1px;background:var(--gBorder);margin:1rem 0}
+.hc-badges{display:flex;flex-direction:column;gap:.4rem}
+.hc-badge{display:flex;align-items:center;gap:.55rem;font-family:var(--fm);font-size:8px;letter-spacing:.05em;color:var(--text2);padding:.4rem .6rem;border-radius:8px;background:var(--shimmer);border:1px solid var(--gBorder)}
+.hc-badge-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.bd-v{background:var(--v);box-shadow:0 0 6px var(--v)}
+.bd-c{background:var(--c);box-shadow:0 0 6px var(--c)}
+.bd-g{background:#F59E0B;box-shadow:0 0 6px #F59E0B}
+
+.hero-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--gBorder);position:relative;z-index:2;background:var(--glass);backdrop-filter:blur(16px);opacity:0;animation:fUp .8s 1.7s ease forwards}
+.hs{padding:1.25rem 1rem;border-right:1px solid var(--gBorder);position:relative;overflow:hidden;transition:background .3s}
+.hs:last-child{border-right:none}
+.hs::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.hs:hover{background:var(--glass2)}
+.hs:hover::after{transform:scaleX(1)}
+.hs-n{font-family:var(--fs);font-size:clamp(20px,2vw,30px);font-weight:800;line-height:1;margin-bottom:.2rem;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hs-l{font-family:var(--fm);font-size:7.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text3)}
+
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--gBorder);border-bottom:1px solid var(--gBorder);padding:.6rem 0;background:var(--glass);backdrop-filter:blur(8px)}
+.ticker-track{display:flex;white-space:nowrap;animation:tick 55s linear infinite}
+.t-item{display:inline-flex;align-items:center;gap:.9rem;padding:0 1.4rem;font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+.tsep{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:10px}
+
+/* ── WORK PANELS ── */
+#work{background:var(--bg2)}
+.work-header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;margin-bottom:2.5rem}
+.work-title{font-family:var(--fs);font-size:clamp(28px,4vw,52px);font-weight:800;line-height:.92;letter-spacing:-.03em}
+.work-sub{font-size:13px;font-weight:300;color:var(--text2);max-width:240px;text-align:right;line-height:1.7}
+.work-grid{display:flex;flex-direction:column;gap:.75rem}
+.wcard{border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--gBorder);backdrop-filter:blur(20px);cursor:pointer;transition:all .3s;position:relative}
+.wcard:hover {border-color:var(--gBorderH);transform:translateY(-2px);box-shadow:var(--shadow)}
+.wcard::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--g);transform:scaleY(0);transform-origin:top;transition:transform .35s}
+.wcard:hover::before{transform:scaleY(1)}
+
+.wcard-top{display:grid;grid-template-columns:52px 1fr 130px;gap:1.5rem;padding:1.4rem 1.6rem;align-items:start}
+.wcard-emoji{font-size:32px;line-height:1;padding-top:3px}
+.wcard-domain{font-family:var(--fm);font-size:7.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--v);margin-bottom:.3rem}
+.wcard-name{font-family:var(--fs);font-size:15px;font-weight:700;line-height:1.25;margin-bottom:.4rem;color:var(--text)}
+.wcard-blurb{font-size:12.5px;font-weight:300;color:var(--text2);line-height:1.65;margin-bottom:.65rem}
+.wcard-tags{display:flex;flex-wrap:wrap;gap:.2rem}
+.wtag{font-family:var(--fm);font-size:7px;letter-spacing:.04em;text-transform:uppercase;padding Club:.15rem .45rem;border-radius:4px;background:var(--shimmer);border:1px solid var(--gBorder);color:var(--text3)}
+.wcard-impact{text-align:right}
+.wcard-num{font-family:var(--fs);font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.15rem}
+.wcard-numl{font-family:var(--fm);font-size:7.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem}
+.wcard-more{font-family:var(--fm);font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--v);display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
+
+.wcard-detail{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1);border-top:0px solid var(--gBorder)}
+.wcard.open .wcard-detail{max-height:300px;border-top-width:1px}
+.wcard-detail-inner{padding:1.25rem 1.6rem 1.4rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
+.wcard-full{font-size:12.5px;font-weight:300;color:var(--text2);line-height:1.8}
+.wcard-stats{display:flex;flex-direction:column;gap:.4rem;flex-shrink:0;min-width:140px}
+.wstat{background:var(--shimmer);border:1px solid var(--gBorder);border-radius:10px;padding:.6rem .75rem;text-align:center}
+.wstat-n{font-family:var(--fs);font-size:16px;font-weight:800;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block;margin-bottom:2px}
+.wstat-l{font-family:var(--fm);font-size:7px;letter-spacing:.07em;text-transform:uppercase;color:var(--text3)}
+
+/* ── ABOUT ── */
+#about{background:var(--bg)}
+.about-layout{display:grid;grid-template-columns:250px 1fr;gap:3.5rem;align-items:start}
+.about-card{position:sticky;top:4.5rem;border-radius:20px;padding:1.4rem;background:var(--glass);border:1px solid var(--gBorder);backdrop-filter:blur(24px);box-shadow:var(--shadowSm);overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g2)}
+.av{width:100%;aspect-ratio:1;border-radius:14px;background:var(--bg2);border:1px solid var(--gBorder);margin-bottom:1rem;position:relative;overflow:hidden}
+.av svg{width:100%;height:100%;position:absolute;inset:0}
+.ac-name{font-family:var(--fs);font-size:16px;font-weight:800;color:var(--text);margin-bottom:1px}
+.ac-role{font-family:var(--fm);font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
+.ac-div{height:1px;background:var(--gBorder);margin-bottom:1rem}
+.ac-link{display:flex;align-items:center;gap:.55rem;margin-bottom:.55rem;text-decoration:none;color:inherit}
+.ac-ico{width:22px;height:22px;flex-shrink:0;border-radius:6px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--v)}
+.ac-val{font-family:var(--fm);font-size:8px;color:var(--text3);line-height:1.4;word-break:break-all;transition:color .2s}
+.ac-link:hover .ac-val{color:var(--text)}
+.badge-st{display:flex;flex-direction:column;gap:.3rem;margin-top:.9rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;padding:.26rem .65rem;border-radius:100px;font-family:var(--fm);font-size:7px;letter-spacing:.06em;text-transform:uppercase}
+.bv{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);color:var(--v)}
+.bg{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);color:#F59E0B}
+
+.ab-hl{font-family:var(--fs);font-size:clamp(24px,3vw,40px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:1.5rem}
+.ab-p{font-size:14px;font-weight:300;color:var(--text2);line-height:1.85;margin-bottom:1rem}
+.ab-p strong{color:var(--text);font-weight:500}
+.pullq{border-radius:12px;padding:1.1rem 1.35rem;margin:1.5rem 0;background:var(--glass);border:1px solid var(--gBorder);border-left:3px solid var(--v);font-size:14px;font-style:italic;font-weight:300;color:var(--text);line-height:1.6}
+.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.5rem}
+.sk-box{border-radius:12px;padding:.9rem;background:var(--glass);border:1px solid var(--gBorder);backdrop-filter:blur(12px);transition:border-color .3s,box-shadow .3s}
+.sk-box:hover{border-color:rgba(139,92,246,.3);box-shadow:0 0 20px rgba(139,92,246,.08)}
+.sk-label{font-family:var(--fm);font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--v);margin-bottom:.6rem}
+.sk-items{display:flex;flex-wrap:wrap;gap:.22rem}
+.sk-item{font-family:var(--fm);font-size:7.5px;letter-spacing:.04em;padding Side:.16rem .48rem;border-radius:4px;background:var(--shimmer);border:1px solid var(--gBorder);color:var(--text3)}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--bg2)}
+.exp-layout{display:grid;grid-template-columns:190px 1fr;gap:2.5rem}
+.exp-tabs{position:sticky;top:4.5rem;display:flex;flex-direction:column;gap:2px}
+.exp-tab{padding:.65rem .8rem;border-radius:10px;font-family:var(--fm);font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);cursor:pointer;border:1px solid transparent;transition:all .2s;line-height:1.35}
+.exp-tab:hover{color:var(--text);background:var(--glass)}
+.exp-tab.on{color:var(--v);background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.2)}
+.exp-tab-co{display:block;font-size:7px;color:var(--v);margin-bottom:2px;opacity:.7}
+.exp-pane{display:none;animation:paneFade .3s ease}
+.exp-pane.on{display:block}
+@keyframes paneFade {from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:none}}
+.ep-period{font-family:var(--fm);font-size:8px;letter-spacing:.1em;color:var(--v);margin-bottom:.3rem}
+.ep-role{font-family:var(--fs);font-size:clamp(20px,2.5vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1;margin-bottom:.25rem;color:var(--text)}
+.ep-co{font-size:11.5px;font-weight:300;color:var(--text3);margin-bottom:1.4rem}
+.ep-pts{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.ep-pts li{font-size:13px;font-weight:300;color:var(--text2);line-height:1.8;padding-left:.9rem;position:relative}
+.ep-pts li::before{content:'';position:absolute;left:0;top:.7em;width:4px;height:4px;border-radius:50%;background:var(--g)}
+.ep-edu{margin-top:1.75rem}
+.ep-edu-ttl{font-family:var(--fm);font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:.65rem;display:flex;align-items:center;gap:.55rem}
+.ep-edu-ttl::after{content:'';flex:1;height:1px;background:var(--gBorder)}
+.edu-pills{display:flex;flex-wrap:wrap;gap:.3rem}
+.edu-pill{font-family:var(--fm);font-size:8px;padding:.28rem .7rem;border-radius:8px;background:var(--glass);border:1px solid var(--gBorder);color:var(--text3)}
+
+/* ── IMPACT ── */
+#impact{background:var(--bg)}
+.impact-wrap{padding:4.5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px}
+.imp-ey{font-family:var(--fm);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--v);margin-bottom:.85rem}
+.imp-hl{font-family:var(--fs);font-size:clamp(28px,4vw,50px);font-weight:800;line-height:.92;letter-spacing:-.03em;color:var(--text);margin-bottom:.85rem}
+.imp-sub{font-size:13.5px;font-weight:300;color:var(--text2);line-height:1.75}
+.imp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.imp-box{border-radius:16px;padding:1.35rem;background:var(--glass);border:1px solid var(--gBorder);backdrop-filter:blur(16px);transition:all .3s}
+.imp-box:hover{border-color:rgba(139,92,246,.35);transform:translateY(-2px);box-shadow:var(--shadow)}
+.imp-n{font-family:var(--fs);font-size:clamp(26px,2.5vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:.25rem;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.imp-l{font-family:var(--fm);font-size:7.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text3)}
+
+/* ── METHOD ── */
+#philosophy{background:var(--bg2)}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:2.5rem}
+.pcard{border-radius:16px;padding:1.5rem 1.25rem;background:var(--glass);border:1px solid var(--gBorder);backdrop-filter:blur(16px);position:relative;overflow:hidden;transition:all .3s}
+.pcard:hover{border-color:rgba(139,92,246,.35);transform:translateY(-3px);box-shadow:var(--shadow)}
+.pcard::before{content:attr(data-n);position:absolute;bottom:-12px;right:8px;font-family:var(--fs);font-size:72px;font-weight:800;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.06;line-height:1;user-select:none}
+.pcard-ico{font-size:20px;margin-bottom:.8rem;display:block}
+.pcard-h{font-family:var(--fs);font-size:13.5px;font-weight:700;margin-bottom:.55rem;color:var(--text)}
+.pcard-p{font-size:12px;font-weight:300;color:var(--text2);line-height:1.75}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg);min-height:55vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.contact-orb{position:absolute;bottom:-220px;right:-220px;width:650px;height:650px;border-radius:50%;background:conic-gradient(from 180deg,rgba(109,40,217,.12),rgba(6,182,212,.08),rgba(139,92,246,.07),rgba(109,40,217,.12));filter:blur(80px);animation:orbSpin 28s linear infinite reverse;pointer-events:none}
+.contact-inner{padding:4.5rem 4rem;position:relative;z-index:2}
+.contact-hl{font-family:var(--fs);font-size:clamp(30px,5vw,66px);font-weight:800;line-height:.92;letter-spacing:-.04em;margin-bottom:1.25rem}
+.contact-sub{font-size:14px;font-weight:300;color:var(--text2);margin-bottom:2rem;max-width:420px}
+.contact-links{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:3.5rem}
+.cta{display:inline-flex;align-items:center;gap:.45rem;padding:.78rem 1.5rem;border-radius:100px;font-family:var(--fm);font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;transition:all .25s}
+.cta-p{background:var(--g);color:#fff;font-weight:500;box-shadow:0 4px 18px rgba(109,40,217,.35)}
+.cta-p:hover{box-shadow:0 6px 26px rgba(109,40,217,.55);transform:translateY(-1px)}
+.cta-s{background:var(--glass);color:var(--text2);border:1px solid var(--gBorder);backdrop-filter:blur(12px)}
+.cta-s:hover{border-color:var(--v);color:var(--v)}
+.footer{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+@media(max-width:900px){
+  #nav{display:none} main{margin-left:0}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .wrap,.hero-body,.impact-wrap,.contact-inner{padding:3rem 1.5rem}
+  .work-header{grid-template-columns:1fr}
+  .work-sub{text-align:left;max-width:none}
+  .about-layout,.exp-layout{grid-template-columns:1fr}
+  .about-card{position:static}
+  .sk-grid{grid-template-columns:1fr}
+  .wcard-top{grid-template-columns:40px 1fr} .wcard-impact{display:none}
+  .phil-grid{grid-template-columns:1fr}
+  .impact-wrap{grid-template-columns:1fr}
+  .imp-grid{grid-template-columns:1fr 1fr}
+  #pill{bottom:.75rem;right:.75rem}
+  #thm{top:.6rem;right:.6rem}
 }
 </style>
 </head>
 <body>
 
-<div class="liquid-canvas">
-  <div class="liquid-blob blob-1"></div>
-  <div class="liquid-blob blob-2"></div>
-  <div class="liquid-blob blob-3"></div>
+<div id="blobs">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<button id="thm" title="Toggle theme" aria-label="Toggle light/dark">🌙</button>
+
+<div id="pill">
+  <div class="pill-stat"><div class="pill-n">10+yr</div><div class="pill-l">Experience</div></div>
+  <div class="pill-div"></div>
+  <div class="pill-stat"><div class="pill-n">20+</div><div class="pill-l">Releases</div></div>
+  <div class="pill-div"></div>
+  <div class="pill-stat"><div class="pill-n">Zero</div><div class="pill-l">Critical defects</div></div>
+  <div class="pill-div"></div>
+  <div class="pill-stat"><div class="pill-n">15+</div><div class="pill-l">Mentored</div></div>
 </div>
 
 <div id="loader">
-  <div class="l-title">DHRUVIL <span>PAREKH</span></div>
-  <div class="l-bar-container"><div class="l-bar-fill" id="lbar"></div></div>
+  <div class="l-brand">Dhruvil Parekh</div>
+  <div class="l-tag">Lead QA Engineer · ISTQB Certified</div>
+  <div class="l-track"><div class="l-fill" id="lbar"></div></div>
+  <div class="l-pct" id="lpct">INITIALISING — 0%</div>
 </div>
 
-<div id="modal-overlay">
-  <div class="modal-frame">
-    <button class="modal-close" id="mClose">CLOSE // ✕</button>
-    <div class="m-hdr-domain" id="mDom"></div>
-    <h3 class="m-hdr-title" id="mTit"></h3>
-    <p class="m-body-text" id="mBod"></p>
-    <div class="m-stats-panel" id="mStat"></div>
-  </div>
-</div>
-
-<nav id="nav-panel">
-  <a href="#hero" class="nav-logo">DP<span>_</span></a>
-  <ul class="nav-menu">
-    <li><a href="#work">Matrix</a></li>
-    <li><a href="#experience">History</a></li>
-    <li><a href="#skills">Registry</a></li>
-    <li><a href="#contact">Signal</a></li>
+<nav id="nav">
+  <a href="#hero" class="nav-logo"><span>DP</span><small>QA Lead</small></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Career</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#philosophy">Method</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="ctrl-btn" id="themeToggle" aria-label="Toggle execution mode">⚡</button>
+  <div class="nav-dot"></div>
 </nav>
 
 <main>
-
   <section id="hero">
-    <div class="container">
+    <div class="hero-orb"></div>
+    <canvas id="ekg"></canvas>
+    <div class="hero-body">
       <div class="hero-grid">
-        <div class="reveal">
-          <h1 class="hero-title">Quality Assurance<br><span>Architect.</span></h1>
-          <p class="hero-tagline">
-            Over 10 years governing absolute structural engineering reliability across regulated MedTech software components, distributed financial gateways, and core embedded hardware platforms.
-          </p>
-          <div class="tag-cloud">
-            <span class="micro-tag hot">MedTech Compliance</span>
-            <span class="micro-tag hot">FDA · HL7 · FHIR</span>
-            <span class="micro-tag hot">Payment Gateways</span>
-            <span class="micro-tag">AI Recommendation QA</span>
-            <span class="micro-tag">VR/AR Ecosystems</span>
-            <span class="micro-tag">ISTQB Certified</span>
+        <div class="hero-left">
+          <div class="hero-avail"><div class="avail-dot"></div>Open to Lead QA &amp; Senior QA roles · Remote &amp; India</div>
+          <h1 class="hero-name"><span class="hn">Dhruvil</span><span class="hn gt">Parekh.</span></h1>
+          <div class="hero-title">Lead QA Engineer · ISTQB Certified · Ahmedabad, India</div>
+          <p class="hero-summary"><strong>10+ years owning quality</strong> from strategy through production across FDA-regulated Medical Devices, AI-Powered Retail Systems, Payment Ecosystems, and VR/AR platforms. Known for preventing production failures, reducing regulatory exposure, and scaling QA teams.</p>
+          <div class="chips">
+            <span class="chip hot">Healthcare &amp; MedTech</span>
+            <span class="chip hot">FDA · HL7 · FHIR · IEEE 11073 SDC</span>
+            <span class="chip hot">Payments &amp; POS</span>
+            <span class="chip hot">AI-Powered Retail</span>
+            <span class="chip">VR/AR &amp; Mobile OS</span>
+            <span class="chip">API &amp; Integration QA</span>
+            <span class="chip">ISTQB CTFL</span>
           </div>
           <div class="hero-ctas">
-            <a href="#work" class="action-btn btn-solid">Review Test Matrix</a>
-            <a href="mailto:dhruvil.parekh3@gmail.com" class="action-btn btn-trans">Open Pipeline Socket</a>
+            <a href="#work" class="btn btn-g">View my work →</a>
+            <a href="mailto:dhruvil.parekh3@gmail.com" class="btn btn-gl">Get in touch</a>
           </div>
         </div>
-
-        <div class="glass-pane telemetry-panel reveal d-1">
-          <div class="spec-hdr"><span>SYSTEM_PROFILE_LOG</span><span>v2.26</span></div>
-          <div class="spec-row"><span class="spec-lbl">RANK:</span><span class="spec-val">Lead Quality Engineer</span></div>
-          <div class="spec-row"><span class="spec-lbl">CREDENTIAL:</span><span class="spec-val hl">ISTQB (CTFL)</span></div>
-          <div class="spec-row"><span class="spec-lbl">BASE:</span><span class="spec-val">Ahmedabad, IN</span></div>
-          <div class="spec-row"><span class="spec-lbl">SECTORS:</span><span class="spec-val">MedTech, Commerce, VR OS</span></div>
-          <div class="spec-row"><span class="spec-lbl">COMPLIANCE:</span><span class="spec-val hl">FDA 21 CFR, HIPAA, HL7</span></div>
-          <div class="spec-row"><span class="spec-lbl">TIER:</span><span class="spec-val">Integration &amp; API Native</span></div>
+        <div class="hero-card">
+          <div class="hc-label">Key metrics</div>
+          <div class="hc-stats">
+            <div class="hc-stat"><div class="hc-stat-n" id="cnt1">0</div><div class="hc-stat-l">Years QA</div></div>
+            <div class="hc-stat"><div class="hc-stat-n" id="cnt2">0</div><div class="hc-stat-l">Major releases</div></div>
+            <div class="hc-stat"><div class="hc-stat-n" id="cnt3">0</div><div class="hc-stat-l">Regression cut %</div></div>
+            <div class="hc-stat"><div class="hc-stat-n" id="cnt4">0</div><div class="hc-stat-l">Regulatory defects cut %</div></div>
+          </div>
+          <div class="hc-divider"></div>
+          <div class="hc-badges">
+            <div class="hc-badge"><div class="hc-badge-dot bd-v"></div>ISTQB Certified Tester CTFL · 2025</div>
+            <div class="hc-badge"><div class="hc-badge-dot bd-g"></div>Bright Spark Award · Apexon</div>
+            <div class="hc-badge"><div class="hc-badge-dot bd-c"></div>MIUI Alpha Tester · Xiaomi · 2013–2015</div>
+            <div class="hc-badge"><div class="hc-badge-dot bd-v"></div>15+ QA Engineers Mentored</div>
+            <div class="hc-badge"><div class="hc-badge-dot bd-c"></div>Open to Global Remote Roles</div>
+          </div>
         </div>
       </div>
-
-      <div class="telemetry-strip reveal d-2">
-        <div class="tlm-card"><div class="tlm-num"><span class="counter" data-target="10">0</span><span>+</span></div><div class="tlm-lbl">Years System QA</div></div>
-        <div class="tlm-card"><div class="tlm-num"><span class="counter" data-target="20">0</span><span>+</span></div><div class="tlm-lbl">Major Deployments</div></div>
-        <div class="tlm-card"><div class="tlm-num"><span class="counter" data-target="60">0</span><span>%</span></div><div class="tlm-lbl">Regression Shrinkage</div></div>
-        <div class="tlm-card"><div class="tlm-num"><span class="counter" data-target="30">0</span><span>%</span></div><div class="tlm-lbl">Regulatory Defect Drop</div></div>
-        <div class="tlm-card"><div class="tlm-num"><span class="counter" data-target="15">0</span><span>+</span></div><div class="tlm-lbl">Engineers Guided</div></div>
-      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n"><span class="sn" data-t="10">0</span>+yr</div><div class="hs-l">QA Experience</div></div>
+      <div class="hs"><div class="hs-n"><span class="sn" data-t="20">0</span>+</div><div class="hs-l">Major releases</div></div>
+      <div class="hs"><div class="hs-n"><span class="sn" data-t="60">0</span>%</div><div class="hs-l">Faster regression</div></div>
+      <div class="hs"><div class="hs-n"><span class="sn" data-t="30">0</span>%</div><div class="hs-l">Regulatory defects cut</div></div>
+      <div class="hs"><div class="hs-n"><span class="sn" data-t="15">0</span>+</div><div class="hs-l">Engineers mentored</div></div>
     </div>
   </section>
 
+  <div class="ticker-wrap"><div class="ticker-track" id="ticker"></div></div>
+
   <section id="work">
-    <div class="container">
-      <div class="section-label reveal">Verification Records Matrix</div>
-      <div class="work-grid" id="matrixContainer"></div>
+    <div class="wrap">
+      <div class="kicker rv">Selected case studies</div>
+      <div class="work-header rv">
+        <h2 class="work-title">Ten projects.<br><span class="gt">One standard.</span></h2>
+        <p class="work-sub">Click any card to read the full case study — all key details are visible upfront.</p>
+      </div>
+      <div class="work-grid" id="workGrid"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="kicker rv">About</div>
+      <div class="about-layout">
+        <div class="about-card rv">
+          <div class="av">
+            <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient>
+                <pattern id="gp" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0L0 0 0 24" fill="none" stroke="rgba(139,92,246,0.1)" stroke-width=".5"/></pattern>
+              </defs>
+              <rect width="240" height="240" fill="url(#gp)"/>
+              <circle cx="120" cy="120" r="68" fill="rgba(139,92,246,0.04)" stroke="url(#ag)" stroke-width="1.5"/>
+              <circle cx="120" cy="120" r="50" fill="rgba(6,182,212,0.03)" stroke="rgba(139,92,246,0.15)" stroke-width=".5"/>
+              <path d="M96 120L112 136L144 104" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M18 18L18 38M18 18L38 18" stroke="rgba(139,92,246,0.2)" stroke-width="1.5"/>
+              <path d="M222 18L222 38M222 18L202 18" stroke="rgba(139,92,246,0.2)" stroke-width="1.5"/>
+              <path d="M18 222L18 202M18 222L38 222" stroke="rgba(139,92,246,0.2)" stroke-width="1.5"/>
+              <path d="M222 222L222 202M222 222L202 222" stroke="rgba(139,92,246,0.2)" stroke-width="1.5"/>
+              <circle cx="120" cy="198" r="3" fill="url(#ag)"></circle>
+              <circle cx="194" cy="44" r="16" fill="rgba(139,92,246,0.08)" stroke="url(#ag)" stroke-width="1"/>
+              <text x="194" y="49" text-anchor="middle" fill="url(#ag)" font-size="10" font-family="monospace" font-weight="600">QA</text>
+            </svg>
+          </div>
+          <div class="ac-name">Dhruvil Parekh</div>
+          <div class="ac-role">Lead QA Engineer · ISTQB CTFL</div>
+          <div class="ac-div"></div>
+          <a href="mailto:dhruvil.parekh3@gmail.com" class="ac-link"><div class="ac-ico">✉</div><div class="ac-val">dhruvil.parekh3@gmail.com</div></a>
+          <a href="tel:+918000164009" class="ac-link"><div class="ac-ico">☎</div><div class="ac-val">+91 80001 64009</div></a>
+          <a href="https://linkedin.com/in/dhruvilparekh" target="_blank" rel="noopener" class="ac-link"><div class="ac-ico">in</div><div class="ac-val">linkedin.com/in/dhruvilparekh</div></a>
+          <div class="ac-link"><div class="ac-ico">📍</div><div class="ac-val">Ahmedabad, Gujarat, India</div></div>
+          <div class="badge-st">
+            <span class="badge bv">🏅 ISTQB CTFL · March 2025</span>
+            <span class="badge bg">⭐ Bright Spark Award · Apexon</span>
+            <span class="badge bv">📱 MIUI Alpha Tester · 2013–2015</span>
+          </div>
+        </div>
+        <div>
+          <h2 class="ab-hl rv">Quality lead,<br><span class="gt">domain-fluent.</span></h2>
+          <p class="ab-p rv d1">I am an <strong>ISTQB Certified Lead QA Engineer</strong> with 10+ years delivering quality engineering across four domains where defects have real consequences — FDA-regulated medical devices, distributed ledger platforms, real-time payment ecosystems, and VR/AR platforms.</p>
+          <div class="pullq rv d2">"Quality is not a phase at the end of development. It is a discipline embedded from the first requirement."</div>
+          <p class="ab-p rv d2">Led <strong>20+ major releases</strong> with no critical production incidents. Built payment frameworks covering <strong>10+ payment methods</strong> with no production-critical payment defects recorded. Reduced regression cycles by <strong>60%</strong> and regulatory defects by <strong>30%</strong>. Mentored <strong>15+ QA engineers</strong> across blockchain, medical devices, payments, and VR/AR.</p>
+          <p class="ab-p rv d3">Currently expanding into <strong>Playwright test automation</strong>. Also served as a <strong>Xiaomi MIUI Alpha Tester (2013–2015)</strong> — validating pre-release MIUI OS builds for stability, UI regressions, and hardware-software integration before public rollout.</p>
+          <div class="sk-grid rv d3">
+            <div class="sk-box"><div class="sk-label">Testing disciplines</div><div class="sk-items"><span class="sk-item">Manual</span><span class="sk-item">Regression</span><span class="sk-item">API Testing</span><span class="sk-item">Integration</span><span class="sk-item">Mobile</span><span class="sk-item">Kiosk</span><span class="sk-item">Medical Device</span><span class="sk-item">Payment Validation</span><span class="sk-item">VR/OS QA</span><span class="sk-item">Risk-Based</span></div></div>
+            <div class="sk-box"><div class="sk-label">Compliance &amp; standards</div><div class="sk-items"><span class="sk-item">FDA 21 CFR Part 11</span><span class="sk-item">HIPAA</span><span class="sk-item">HL7</span><span class="sk-item">FHIR</span><span class="sk-item">IEEE 11073 SDC</span><span class="sk-item">Class I &amp; II</span><span class="sk-item">Traceability Matrix</span><span class="sk-item">EHR · EHS</span></div></div>
+            <div class="sk-box"><div class="sk-label">Tools &amp; platforms</div><div class="sk-items"><span class="sk-item">JIRA</span><span class="sk-item">TestRail</span><span class="sk-item">Postman</span><span class="sk-item">MatrixALM</span><span class="sk-item">Charles Proxy</span><span class="sk-item">Confluence</span><span class="sk-item">AWS S3</span><span class="sk-item">Kubernetes</span><span class="sk-item">BrowserStack</span></div></div>
+            <div class="sk-box"><div class="sk-label">Payments, devices &amp; OS</div><div class="sk-items"><span class="sk-item">Verifone</span><span class="sk-item">FreedomPay</span><span class="sk-item">Olo Pay</span><span class="sk-item">Clover</span><span class="sk-item">NFC</span><span class="sk-item">Digital Wallets</span><span class="sk-item">Oculus OS</span><span class="sk-item">GearVR/Quest/Rift</span><span class="sk-item">MIUI</span></div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="experience">
-    <div class="container">
-      <div class="section-label reveal">Chronological History Log</div>
-      
-      <div class="track-layout reveal d-1">
-        <div class="track-nav" id="expNavContainer"></div>
-        <div class="track-panes" id="expContentContainer"></div>
-      </div>
-
-      <div class="edu-grid reveal d-2">
-        <div class="glass-pane">
-          <div class="edu-card-date">March 2025</div>
-          <div class="edu-card-title">ISTQB Certified Tester</div>
-          <div class="edu-card-sub">Foundation Level (CTFL)</div>
-        </div>
-        <div class="glass-pane">
-          <div class="edu-card-date">Conferred 2015</div>
-          <div class="edu-card-title">Master of Computer Applications</div>
-          <div class="edu-card-sub">Gujarat Technological University</div>
-        </div>
-        <div class="glass-pane">
-          <div class="edu-card-date">Conferred 2013</div>
-          <div class="edu-card-title">Bachelor of Computer Applications</div>
-          <div class="edu-card-sub">GLS Institute of Computer Technology</div>
-        </div>
+    <div class="wrap">
+      <div class="kicker rv">Career</div>
+      <div class="exp-layout rv">
+        <div class="exp-tabs" id="expTabs"></div>
+        <div id="expPanes"></div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
-    <div class="container">
-      <div class="section-label reveal">Technology Assertions</div>
-      
-      <div class="registry-matrix reveal d-1">
-        <div class="reg-box">
-          <div class="reg-lbl">Testing Core Subsystems</div>
-          <div class="reg-group">
-            <span class="reg-item">Manual Regression</span><span class="reg-item">Integration Verification</span><span class="reg-item">API Validation</span><span class="reg-item">Mobile &amp; Kiosk OS</span><span class="reg-item">Risk-Based Testing</span>
-          </div>
-        </div>
-        <div class="reg-box">
-          <div class="reg-lbl">Compliance &amp; Healthcare Interop</div>
-          <div class="reg-group">
-            <span class="reg-item">FDA 21 CFR Part 11</span><span class="reg-item">HIPAA Standards</span><span class="reg-item">HL7 Data Processing</span><span class="reg-item">FHIR Architecture</span><span class="reg-item">IEEE 11073 SDC</span><span class="reg-item">Requirements Traceability</span>
-          </div>
-        </div>
-        <div class="reg-box">
-          <div class="reg-lbl">Transactional Commerce Engines</div>
-          <div class="reg-group">
-            <span class="reg-item">FreedomPay Gateway</span><span class="reg-item">Verifone Software</span><span class="reg-item">Olo Pay Frameworks</span><span class="reg-item">NFC Control Paths</span><span class="reg-item">AI Menu Personalization</span>
-          </div>
-        </div>
-        <div class="reg-box">
-          <div class="reg-lbl">Firmware &amp; Embedded Device Layers</div>
-          <div class="reg-group">
-            <span class="reg-item">Oculus OS Qualification</span><span class="reg-item">MIUI Closed Alpha Triage</span><span class="reg-item">Sensor Calibration Math</span><span class="reg-item">BLE Pairing Stacks</span>
-          </div>
-        </div>
+  <section id="impact">
+    <div class="impact-wrap">
+      <div class="rv">
+        <div class="imp-ey">By the numbers</div>
+        <h2 class="imp-hl">Measured.<br><span class="gt">Documented.</span><br>Repeatable.</h2>
+        <p class="imp-sub" style="margin-top:.85rem">Not aspirational targets. The documented record of 10 years of engineering quality from strategy through production release.</p>
+      </div>
+      <div class="imp-grid rv d2">
+        <div class="imp-box"><div class="imp-n">20+</div><div class="imp-l">Major releases, no critical production incidents</div></div>
+        <div class="imp-box"><div class="imp-n">60%</div><div class="imp-l">Regression cycle reduction through risk-based strategy</div></div>
+        <div class="imp-box"><div class="imp-n">30%</div><div class="imp-l">Regulatory defect reduction at AimDek Technology</div></div>
+        <div class="imp-box"><div class="imp-n">31%</div><div class="imp-l">Team productivity gain at CheckTech</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy">
+    <div class="wrap">
+      <div class="kicker rv">Method</div>
+      <h2 class="rv" style="font-family:var(--fs);font-size:clamp(26px,3.5vw,48px);font-weight:800;letter-spacing:-.03em;line-height:.92">Quality is a system,<br><span class="gt">not a stage.</span></h2>
+      <div class="phil-grid rv d1">
+        <div class="pcard" data-n="01"><span class="pcard-ico">🎯</span><div class="pcard-h">Strategy before execution</div><div class="pcard-p">Risk-based test strategies, traceability matrices, and clear acceptance criteria — so QA scales with the product, not against it.</div></div>
+        <div class="pcard" data-n="02"><span class="pcard-ico">🔬</span><div class="pcard-h">Compliance is non-negotiable</div><div class="pcard-p">FDA 21 CFR, HIPAA, HL7/FHIR, IEEE 11073 SDC — regulated workflows where a missed defect is a patient safety event, not a bug ticket.</div></div>
+        <div class="pcard" data-n="03"><span class="pcard-ico">📊</span><div class="pcard-h">Numbers, not opinions</div><div class="pcard-p">Defect leakage, regression cycle time, traceability coverage — I track what matters and report what decision-makers can act on.</div></div>
+        <div class="pcard" data-n="04"><span class="pcard-ico">👥</span><div class="pcard-h">Build the team around you</div><div class="pcard-p">15+ QA engineers mentored across blockchain, medical devices, payments, and VR/AR. Better teams ship better products.</div></div>
+        <div class="pcard" data-n="05"><span class="pcard-ico">⚡</span><div class="pcard-h">Speed through precision</div><div class="pcard-p">Risk-based prioritization and optimized regression cycles produce faster releases — not shortcuts. 60% faster with no production-critical defects.</div></div>
+        <div class="pcard" data-n="06"><span class="pcard-ico">🔗</span><div class="pcard-h">Integration depth</div><div class="pcard-p">APIs, databases, IoT pipelines, payment gateways, BLE — I test at every integration boundary, because that is where defects hide.</div></div>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="container">
-      <h2 class="contact-title reveal">Establish <span>System Handshake.</span></h2>
-      <p class="contact-p reveal d-1">Looking for a QA leader capable of securing pipeline release configurations? Open channels.</p>
-      
-      <div class="contact-channels reveal d-2">
-        <a href="mailto:dhruvil.parekh3@gmail.com" class="channel-box prime">✉ Connect Pipeline Terminal</a>
-        <a href="https://linkedin.com/in/dhruvilparekh" class="channel-box" target="_blank" rel="noopener">Secure LinkedIn Link ↗</a>
-        <a href="tel:+918000164009" class="channel-box">☎ Call Node</a>
+    <div class="contact-orb"></div>
+    <div class="contact-inner">
+      <div class="kicker rv">Contact</div>
+      <h2 class="contact-hl rv">Ready to ship<br><span class="gt">with zero defects?</span></h2>
+      <p class="contact-sub rv d1">Looking for a QA lead who owns quality from strategy through production? Let us talk.</p>
+      <div class="contact-links rv d2">
+        <a href="mailto:dhruvil.parekh3@gmail.com" class="cta cta-p">✉ Say hello</a>
+        <a href="https://linkedin.com/in/dhruvilparekh" target="_blank" rel="noopener" class="cta cta-s">LinkedIn ↗</a>
+        <a href="tel:+918000164009" class="cta cta-s">☎ +91 80001 64009</a>
       </div>
-
-      <footer>
-        <span>© 2026 Dhruvil Parekh — Quality Diagnostics Suite</span>
-        <span>Validation Data Sourced and Verified Secure</span>
-      </footer>
+      <div class="footer rv d3">
+        <span>© 2026 Dhruvil Parekh — All rights reserved</span>
+        <span>ISTQB Certified · Ahmedabad → Worldwide</span>
+      </div>
     </div>
   </section>
-
 </main>
 
 <script>
-/* ── TELEMETRY LOADER CONTROLLER ─────────────────────── */
-let loadedAmount = 0;
-const fillNode = document.getElementById('lbar'), loaderShadow = document.getElementById('loader');
-const bootTimerClock = setInterval(() => {
-  loadedAmount = Math.min(loadedAmount + Math.random() * 22 + 6, 100);
-  fillNode.style.width = loadedAmount + '%';
-  if (loadedAmount >= 100) {
-    clearInterval(bootTimerClock);
-    setTimeout(() => {
-      loaderShadow.classList.add('gone');
-      triggerProgressCounters();
-    }, 300);
-  }
-}, 45);
+/* THEME */
+const html=document.documentElement,thm=document.getElementById('thm');let dark=localStorage.getItem('dp-theme')!=='light';
+function applyTheme(){html.setAttribute('data-theme',dark?'dark':'light');thm.textContent=dark?'☀️':'🌙'}
+applyTheme();thm.addEventListener('click',()=>{dark=!dark;localStorage.setItem('dp-theme',dark?'dark':'light');applyTheme()});
 
-/* ── INTERACTIVE EXECUTION MODE TOGGLE (THEME) ───────── */
-const htmlRoot = document.documentElement;
-document.getElementById('themeToggle').onclick = () => {
-  const activeMode = htmlRoot.getAttribute('data-theme');
-  const targetMode = activeMode === 'dark' ? 'light' : 'dark';
-  htmlRoot.setAttribute('data-theme', targetMode);
-};
+/* LOADER */
+let pct=0;const lbar=document.getElementById('lbar'),lpct=document.getElementById('lpct'),loader=document.getElementById('loader');
+const lt=setInterval(()=>{
+  pct=Math.min(pct+Math.random()*13+5,100);
+  lbar.style.width=pct+'%';
+  lpct.textContent='INITIALISING — '+Math.floor(pct)+'%';
+  if(pct>=100){clearInterval(lt);setTimeout(()=>{loader.classList.add('gone');animAll();drawEKG();},350);}
+},60);
 
-/* ── SCROLL SPY NAVIGATION SYNC ──────────────────────── */
-window.addEventListener('scroll', () => {
-  const sectionsList = ['hero', 'work', 'experience', 'skills', 'contact'];
-  let currentActiveSection = '';
-  sectionsList.forEach(id => {
-    const sectionEl = document.getElementById(id);
-    if (sectionEl && window.scrollY >= sectionEl.offsetTop - 250) currentActiveSection = id;
-  });
-  document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === '#' + currentActiveSection);
-  });
-});
+/* FLOATING PILL */
+const pill=document.getElementById('pill');
+window.addEventListener('scroll',()=>{
+  pill.classList.toggle('show',window.scrollY>300);
+  const ids=['hero','work','about','experience','impact','philosophy','contact'];
+  let cur='';
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-240)cur=id;});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
 
-/* ── VIEWPORT ENTRANCE OBSERVER (REVEAL) ─────────────── */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+/* TICKER */
+const ti=['FDA 21 CFR Part 11','HIPAA','HL7 / FHIR','IEEE 11073 SDC','Payment Validation','REST / SOAP API','SQL Database Testing','Risk-Based Testing','Oculus OS Qualification','Smart Contract QA','Postman','TestRail','JIRA','MatrixALM','Kubernetes Monitoring','Traceability Matrix','ISTQB CTFL','Playwright (Learning)','AI-Assisted Ordering QA','Kiosk & POS Testing'];
+const tk=document.getElementById('ticker');
+tk.innerHTML=[...ti,...ti,...ti,...ti].map(t=>'<span class="t-item"><span class="tsep">◆</span>'+t+'</span>').join('');
 
-/* ── PROGRESS ACCUMULATOR CARDS ENGINE ───────────────── */
-function triggerProgressCounters() {
-  document.querySelectorAll('.counter').forEach(el => {
-    const endValue = parseFloat(el.dataset.target), animationLength = 1400, runStart = Date.now();
-    const metricClock = setInterval(() => {
-      const completionProg = Math.min((Date.now() - runStart) / animationLength, 1);
-      el.textContent = Math.floor(endValue * completionProg);
-      if (completionProg >= 1) { el.textContent = endValue; clearInterval(metricClock); }
-    }, 18);
-  });
+/* REVEAL */
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* COUNT ANIMATION */
+function animCount(el,target,suffix){
+  const dur=1500,start=Date.now();
+  const iv=setInterval(()=>{
+    const t=Math.min((Date.now()-start)/dur,1);
+    const v=Math.floor(target*t);
+    el.textContent=v+suffix;
+    if(t>=1){el.textContent=target+suffix;clearInterval(iv);}
+  },14);
+}
+function animAll(){
+  document.querySelectorAll('.sn').forEach(el=>animCount(el,parseFloat(el.dataset.t),''));
+  animCount(document.getElementById('cnt1'),10,'+');
+  animCount(document.getElementById('cnt2'),20,'+');
+  animCount(document.getElementById('cnt3'),60,'%');
+  animCount(document.getElementById('cnt4'),30,'%');
 }
 
-/* ── TEST ARCHITECTURE RECORDS LOGS GENERATOR ────────── */
-const datasetsMatrix = [
-  {
-    domain: 'MedTech · FDA · HIPAA', emoji: '🩺', name: 'Continuous Wearable Physiological Tracking Telemetry',
-    blurb: 'Regulated Class I/II continuous medical biological telemetry architecture.',
-    impact: '30%', impactLbl: 'Defect Reduction',
-    tags: ['FDA Part 11', 'HIPAA', 'HL7/FHIR Data Mapping'],
-    full: 'Directed QA verification cycles across continuous healthcare telemetry monitoring units. Engineered traceability architectures verifying critical data transit pathways, mapping hardware patches to clinical dashboards under strict regulatory compliance boundaries.',
-    stats: [{n: '30%', l: 'Fewer Faults'}, {n: '100%', l: 'Traceability'}, {n: 'Zero', l: 'Escaped Gaps'}]
-  },
-  {
-    domain: 'VR / AR Firmware Platforms', emoji: '🥽', name: 'Oculus Operating System Hardware Qualification',
-    blurb: 'Core OS subsystem performance validation across multiple hardware iterations.',
-    impact: '200+', impactLbl: 'Regressions Resolved',
-    tags: ['Kernel Triage', 'Sensor Sync Loop', 'Build Verification'],
-    full: 'Oversaw full OS release qualification sweeps covering baseline shell integrity, latency-optimized motion controller inputs, spatial positioning tracking loops, and sensor registration layers across hardware generations.',
-    stats: [{n: '200+', l: 'Flaws Cleared'}, {n: '35%', l: 'Faster Runs'}, {n: '50%', l: 'Build Sign-offs'}]
-  },
-  {
-    domain: 'Distributed Finance Infrastructure', emoji: '⛓️', name: 'Smart Contract Immutability Verification',
-    blurb: 'Validation matrices tracking block transaction state persistence arrays.',
-    impact: '12', impactLbl: 'Zero-Defect Sign-offs',
-    tags: ['DLT Consensus', 'Token Logic', 'API Verification'],
-    full: 'Created complete transactional assertion sweeps for distributed ledger systems executing multi-tiered asset distributions. Validated immutability routines, regression boundaries, and state synchronization anomalies across high-throughput endpoint infrastructure.',
-    stats: [{n: '12', l: 'Major Deliveries'}, {n: '20+', l: 'Endpoints Tested'}, {n: 'Zero', l: 'State Mismatches'}]
-  },
-  {
-    domain: 'Transactional Commerce Core', emoji: '🖥️', name: 'Omnichannel POS Self-Ordering Ecosystems',
-    blurb: 'Multi-tier financial validation routing secure gateway assertions.',
-    impact: '10+', impactLbl: 'Payment Gateways Guarded',
-    tags: ['POS Connectivity', 'AI Upsell Audit', 'Data Tier Native'],
-    full: 'Managed operational quality metrics spanning smart menu distribution clusters, terminal POS hardware connectivity interfaces, and backend recommendation paths. Established validation architectures mapping numerous modern transaction mechanisms simultaneously.',
-    stats: [{n: '10+', l: 'Methods Guarded'}, {n: 'Zero', l: 'Escrow Flaws'}, {n: '50+', l: 'Bugs Closed'}]
-  },
-  {
-    domain: 'Mobile Operating Systems', emoji: '📱', name: 'Pre-Release OS Base Subsystem Exploratory Testing',
-    blurb: 'Low-level framework stability, thermal boundary, and runtime resource checks.',
-    impact: '100M+', impactLbl: 'Downstream Terminals Secured',
-    tags: ['Firmware Sanity', 'Memory Leak Triage', 'Alpha Testing'],
-    full: 'Participated in exclusive exploratory testing on pre-release operating system builds. Validated platform-level regressions across core feature sets, memory leaks, notification stack allocations, and thermal performance under intense device utilization profiles.',
-    stats: [{n: '2 yrs', l: 'Alpha Run Term'}, {n: 'Pre-Rel', l: 'Builds Cleared'}, {n: 'Zero', l: 'Blockers Escaped'}]
+/* EKG */
+function drawEKG(){
+  const canvas=document.getElementById('ekg');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,off=0;
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  resize();window.addEventListener('resize',resize,{passive:true});
+  const wave=[[0,.5],[.08,.5],[.1,.42],[.12,.5],[.18,.5],[.2,.08],[.22,.95],[.24,.5],[.28,.5],[.3,.35],[.32,.5],[.5,.5],[1,.5]];
+  function getY(x){for(let i=0;i<wave.length-1;i++){const[x1,y1]=wave[i],[x2,y2]=wave[i+1];if(x>=x1&&x<=x2){const t=(x-x1)/(x2-x1);return y1+(y2-y1)*t;}}return .5;}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const isDark=html.getAttribute('data-theme')==='dark';
+    const gr=ctx.createLinearGradient(0,0,W,0);
+    gr.addColorStop(0,isDark?'#8B5CF6':'#6D28D9');
+    gr.addColorStop(1,isDark?'#06B6D4':'#0891B2');
+    ctx.strokeStyle=gr;ctx.lineWidth=1.5;
+    ctx.shadowColor=isDark?'#8B5CF6':'#6D28D9';ctx.shadowBlur=6;
+    ctx.beginPath();
+    const cW=W*.55,sX=(off%cW)-cW;
+    for(let px=0;px<W;px++){const lx=((px-sX)%cW)/cW;const y=getY(lx)*H;px===0?ctx.moveTo(px,y):ctx.lineTo(px,y);}
+    ctx.stroke();off+=.5;requestAnimationFrame(draw);
   }
+  draw();
+}
+
+/* PROJECTS */
+const projects=[
+  {num:'01',domain:'MedTech · FDA · HIPAA',emoji:'🩺',name:'Sibel Health — FDA-Regulated Wearable Validation',blurb:'Hospital-grade wireless biosensor patches for continuous patient monitoring — ECG, respiratory rate, SpO2.',impact:'30%',impactLbl:'Regulatory defects reduced',tags:['FDA 21 CFR Part 11','HIPAA','HL7','FHIR','IEEE 11073 SDC','REST & SOAP','Traceability Matrix'],full:'When a wearable biosensor patch is designed for hospital-grade patient monitoring, the cost of a missed defect is not a user complaint — it is a patient safety event. I led the full QA validation lifecycle for Sibel Health Class I and II medical devices at AimDek Technology, building verification protocols under FDA 21 CFR Part 11 and HIPAA requirements. Every data exchange between sensor, clinical gateway, and cloud platform was traced, tested, and documented. Clinical data workflows built on HL7, FHIR, and IEEE 11073 SDC required deep integration testing across device-to-platform boundaries. The result was a 30% reduction in regulatory defects and a validation package that required no rework.',stats:[{n:'30%',l:'Regulatory defect reduction'},{n:'Zero',l:'Compliance gaps'},{n:'Full',l:'Traceability coverage'}]},
+  {num:'02',domain:'VR/AR · Oculus · Firmware',emoji:'🥽',name:'Meta (Oculus) — VR/AR OS & Hardware Qualification',blurb:'End-to-end OS qualification across GearVR, Go, Quest, and Rift — firmware, sensors, controllers, build sign-off.',impact:'200+',impactLbl:'Critical defects resolved',tags:['OS Qualification','Firmware','Sensor Calibration','Build Sign-off','Performance','Controller Compat.'],full:'I owned OS qualification across four Oculus device generations covering system UI integrity, motion sensor calibration (6DOF, proximity, boundary detection), wireless connectivity, and the permission model across every Master, RC, HotFix, and Custom build pipeline. I identified root causes and resolved 200+ critical OS defects, cutting test execution time by 35% through optimized triage workflows, and owned build sign-off for 50+ VR applications.',stats:[{n:'200+',l:'Critical OS defects resolved'},{n:'35%',l:'Faster test execution'},{n:'50%',l:'VR builds signed off'}]},
+  {num:'03',domain:'Fintech · DLT · Smart Contracts',emoji:'⛓️',name:'Blockchain Platform — Smart Contracts & Ledger Integrity',blurb:'Distributed ledger platform for digital asset transactions and smart contract execution — where defects are permanent.',impact:'12',impactLbl:'Zero-defect releases',tags:['Smart Contracts','Ledger Integrity','Token Workflows','Edge Cases','REST/SOAP API','SQL Validation'],full:'Blockchain has a property that makes QA uniquely unforgiving: you cannot roll back a production defect. I led QA for a distributed ledger platform handling digital asset transactions and smart contract execution — verifying re-entrancy guard behavior, gas estimation failures, partial transaction states, and mint-transfer-burn-rollback sequences. I complemented contract testing with REST and SOAP API validation across 20+ endpoints and SQL-based data sync checks. Twelve consecutive major releases with zero critical defect leakage.',stats:[{n:'12',l:'Consecutive zero-defect releases'},{n:'20+',l:'API endpoints covered'},{n:'Zero',l:'Critical defects escaped'}]},
+  {num:'04',domain:'Insurance · ETL · Data Engineering',emoji:'🚗',name:'ETL Vehicle Insurance — Data Pipeline Validation',blurb:'Multi-stage ETL processing high-volume policyholder, claims, and vehicle records for actuarial reporting.',impact:'100%',impactLbl:'Row-count fidelity',tags:['ETL Pipeline','SQL Validation','Data Transformation','Row Reconciliation','Data Lineage','Integration'],full:'ETL defects are dangerous because they are quiet. In vehicle insurance, wrong data means incorrect premiums and flawed claims processing at scale. I designed the QA strategy for a high-volume ETL pipeline ingesting raw policyholder, vehicle, and claims records through layered business logic into downstream actuarial systems. Testing traced data lineage from source extraction through every transformation stage using deep SQL validation and statistical reconciliation.',stats:[{n:'100%',l:'Row-count fidelity'},{n:'Zero',l:'Silent data loss'},{n:'Full',l:'Lifecycle event coverage'}]},
+  {num:'05',domain:'Digital Health · iOS & Android · Clinical',emoji:'💉',name:'OneTouch — Blood Glucose Monitoring App',blurb:'Clinically regulated glucose monitoring app — where every displayed number informs a dosing decision.',impact:'2',impactLbl:'Unit systems validated',tags:['Clinical Accuracy','Localization','Graphs & Reports','mg/dL vs mmol/L','BLE Device Sync','Cross-Platform'],full:'A blood glucose monitoring app is not a lifestyle product. Every number it displays informs a dosing decision. I owned the full reporting and visualization QA for OneTouch across iOS and Android: verifying trend graph accuracy across daily, weekly, and 90-day views; confirming statistical summaries including average glucose, time-in-range, and A1C estimation. Localization testing validated clinical logic correctness in both mg/dL and mmol/L. I also validated Bluetooth pairing reliability and reading sync fidelity between glucometer hardware and app.',stats:[{n:'Both',l:'Unit systems verified'},{n:'Multi-region',l:'Localization validated'},{n:'Zero',l:'Sync errors found'}]},
+  {num:'06',domain:'Location Services · Crowdsourcing · Real-Time',emoji:'📍',name:'CheckTech — Real-Time Location Verification Platform',blurb:'Crowdsourced platform connecting requestors with on-ground Checkers for verified, real-time location proof.',impact:'500K+',impactLbl:'Active users served',tags:['Real-Time Location','Geo-Matching','Order Lifecycle','Concurrency','In-App Chat','200+ Test Cases'],full:'CheckTech operates in a domain where real-time accuracy is not a quality metric — it is the product. Serving 500,000+ active users across the Middle East, the platform handles continuous location-based orders, dynamic Checker matching within geo-radius logic, real-time status transitions, and live bidirectional chat. I authored and executed 200+ manual test cases applying BVA and Equivalence Partitioning. UI/UX quality reviews across 100+ screens contributed to a 20% improvement in user satisfaction scores.',stats:[{n:'200+',l:'Test cases authored'},{n:'20%',l:'User satisfaction uplift'},{n:'500K+',l:'Active users served'}]},
+  {num:'07',domain:'Clinical IoT · BLE · Wearables · Cloud',emoji:'💓',name:'BioIntelliSense BioHub — Wearable Health Ecosystem',blurb:'Four-tier clinical IoT data chain: BioButton sensor to BioHub gateway to cloud to physician dashboard.',impact:'4-tier',impactLbl:'Full pipeline coverage',tags:['BioButton Device','BLE Connectivity','Cloud Sync','Doctor Dashboard','FDA / HIPAA','Multi-Tier'],full:'The BioHub Connect ecosystem has four integration points, each preserving patient biometric data integrity as it moves from body to cloud to clinician. I validated every tier: BLE pairing stability and transmission reliability; cloud ingestion accuracy under intermittent connectivity; and the physician dashboard for clinical precision — vital sign values, trend graph rendering, threshold-based alerting, and time-series data alignment. Every scenario tested under FDA and HIPAA compliance frameworks, with full traceability from sensor output to final clinical display.',stats:[{n:'4-tier',l:'Full data chain validated'},{n:'End-to-end',l:'Biometric fidelity confirmed'},{n:'FDA+HIPAA',l:'Compliance framework applied'}]},
+  {num:'08',domain:'Retail Tech · Kiosk · POS · AI-Assisted',emoji:'🖥️',name:'GRUBBRR — Self-Ordering Kiosk & Omnichannel POS',blurb:'Integrated self-ordering ecosystem for restaurants, stadiums, and retail — kiosks, mobile, menu boards, POS, loyalty.',impact:'10+',impactLbl:'Payment methods verified',tags:['Payment Validation','10+ Methods','POS Integration','SQL / DB Testing','REST API','AI-Assisted Ordering'],full:'I own the full QA lifecycle at GRUBBRR across kiosk software, mobile ordering apps, POS integrations, digital menu boards, and loyalty systems. I validate Smart Upsell workflows, recommendation engine outputs, and AI-assisted menu personalization features. Payment verification covers 10+ methods (Verifone, FreedomPay, Olo Pay, Clover, NFC, digital wallets) with no production-critical payment defects recorded across all client deployments since Oct 2024.',stats:[{n:'Zero',l:'Production-critical payment defects'},{n:'10+',l:'Payment methods covered'},{n:'50+',l:'Pre-prod defects closed'}]},
+  {num:'09',domain:'VR Gaming · Oculus · Full Functional QA',emoji:'🔴',name:'SUPERHOT VR — Full Functional Game Testing',blurb:'Award-winning VR FPS rebuilt for Oculus — time moves only when you move — validated across all mechanics and platforms.',impact:'GOTY',impactLbl:'Dozens of awards',tags:['Oculus Rift','Oculus Quest','HTC Vive','Motion Controls','Time Mechanic','Physics Testing','Controller Tracking'],full:'SUPERHOT VR was rebuilt entirely from the ground up for virtual reality. I performed full functional testing covering the time-moves-only-when-you-move mechanic under all player input states, controller tracking reliability during fast physical gestures, and level teleportation transitions. The physics-based interaction model required rigorous edge-case testing across all interaction combinations. Validated campaign mode, endless replayability modes, headshot-only challenges, and hardcore variants across Oculus Rift, Go, and Quest device generations.',stats:[{n:'12+',l:'Game modes & variants tested'},{n:'Multi-gen',l:'Oculus platforms covered'},{n:'Dozens',l:'VR Game of the Year awards'}]},
+  {num:'10',domain:'Mobile OS · Android · Alpha Testing',emoji:'📱',name:'MIUI Alpha Tester — Xiaomi OS Pre-Release Validation',blurb:'Selected for Xiaomi closed Alpha Testing program (2013-2015) — validating MIUI pre-release builds for OS stability.',impact:'1yr+',impactLbl:'Alpha testing tenure',tags:['MIUI','Android OS','OS Stability','UI Regression','Exploratory Testing','Bug Reporting','Pre-Release','Firmware'],full:'Over approximately two years (2013-2015), I validated pre-release MIUI builds for OS stability, system UI regressions, performance consistency, notification system behavior, battery and thermal management, and hardware-software integration covering camera, sensors, and connectivity stacks. Defects were documented with structured reproduction steps, device configuration details, and build version metadata — the same discipline that later became central to my Oculus/Meta OS qualification work.',stats:[{n:'2013-15',l:'Alpha testing tenure'},{n:'Pre-release',l:'Builds validated before public rollout'},{n:'100M+',l:'Users protected downstream'}]}
 ];
 
-const containerElement = document.getElementById('matrixContainer');
-datasetsMatrix.forEach((p, idx) => {
-  const itemCard = document.createElement('div');
-  const dynamicDelayClass = idx % 3 === 1 ? ' d-1' : (idx % 3 === 2 ? ' d-2' : '');
-  itemCard.className = `glass-pane project-card reveal${dynamicDelayClass}`;
-  itemCard.innerHTML = `
-    <div class="p-hdr">
-      <div class="p-dom">${p.domain}</div>
-      <div class="p-ico">${p.emoji}</div>
-    </div>
-    <div>
-      <h3 class="p-title">${p.name}</h3>
-      <p class="p-blurb">${p.blurb}</p>
-    </div>
-    <div class="p-foot">
-      <div>
-        <div class="p-metric">${p.impact}</div>
-        <div class="p-metric-lbl">${p.impactLbl}</div>
-      </div>
-      <span class="p-action">Expand Log →</span>
-    </div>
-  `;
-  itemCard.onclick = () => showOverlayModal(p);
-  containerElement.appendChild(itemCard);
-  revealObserver.observe(itemCard);
+const wg=document.getElementById('workGrid');
+projects.forEach((p,i)=>{
+  const card=document.createElement('div');
+  card.className='wcard rv'+(i%3===1?' d1':i%3===2?' d2':'');
+  card.innerHTML=
+    '<div class="wcard-top">'+
+      '<div class="wcard-emoji">'+p.emoji+'</div>'+
+      '<div>'+
+        '<div class="wcard-domain">'+p.domain+'</div>'+
+        '<div class="wcard-name">'+p.name+'</div>'+
+        '<div class="wcard-blurb">'+p.blurb+'</div>'+
+        '<div class="wcard-tags">'+p.tags.map(t=>'<span class="wtag">'+t+'</span>').join('')+'</div>'+
+      '</div>'+
+      '<div class="wcard-impact">'+
+        '<div class="wcard-num">'+p.impact+'</div>'+
+        '<div class="wcard-numl">'+p.impactLbl+'</div>'+
+        '<div class="wcard-more">Full story ↓</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="wcard-detail">'+
+      '<div class="wcard-detail-inner">'+
+        '<div class="wcard-full">'+p.full+'</div>'+
+        '<div class="wcard-stats">'+p.stats.map(s=>'<div class="wstat"><span class="wstat-n">'+s.n+'</span><span class="wstat-l">'+s.l+'</span></div>').join('')+'</div>'+
+      '</div>'+
+    '</div>';
+    
+  card.querySelector('.wcard-top').addEventListener('click',()=>{
+    const isOpen=card.classList.contains('open');
+    document.querySelectorAll('.wcard.open').forEach(c=>c.classList.remove('open'));
+    if(!isOpen){card.classList.add('open');card.scrollIntoView({behavior:'smooth',block:'nearest'});}
+    const more=card.querySelector('.wcard-more');
+    more.textContent=card.classList.contains('open')?'Hide ↑':'Full story ↓';
+  });
+  wg.appendChild(card);
+  ro.observe(card);
 });
 
-/* ── OVERLAY DIALOG CONTROLLER LOGIC ─────────────────── */
-const overlayShadow = document.getElementById('modal-overlay');
-document.getElementById('mClose').onclick = dismissOverlayModal;
-overlayShadow.onclick = e => { if (e.target === overlayShadow) dismissOverlayModal(); };
-document.addEventListener('keydown', e => { if (e.key === 'Escape') dismissOverlayModal(); });
-
-function showOverlayModal(data) {
-  document.getElementById('mDom').textContent = data.domain;
-  document.getElementById('mTit').textContent = data.name;
-  document.getElementById('mBod').textContent = data.full;
-  document.getElementById('mStat').innerHTML = data.stats.map(s => `
-    <div class="m-stat-card"><span class="m-stat-num">${s.n}</span><span class="m-stat-lbl">${s.l}</span></div>
-  `).join('');
-  overlayShadow.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function dismissOverlayModal() { overlayShadow.classList.remove('active'); document.body.style.overflow = ''; }
-
-/* ── CAREER HISTORY CHRONOLOGY LOADER ────────────────── */
-const corporateHistoryRecords = [
-  {co: 'Retail Commerce Core', role: 'Lead Quality Engineer', period: 'Active Status',
-   lines: ['Direct complete quality parameters covering continuous kiosk platforms, point-of-sale network nodes, and transaction layers.', 'Formulated and executed strict financial validation routines spanning multiple standard mechanisms keeping zero critical system exceptions.']},
-  {co: 'MedTech Compliance', role: 'Lead Quality Engineer', period: '2024 Deployment',
-   lines: ['Managed system assurance patterns governing Class I &amp; II wearable wellness equipment pipelines under strict FDA 21 CFR Part 11 parameters.', 'Constructed integration data flow validation suites tracking HL7, FHIR, and IEEE 11073 standard compliant payloads.']},
-  {co: 'FinTech Ledger Systems', role: 'Senior Software QA', period: '2021 – 2023 Block',
-   lines: ['Engineered functional boundary evaluation test layers across communication endpoints supplying healthcare network nodes and connected mobile telemetry.', 'Directed operational verification tracking smart contract rule configurations and edge token processing anomalies.']},
-  {co: 'High-Concurrency Networks', role: 'Senior QA Specialist', period: '2019 – 2021 Block',
-   lines: ['Engineered and scaled specialized manual verification tests targeting high-concurrency transport platforms managing real-time user endpoints.', 'Optimized team reporting capacity using explicit metric visibility analytics dashboards to isolate code-level bug origins.']},
-  {co: 'Oculus OS Kernel', role: 'Platform Verification Tester', period: '2016 – 2019 Block',
-   lines: ['Owned fundamental firmware evaluation sweeps verifying device position calibration, head tracking coordinate accuracy, and perimeter tracking loops.', 'Acted as chief release gate authorization control signing off build deployment safety profiles for immersive interactive software targets.']}
+/* EXPERIENCE */
+const exps=[
+  {co:'GRUBBRR',period:'Oct 2024 – Present',role:'Lead QA Engineer',company:'GRUBBRR · Ahmedabad, India',pts:['Own end-to-end quality assurance for self-ordering kiosks, POS integrations, payment ecosystems, loyalty platforms, digital menu boards, and AI-assisted mobile and kiosk ordering applications.','Validate Smart Upsell workflows, recommendation engine outputs, and AI-assisted menu personalization features — verifying item suggestion accuracy, upsell logic, and ordering experience consistency.','Build and execute payment verification framework across 10+ methods (FreedomPay, Verifone, Olo Pay, Clover, NFC, digital wallets) — no production-critical payment defects recorded since Oct 2024.','Perform REST API testing via Postman and SQL-based database validation — verifying payment gateway integrations, POS connectivity, order calculations, pricing logic, and backend data integrity end-to-end.','Triage and resolve 50+ functional and integration defects pre-production — preventing post-release escalations across engineering, product, and client teams.','Mentor 6 junior QA engineers on system architecture, integration testing, and quality standards — improving team execution efficiency by 20%.']},
+  {co:'AimDek',period:'Jan 2024 – Oct 2024',role:'Lead QA Engineer',company:'AimDek Technology · Ahmedabad, India',pts:['Led full QA lifecycle for Class I and Class II medical devices including Sibel Health wearable monitors — supporting FDA 21 CFR Part 11 and HIPAA compliance across all hardware and software system components.','Designed and executed clinical data workflow tests covering HL7, FHIR, and IEEE 11073 SDC standards across device-to-platform integrations — validated payload accuracy, authentication flows, and fault tolerance.','Performed REST API and SOAP API testing for healthcare data exchange across EHR/EHS workflows and connected medical devices — verified request/response integrity, error handling, and data accuracy.','Built requirements traceability matrices and led structured risk assessments — reducing regulatory defects by 30% through compliance-focused, traceability-driven test planning.','Monitored Kubernetes cluster logs for production healthcare applications — proactively identified and resolved infrastructure incidents, improving uptime by 15%.']},
+  {co:'Apexon',period:'Mar 2021 – Dec 2023',role:'Senior QA Engineer',company:'Apexon · Ahmedabad, India',pts:['Tested and verified REST and SOAP APIs across 20+ endpoints for health IoT devices, lifestyle apps, and financial platforms — full regression, integration, and system test coverage.','Led QA for a blockchain financial platform — validated smart contract workflows, transaction ledger integrity, token logic, and edge-case failure scenarios.','Performed database validation and cloud data sync testing for healthcare IoT devices across multi-tier backend systems.','Delivered 12 consecutive major releases while maintaining high release quality across healthcare, financial services, and blockchain products.']},
+  {co:'CheckTech',period:'Sep 2019 – Mar 2021',role:'Senior QA Specialist',company:'CheckTech for IT · Riyadh, Saudi Arabia',pts:['Authored and executed 200+ manual test cases for high-traffic transportation, e-commerce, and F&B platforms serving 500K+ active users — applied BVA, Equivalence Partitioning, and Decision Tables.','Performed UI/UX quality validation across 100+ screens — contributed to a 20% improvement in user satisfaction scores.','Improved team productivity by 31% through structured defect reporting, QA metrics dashboards, and root cause analysis.','Led offshore QA team of 4 engineers across 8 simultaneous Agile and Waterfall projects.']},
+  {co:'Lodestone',period:'Jan 2016 – Aug 2019',role:'Software Tester — VR & OS',company:'Lodestone (acq. Tech Mahindra) · Ahmedabad, India',pts:['Executed full Oculus OS qualification covering system UI, firmware upgrades, sensor calibration (head tracking, motion, proximity), connectivity, and permissions across GearVR, Oculus Go, Quest, and Rift.','Owned build sign-off for 50+ VR/AR applications across Master, Release Candidate, HotFix, and Custom builds — primary quality gate for every release cycle.','Identified and resolved 200+ critical VR OS defects while reducing test execution time by 35% through optimized regression cycles.','Verified hardware-software integration and controller firmware compatibility across multiple Oculus device generations and SDK versions.']},
+  {co:'CHHAVI',period:'May 2015 – Dec 2015',role:'Software Engineer',company:'CHHAVI · Ahmedabad, India',pts:['Conducted functional and integration testing for web application features — identified defects improving application performance by 15%.','Partnered with UI/UX designers and stakeholders to deliver interface improvements aligned with product goals.'],edu:true},
+  {co:'MIUI Alpha',period:'2013 – 2015',role:'Alpha Tester',company:'Xiaomi · MIUI Alpha Testing Program',pts:['Selected for the Xiaomi competitive closed Alpha Tester program for MIUI OS — running on hundreds of millions of devices globally.','Validated pre-release MIUI builds for OS stability, UI regressions, performance consistency, and hardware-software integration before public rollout.','Documented and reported edge-case crashes, system UI anomalies, and firmware-level bugs via structured feedback channels — directly influencing production build quality.','Developed foundational discipline in mobile OS exploratory testing and defect documentation that later shaped OS qualification work on Oculus/Meta device generations.'],edu:true}
 ];
 
-const navigationBox = document.getElementById('expNavContainer');
-const contentBox = document.getElementById('expContentContainer');
-
-corporateHistoryRecords.forEach((job, index) => {
-  const triggerTabBtn = document.createElement('button');
-  triggerTabBtn.className = `track-btn ${index === 0 ? 'active' : ''}`;
-  triggerTabBtn.innerHTML = `${job.co} <span>${job.period}</span>`;
-  triggerTabBtn.onclick = () => {
-    document.querySelectorAll('.track-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.track-pane').forEach(p => p.classList.remove('active'));
-    triggerTabBtn.classList.add('active');
-    document.getElementById(`paneId-${index}`).classList.add('active');
+const tabs=document.getElementById('expTabs'),panes=document.getElementById('expPanes');
+exps.forEach((e,i)=>{
+  const t=document.createElement('div');
+  t.className='exp-tab'+(i===0?' on':'');
+  t.innerHTML='<span class="exp-tab-co">'+e.co+'</span>'+e.role;
+  t.onclick=()=>{
+    document.querySelectorAll('.exp-tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.exp-pane').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');document.getElementById('ep'+i).classList.add('on');
   };
-  navigationBox.appendChild(triggerTabBtn);
-
-  const paneCard = document.createElement('div');
-  paneCard.className = `track-pane glass-pane ${index === 0 ? 'active' : ''}`;
-  paneCard.id = `paneId-${index}`;
-  paneCard.innerHTML = `
-    <div class="pane-title-block">
-      <h3 class="pane-role">${job.role}</h3>
-      <div class="pane-company">${job.co} // <span>${job.period}</span></div>
-    </div>
-    <ul class="pane-items">${job.lines.map(line => `<li>${line}</li>`).join('')}</ul>
-  `;
-  contentBox.appendChild(paneCard);
+  tabs.appendChild(t);
+  
+  const pn=document.createElement('div');
+  pn.className='exp-pane'+(i===0?' on':'');pn.id='ep'+i;
+  pn.innerHTML='<div class="ep-period">'+e.period+'</div><div class="ep-role">'+e.role+'</div><div class="ep-co">'+e.company+'</div><ul class="ep-pts">'+e.pts.map(p=>'<li>'+p+'</li>').join('')+'</ul>'+(e.edu?'<div class="ep-edu"><div class="ep-edu-ttl">Education &amp; Certification</div><div class="edu-pills"><span class="edu-pill">🏅 ISTQB CTFL · March 2025</span><span class="edu-pill">MCA · Gujarat Technological University · 2015</span><span class="edu-pill">BCA · GLS Institute of Computer Technology · 2013</span><span class="edu-pill">📱 MIUI Alpha Tester · Xiaomi · 2013–2015</span></div></div>':'');
+  panes.appendChild(pn);
 });
 </script>
 </body>
