@@ -10,11 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
-   DESIGN SYSTEM: "The Quality Architect" v2.0
-   — Enhanced light mode readability
-   — Richer content density
-   — Professional glassmorphism
-   — Print & mobile optimized
+   DESIGN SYSTEM: "The Quality Architect" v2.1
+   — Enhanced with GitHub page content
+   — Richer domain specialization
+   — Artifacts section added
+   — Core strengths highlighted
    ═══════════════════════════════════════════════════ */
 
 :root {
@@ -80,7 +80,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-secondary); }
 ::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 20px; }
@@ -132,16 +131,8 @@ body {
   letter-spacing: -0.5px;
 }
 
-.nav-logo .highlight {
-  color: var(--accent-cyan);
-}
-
-.nav-logo .sub {
-  font-size: 10px;
-  color: var(--text-tertiary);
-  font-weight: 400;
-  margin-left: 4px;
-}
+.nav-logo .highlight { color: var(--accent-cyan); }
+.nav-logo .sub { font-size: 10px; color: var(--text-tertiary); font-weight: 400; margin-left: 4px; }
 
 .nav-links {
   display: flex;
@@ -174,14 +165,9 @@ body {
 }
 
 .nav-links a:hover,
-.nav-links a.active {
-  color: var(--text-primary);
-}
-
+.nav-links a.active { color: var(--text-primary); }
 .nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
-}
+.nav-links a.active::after { width: 100%; }
 
 .theme-toggle {
   background: var(--bg-secondary);
@@ -198,23 +184,12 @@ body {
   transition: all var(--transition);
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-}
+.theme-toggle:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
 /* ── CONTAINER ── */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section-pad { padding: 80px 0; }
 
-.section-pad {
-  padding: 80px 0;
-}
-
-/* ── SECTION LABEL ── */
 .section-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
@@ -244,9 +219,7 @@ body {
   color: var(--text-primary);
 }
 
-.section-title .highlight {
-  color: var(--accent-cyan);
-}
+.section-title .highlight { color: var(--accent-cyan); }
 
 .section-sub {
   font-size: 18px;
@@ -264,11 +237,7 @@ body {
               transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+.reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
@@ -361,16 +330,13 @@ body {
 .hero-sub {
   font-size: 18px;
   color: var(--text-secondary);
-  max-width: 480px;
+  max-width: 520px;
   line-height: 1.8;
   margin-bottom: 32px;
   font-weight: 400;
 }
 
-.hero-sub strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
+.hero-sub strong { color: var(--text-primary); font-weight: 600; }
 
 .hero-tags {
   display: flex;
@@ -393,16 +359,8 @@ body {
   transition: all var(--transition);
 }
 
-.hero-tag:hover {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-}
-
-.hero-tag.primary {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-  background: var(--accent-cyan-dim);
-}
+.hero-tag:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+.hero-tag.primary { border-color: var(--accent-cyan); color: var(--accent-cyan); background: var(--accent-cyan-dim); }
 
 .hero-actions {
   display: flex;
@@ -444,10 +402,7 @@ body {
   border: 1px solid var(--border-subtle);
 }
 
-.btn-secondary:hover {
-  border-color: var(--text-primary);
-  transform: translateY(-2px);
-}
+.btn-secondary:hover { border-color: var(--text-primary); transform: translateY(-2px); }
 
 .hero-stats {
   display: grid;
@@ -466,9 +421,7 @@ body {
   transition: background var(--transition);
 }
 
-.hero-stat:hover {
-  background: var(--bg-secondary);
-}
+.hero-stat:hover { background: var(--bg-secondary); }
 
 .hero-stat-number {
   font-family: 'JetBrains Mono', monospace;
@@ -478,11 +431,7 @@ body {
   line-height: 1;
 }
 
-.hero-stat-number .suffix {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
+.hero-stat-number .suffix { font-size: 14px; font-weight: 500; color: var(--text-secondary); }
 
 .hero-stat-label {
   font-size: 9px;
@@ -525,30 +474,82 @@ body {
   font-size: 13px;
 }
 
-.profile-item:last-child {
-  border-bottom: none;
+.profile-item:last-child { border-bottom: none; }
+.profile-item .label { color: var(--text-tertiary); font-weight: 400; }
+.profile-item .value { color: var(--text-primary); font-weight: 500; }
+.profile-item .value.highlight { color: var(--accent-cyan); }
+
+/* ═══════════════════════════════════════════════════
+   DOMAIN SPECIALIZATION (New from GitHub)
+═══════════════════════════════════════════════════ */
+#domains { background: var(--bg-secondary); }
+
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-.profile-item .label {
+.domain-card {
+  padding: 28px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.domain-card:hover { transform: translateY(-4px); border-color: var(--accent-cyan); }
+
+.domain-card .icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.domain-card .name { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+.domain-card .desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.domain-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.domain-card .tags span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
   color: var(--text-tertiary);
-  font-weight: 400;
 }
 
-.profile-item .value {
-  color: var(--text-primary);
-  font-weight: 500;
+/* ═══════════════════════════════════════════════════
+   CORE STRENGTHS (New from GitHub)
+═══════════════════════════════════════════════════ */
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-.profile-item .value.highlight {
+.strength-card {
+  padding: 24px;
+  border-left: 3px solid var(--accent-cyan);
+  transition: all var(--transition);
+}
+
+.strength-card:hover { border-color: var(--accent-gold); }
+
+.strength-card .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
   color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 6px;
 }
+
+.strength-card .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--text-primary); }
+.strength-card .desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 
 /* ═══════════════════════════════════════════════════
    EXPERIENCE TIMELINE
 ═══════════════════════════════════════════════════ */
-#experience {
-  background: var(--bg-secondary);
-}
+#experience { background: var(--bg-secondary); }
 
 .timeline {
   position: relative;
@@ -604,10 +605,7 @@ body {
   margin-bottom: 8px;
 }
 
-.timeline-item .company .location {
-  color: var(--text-tertiary);
-  font-size: 12px;
-}
+.timeline-item .company .location { color: var(--text-tertiary); font-size: 12px; }
 
 .timeline-item ul {
   list-style: none;
@@ -648,7 +646,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
-   PROJECTS GRID
+   PROJECTS / CASE STUDIES
 ═══════════════════════════════════════════════════ */
 .projects-grid {
   display: grid;
@@ -683,25 +681,9 @@ body {
   margin-bottom: 8px;
 }
 
-.project-card .icon {
-  font-size: 28px;
-  margin-bottom: 12px;
-}
-
-.project-card .title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  line-height: 1.3;
-  color: var(--text-primary);
-}
-
-.project-card .blurb {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  flex-grow: 1;
-}
+.project-card .icon { font-size: 28px; margin-bottom: 12px; }
+.project-card .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; color: var(--text-primary); }
+.project-card .blurb { font-size: 14px; color: var(--text-secondary); line-height: 1.6; flex-grow: 1; }
 
 .project-card .footer {
   display: flex;
@@ -735,8 +717,59 @@ body {
   transition: opacity var(--transition);
 }
 
-.project-card:hover .action {
-  opacity: 1;
+.project-card:hover .action { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════
+   ARTIFACTS (New from GitHub)
+═══════════════════════════════════════════════════ */
+#artifacts { background: var(--bg-secondary); }
+
+.artifacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.artifact-card {
+  padding: 24px;
+  background: var(--bg-card);
+  transition: all var(--transition);
+}
+
+.artifact-card:hover { border-color: var(--accent-cyan); transform: translateY(-2px); }
+
+.artifact-card .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.artifact-card .sub {
+  font-size: 12px;
+  color: var(--accent-cyan);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.artifact-card .desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.artifact-card .code-block {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  background: var(--bg-secondary);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-tertiary);
+  overflow: auto;
+  white-space: pre-wrap;
+  margin-top: 10px;
+  max-height: 120px;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -783,10 +816,7 @@ body {
   transition: all var(--transition);
 }
 
-.skill-item:hover {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-}
+.skill-item:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
 /* ═══════════════════════════════════════════════════
    EDUCATION
@@ -805,29 +835,10 @@ body {
   transition: all var(--transition);
 }
 
-.edu-card:hover {
-  border-color: var(--accent-cyan);
-  transform: translateY(-2px);
-}
-
-.edu-card .date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: var(--accent-cyan);
-  margin-bottom: 8px;
-}
-
-.edu-card .title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
-.edu-card .sub {
-  font-size: 13px;
-  color: var(--text-secondary);
-}
+.edu-card:hover { border-color: var(--accent-cyan); transform: translateY(-2px); }
+.edu-card .date { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--accent-cyan); margin-bottom: 8px; }
+.edu-card .title { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.edu-card .sub { font-size: 13px; color: var(--text-secondary); }
 
 /* ═══════════════════════════════════════════════════
    CONTACT
@@ -889,9 +900,7 @@ body {
   margin-top: 48px;
 }
 
-.footer span {
-  margin: 0 12px;
-}
+.footer span { margin: 0 12px; }
 
 /* ═══════════════════════════════════════════════════
    MODAL OVERLAY
@@ -911,14 +920,9 @@ body {
   transition: opacity 0.3s ease;
 }
 
-[data-theme="light"] .modal-overlay {
-  background: rgba(240, 244, 249, 0.92);
-}
+[data-theme="light"] .modal-overlay { background: rgba(240, 244, 249, 0.92); }
 
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
 
 .modal-content {
   background: var(--bg-secondary);
@@ -934,9 +938,7 @@ body {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-overlay.active .modal-content {
-  transform: translateY(0);
-}
+.modal-overlay.active .modal-content { transform: translateY(0); }
 
 .modal-close {
   position: absolute;
@@ -951,9 +953,7 @@ body {
   transition: color var(--transition);
 }
 
-.modal-close:hover {
-  color: var(--text-primary);
-}
+.modal-close:hover { color: var(--text-primary); }
 
 .modal-domain {
   font-family: 'JetBrains Mono', monospace;
@@ -1030,205 +1030,62 @@ body {
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-  .nav {
-    padding: 0 1rem;
-  }
-
-  .nav-links {
-    gap: 1rem;
-  }
-
-  .nav-links a {
-    font-size: 8px;
-  }
-
-  .section-pad {
-    padding: 60px 0;
-  }
-
-  .container {
-    padding: 0 1rem;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-title {
-    font-size: 36px;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .timeline-item .role {
-    font-size: 17px;
-  }
-
-  .modal-content {
-    padding: 24px;
-  }
-
-  .modal-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-channels {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .edu-grid {
-    grid-template-columns: 1fr;
-  }
+  .nav { padding: 0 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 8px; }
+  .section-pad { padding: 60px 0; }
+  .container { padding: 0 1rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .domain-grid { grid-template-columns: 1fr; }
+  .strengths-grid { grid-template-columns: 1fr; }
+  .artifacts-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 36px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .timeline-item .role { font-size: 17px; }
+  .modal-content { padding: 24px; }
+  .modal-stats { grid-template-columns: 1fr; }
+  .contact-channels { flex-direction: column; align-items: center; }
+  .edu-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-  .nav-links {
-    gap: 0.5rem;
-  }
-
-  .nav-links a {
-    font-size: 7px;
-    letter-spacing: 0.04em;
-  }
-
-  .hero-title {
-    font-size: 28px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero-actions .btn {
-    justify-content: center;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero-stat {
-    padding: 12px;
-  }
-
-  .hero-stat-number {
-    font-size: 20px;
-  }
-
-  .project-card {
-    padding: 20px;
-    min-height: 220px;
-  }
-
-  .timeline {
-    padding-left: 24px;
-  }
-
-  .timeline-item {
-    padding-left: 12px;
-  }
-
-  .timeline-item::before {
-    left: -20px;
-    width: 10px;
-    height: 10px;
-  }
+  .nav-links { gap: 0.5rem; }
+  .nav-links a { font-size: 7px; letter-spacing: 0.04em; }
+  .hero-title { font-size: 28px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { justify-content: center; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero-stat { padding: 12px; }
+  .hero-stat-number { font-size: 20px; }
+  .project-card { padding: 20px; min-height: 220px; }
+  .timeline { padding-left: 24px; }
+  .timeline-item { padding-left: 12px; }
+  .timeline-item::before { left: -20px; width: 10px; height: 10px; }
 }
 
 /* ── PRINT OPTIMIZATION ── */
 @media print {
-  .nav,
-  .theme-toggle,
-  .hero-actions,
-  .modal-overlay {
-    display: none !important;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: 40px 0;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .hero-profile {
-    border: 1px solid #ddd;
-  }
-
-  .glass {
-    background: #fff !important;
-    border: 1px solid #ddd !important;
-    box-shadow: none !important;
-  }
-
-  .section-pad {
-    padding: 40px 0;
-  }
-
-  .project-card {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  .timeline-item {
-    break-inside: avoid;
-  }
-
-  .hero-title .highlight::after {
-    display: none;
-  }
-
-  body {
-    background: #fff !important;
-    color: #111 !important;
-  }
-
-  [data-theme="light"] .nav {
-    background: #fff !important;
-  }
-
-  .text-secondary {
-    color: #555 !important;
-  }
-
-  .hero-title,
-  .section-title,
-  .timeline-item .role,
-  .project-card .title,
-  .modal-title {
-    color: #111 !important;
-  }
-
-  .hero-stat-number,
-  .project-card .impact {
-    color: #0EA5E9 !important;
-  }
+  .nav, .theme-toggle, .hero-actions, .modal-overlay { display: none !important; }
+  .hero { min-height: auto; padding: 40px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero-profile { border: 1px solid #ddd; }
+  .glass { background: #fff !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+  .section-pad { padding: 40px 0; }
+  .project-card { break-inside: avoid; page-break-inside: avoid; }
+  .timeline-item { break-inside: avoid; }
+  .hero-title .highlight::after { display: none; }
+  body { background: #fff !important; color: #111 !important; }
+  [data-theme="light"] .nav { background: #fff !important; }
+  .text-secondary { color: #555 !important; }
+  .hero-title, .section-title, .timeline-item .role, .project-card .title, .modal-title { color: #111 !important; }
+  .hero-stat-number, .project-card .impact { color: #0EA5E9 !important; }
 }
 </style>
 </head>
@@ -1236,18 +1093,15 @@ body {
 
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="nav">
-  <a href="#hero" class="nav-logo">
-    DP<span class="highlight">_</span>
-    <span class="sub">// QA_ARCH</span>
-  </a>
+  <a href="#hero" class="nav-logo">DP<span class="highlight">_</span><span class="sub">// QA_ARCH</span></a>
   <ul class="nav-links">
-    <li><a href="#experience" class="active">History</a></li>
+    <li><a href="#experience">History</a></li>
+    <li><a href="#domains">Domains</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#artifacts">Artifacts</a></li>
     <li><a href="#skills">Stack</a></li>
     <li><a href="#contact">Connect</a></li>
-    <li>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
-    </li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button></li>
   </ul>
 </nav>
 
@@ -1268,29 +1122,21 @@ body {
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Open to Lead QA Roles · Remote & India
-        </div>
-        <h1 class="hero-title">
-          Quality<br>
-          <span class="highlight">Architect.</span>
-        </h1>
+        <div class="hero-badge"><span class="dot"></span>Open to SENIOR & Lead QA Roles · Remote · Ahmedabad, India</div>
+        <h1 class="hero-title">Quality<br><span class="highlight">Architect.</span></h1>
         <p class="hero-sub">
-          <strong>ISTQB Certified Lead QA Engineer</strong> with 10+ years delivering excellence across
-          Healthcare &amp; MedTech, AI Retail, Payment Ecosystems, and VR/AR platforms.
-          Ahmedabad, India.
+          <strong>Lead QA Engineer</strong> — AI-Powered Systems · Healthcare & MedTech · Payments · VR/AR Platforms.<br>
+          10+ years of owning quality from requirement to production across business-critical systems.
         </p>
         <div class="hero-tags">
-          <span class="hero-tag primary">FDA 21 CFR</span>
-          <span class="hero-tag">HL7 · FHIR</span>
+          <span class="hero-tag primary">ISTQB Certified</span>
+          <span class="hero-tag">FDA 21 CFR</span>
           <span class="hero-tag">HIPAA</span>
-          <span class="hero-tag">Payment Gateways</span>
-          <span class="hero-tag">AI Retail</span>
-          <span class="hero-tag">VR/AR OS</span>
-          <span class="hero-tag">ISTQB CTFL</span>
-          <span class="hero-tag">IEEE 11073 SDC</span>
+          <span class="hero-tag">HL7 · FHIR</span>
+          <span class="hero-tag">11073 SDC</span>
+          <span class="hero-tag">Zero Payment Defects</span>
           <span class="hero-tag">Oculus OS</span>
+          <span class="hero-tag">Smart Contract Testing</span>
         </div>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">View Case Studies →</a>
@@ -1304,65 +1150,124 @@ body {
           <span class="badge-item">⭐ Bright Spark Award</span>
           <span class="badge-item">📱 MIUI Alpha Tester</span>
         </div>
-        <div class="profile-item">
-          <span class="label">Title</span>
-          <span class="value">Lead QA Engineer</span>
-        </div>
-        <div class="profile-item">
-          <span class="label">Experience</span>
-          <span class="value">10+ Years</span>
-        </div>
-        <div class="profile-item">
-          <span class="label">Location</span>
-          <span class="value">Ahmedabad, India</span>
-        </div>
-        <div class="profile-item">
-          <span class="label">Specialization</span>
-          <span class="value highlight">Integration & API Native</span>
-        </div>
-        <div class="profile-item">
-          <span class="label">Domains</span>
-          <span class="value" style="font-size:12px;">MedTech · FinTech · Retail · VR/AR</span>
-        </div>
-        <div class="profile-item">
-          <span class="label">Email</span>
-          <span class="value" style="font-size:12px;word-break:break-all;">dhruvil.parekh3@gmail.com</span>
-        </div>
-        <div class="profile-item" style="border-bottom:none;padding-bottom:0;">
-          <span class="label">Phone</span>
-          <span class="value">+91 80001 64009</span>
-        </div>
+        <div class="profile-item"><span class="label">Title</span><span class="value">Lead QA Engineer</span></div>
+        <div class="profile-item"><span class="label">Experience</span><span class="value">10+ Years</span></div>
+        <div class="profile-item"><span class="label">Location</span><span class="value">Ahmedabad, India</span></div>
+        <div class="profile-item"><span class="label">Specialization</span><span class="value highlight">Integration & API Native</span></div>
+        <div class="profile-item"><span class="label">Domains</span><span class="value" style="font-size:12px;">MedTech · FinTech · Retail AI · VR/AR</span></div>
+        <div class="profile-item"><span class="label">Email</span><span class="value" style="font-size:12px;word-break:break-all;">dhruvil.parekh3@gmail.com</span></div>
+        <div class="profile-item" style="border-bottom:none;padding-bottom:0;"><span class="label">Phone</span><span class="value">+91 80001 64009</span></div>
       </div>
     </div>
 
     <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span class="counter" data-target="10">0</span><span class="suffix">+</span></div>
-        <div class="hero-stat-label">Years Experience</div>
+      <div class="hero-stat"><div class="hero-stat-number"><span class="counter" data-target="20">0</span><span class="suffix">+</span></div><div class="hero-stat-label">Major Releases</div></div>
+      <div class="hero-stat"><div class="hero-stat-number"><span class="counter" data-target="50">0</span><span class="suffix">+</span></div><div class="hero-stat-label">Production Releases</div></div>
+      <div class="hero-stat"><div class="hero-stat-number"><span class="counter" data-target="10">0</span><span class="suffix">+</span></div><div class="hero-stat-label">Payment Platforms</div></div>
+      <div class="hero-stat"><div class="hero-stat-number"><span class="counter" data-target="15">0</span><span class="suffix">+</span></div><div class="hero-stat-label">Engineers Mentored</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOMAIN SPECIALIZATION ═══ -->
+<section class="section-pad" id="domains">
+  <div class="container">
+    <div class="section-label reveal">Domain Specialization</div>
+    <h2 class="section-title reveal">Four Specialized <span class="highlight">Technology Domains</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
+      Validating AI-powered retail, FDA-regulated MedTech, payment ecosystems, and VR/AR platforms.
+    </p>
+
+    <div class="domain-grid reveal">
+      <div class="glass domain-card">
+        <span class="icon">🤖</span>
+        <div class="name">AI-Powered Retail Systems</div>
+        <div class="desc">Testing AI-driven customer experiences including Smart Upsell, Smart Shelf, recommendation engines, Voice AI ordering workflows, menu personalization, and intelligent ordering systems integrated with POS and payment ecosystems.</div>
+        <div class="tags"><span>Recommendation Engine Validation</span><span>AI Workflow Testing</span><span>Smart Ordering Platform Validation</span></div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span class="counter" data-target="20">0</span><span class="suffix">+</span></div>
-        <div class="hero-stat-label">Major Releases</div>
+
+      <div class="glass domain-card">
+        <span class="icon">🩺</span>
+        <div class="name">Healthcare & MedTech Systems</div>
+        <div class="desc">FDA-regulated device validation where the cost of a missed defect is not a bug ticket — it is a patient safety event. Class I &amp; II medical device QA under FDA 21 CFR, HIPAA, HL7, FHIR, and 11073 SDC.</div>
+        <div class="tags"><span>FDA 21 CFR, HIPAA, HL7, FHIR & 11073 SDC</span><span>Medical Devices, EHR & EHS</span><span>Software Validation & Traceability</span></div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span class="counter" data-target="60">0</span><span class="suffix">%</span></div>
-        <div class="hero-stat-label">Regression Reduction</div>
+
+      <div class="glass domain-card">
+        <span class="icon">💳</span>
+        <div class="name">Payments & Commerce Platforms</div>
+        <div class="desc">Full-cycle payment verification across 10+ modalities in high-volume, client-facing kiosk and POS environments where a payment defect is a broken client relationship — not a support ticket.</div>
+        <div class="tags"><span>Verifone · FreedomPay · Clover</span><span>REST API Testing</span><span>SQL Validation</span></div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span class="counter" data-target="15">0</span><span class="suffix">+</span></div>
-        <div class="hero-stat-label">Engineers Mentored</div>
+
+      <div class="glass domain-card">
+        <span class="icon">🥽</span>
+        <div class="name">VR/AR Systems Testing</div>
+        <div class="desc">End-to-end OS qualification and VR application testing across four Oculus/Meta device generations — Rift, Quest, GearVR, Go. Precise validation of tracking systems, controller interactions, firmware behavior, and rendering performance.</div>
+        <div class="tags"><span>200+ Critical OS Defects</span><span>50+ VR Build Sign-offs</span><span>4 Device Generations</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CORE STRENGTHS ═══ -->
+<section class="section-pad" id="strengths" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-label reveal">Core Strengths</div>
+    <h2 class="section-title reveal">How I <span class="highlight">Think About Testing</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
+      Three capabilities that separate system-level ownership from feature-level checking.
+    </p>
+
+    <div class="strengths-grid reveal">
+      <div class="glass strength-card">
+        <div class="num">01</div>
+        <div class="title">System-Level Testing</div>
+        <div class="desc">I test the system, not just the feature. That means understanding data flows across tiers, integration boundaries, and failure propagation paths — not just whether the button works.</div>
+      </div>
+
+      <div class="glass strength-card">
+        <div class="num">02</div>
+        <div class="title">Risk-Based Strategy</div>
+        <div class="desc">I lead with risk assessment before writing a single test case. What fails here? What is irreversible? What is patient-facing, revenue-critical, or compliance-gated? That determines coverage priority.</div>
+      </div>
+
+      <div class="glass strength-card">
+        <div class="num">03</div>
+        <div class="title">Integration Validation</div>
+        <div class="desc">APIs, databases, BLE connections, payment gateways, IoT pipelines — I test at every integration boundary because that is where real defects hide, not inside individual components.</div>
+      </div>
+    </div>
+
+    <div class="strengths-grid reveal reveal-delay-1" style="margin-top:20px;">
+      <div class="glass strength-card" style="border-left-color:var(--accent-gold);">
+        <div class="num">04</div>
+        <div class="title">Shift Left, Stay Left</div>
+        <div class="desc">I review requirements, designs, and API contracts before implementation begins. Defects found at design cost 1x. Defects found in production cost 100x. I work at 1x.</div>
+      </div>
+
+      <div class="glass strength-card" style="border-left-color:var(--accent-gold);">
+        <div class="num">05</div>
+        <div class="title">Evidence-Based Release</div>
+        <div class="desc">Release decisions are grounded in documented test coverage, defect leakage data, and traceability confirmation — never in "it seems to work." Especially in regulated environments.</div>
+      </div>
+
+      <div class="glass strength-card" style="border-left-color:var(--accent-gold);">
+        <div class="num">06</div>
+        <div class="title">Build the Team</div>
+        <div class="desc">Mentoring 15+ engineers, running structured review sessions, and building shared QA processes compounds quality across every release — not just the ones I personally test.</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ EXPERIENCE ═══ -->
-<section class="section-pad" id="experience" style="background:var(--bg-secondary);">
+<section class="section-pad" id="experience">
   <div class="container">
     <div class="section-label reveal">Career History</div>
     <h2 class="section-title reveal">Engineering Quality <span class="highlight">Across Domains</span></h2>
     <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
-      A decade of delivering mission-critical quality in regulated environments across MedTech, FinTech, Retail AI, and VR/AR platforms.
+      A decade of delivering mission-critical quality in regulated environments.
     </p>
 
     <div class="timeline reveal">
@@ -1370,15 +1275,15 @@ body {
       <div class="timeline-item">
         <div class="period">Oct 2024 – Present</div>
         <div class="role">Lead QA Engineer</div>
-        <div class="company">GRUBBRR · Ahmedabad, India <span class="location">(Retail Tech · AI-Assisted Ordering)</span></div>
+        <div class="company">GRUBBRR · Ahmedabad, India <span class="location">(AI-Powered Retail · Payments)</span></div>
         <ul>
           <li>Own end-to-end quality for self-ordering kiosks, POS integrations, payment ecosystems (FreedomPay, Verifone, Olo Pay, Clover), loyalty platforms, and AI-assisted ordering applications.</li>
           <li>Validate Smart Upsell workflows, recommendation engine outputs, and menu personalization features across web, mobile, and kiosk channels.</li>
-          <li>Payment verification across 10+ methods including NFC and digital wallets — <strong>no production-critical payment defects since Oct 2024</strong>.</li>
+          <li>Payment verification across 10+ methods including NFC and digital wallets — <strong>zero production-critical payment defects since Oct 2024</strong>.</li>
           <li>REST API testing via Postman and SQL-based database validation for order calculations, pricing logic, tax computation, and backend integrity.</li>
-          <li>Triage 50+ functional and integration defects pre-production; mentor 6 junior QA engineers — improving team execution efficiency by 20%.</li>
+          <li>Triage 50+ functional and integration defects pre-production; mentor 6 junior QA engineers.</li>
         </ul>
-        <span class="achievement-tag">🏆 Zero Payment Defects</span>
+        <span class="achievement-tag">🏆 Zero Payment Defects · 10+ Methods</span>
       </div>
 
       <!-- AimDek -->
@@ -1389,9 +1294,9 @@ body {
         <ul>
           <li>Led full QA lifecycle for Class I &amp; II medical devices including Sibel Health wearable monitors — FDA 21 CFR Part 11 and HIPAA compliance.</li>
           <li>Clinical data workflow testing covering HL7, FHIR, and IEEE 11073 SDC standards across device-to-platform integrations.</li>
-          <li>REST &amp; SOAP API testing for healthcare data exchange across EHR/EHS workflows — verified payload accuracy, authentication flows, and fault tolerance.</li>
-          <li>Built requirements traceability matrices and led structured risk assessments — <strong>reduced regulatory defects by 30%</strong>.</li>
-          <li>Monitored Kubernetes cluster logs — proactively resolved infrastructure incidents, <strong>improving uptime by 15%</strong>.</li>
+          <li>REST &amp; SOAP API testing for healthcare data exchange across EHR/EHS workflows.</li>
+          <li>Built requirements traceability matrices — <strong>reduced regulatory defects by 30%</strong>.</li>
+          <li>Monitored Kubernetes cluster logs — <strong>improved uptime by 15%</strong>.</li>
         </ul>
         <span class="achievement-tag">🏆 30% Regulatory Defect Reduction</span>
       </div>
@@ -1402,10 +1307,10 @@ body {
         <div class="role">Senior Software Engineer QA</div>
         <div class="company">Apexon · Ahmedabad, India <span class="location">(FinTech · HealthTech · Blockchain)</span></div>
         <ul>
-          <li>Tested REST and SOAP APIs across 20+ endpoints for health IoT devices, lifestyle apps, and financial platforms — full regression, integration, and system test coverage.</li>
-          <li>Led QA for a blockchain financial platform — validated smart contract workflows, transaction ledger integrity, token logic, and edge-case failure scenarios.</li>
-          <li>Performed database validation and cloud data sync testing for healthcare IoT devices across multi-tier backend systems.</li>
-          <li><strong>Delivered 12 consecutive major releases</strong> while maintaining high release quality across healthcare, financial services, and blockchain products.</li>
+          <li>Tested REST and SOAP APIs across 20+ endpoints for health IoT, lifestyle apps, and financial platforms.</li>
+          <li>Led QA for a blockchain financial platform — validated smart contract workflows, ledger integrity, token logic.</li>
+          <li>Performed database validation and cloud data sync for healthcare IoT devices.</li>
+          <li><strong>Delivered 12 consecutive major releases</strong> with zero critical defects.</li>
         </ul>
         <span class="achievement-tag">🏆 12 Zero-Defect Releases</span>
       </div>
@@ -1416,9 +1321,9 @@ body {
         <div class="role">Senior Quality Assurance Specialist</div>
         <div class="company">CheckTech for IT · Riyadh, Saudi Arabia <span class="location">(Transportation · E-commerce · F&B)</span></div>
         <ul>
-          <li>Authored and executed 200+ manual test cases for high-traffic platforms serving <strong>500K+ active users</strong> — applied BVA, Equivalence Partitioning, and Decision Tables.</li>
-          <li>UI/UX validation across 100+ screens and user flows — <strong>improved user satisfaction by 20%</strong> through systematic defect identification.</li>
-          <li><strong>Improved team productivity by 31%</strong> via structured defect reporting, QA metrics dashboards, and root cause analysis.</li>
+          <li>Authored and executed 200+ manual test cases for platforms serving <strong>500K+ active users</strong>.</li>
+          <li>UI/UX validation across 100+ screens — <strong>improved user satisfaction by 20%</strong>.</li>
+          <li><strong>Improved team productivity by 31%</strong> via structured defect reporting and QA dashboards.</li>
           <li>Led offshore QA team of 4 engineers across 8 simultaneous Agile and Waterfall projects.</li>
         </ul>
         <span class="achievement-tag">🏆 31% Team Productivity Gain</span>
@@ -1430,23 +1335,11 @@ body {
         <div class="role">Software Tester — VR Platform & OS Testing</div>
         <div class="company">Lodestone (Acq. Tech Mahindra) · Ahmedabad, India <span class="location">(VR/AR · Oculus Ecosystem)</span></div>
         <ul>
-          <li>Full Oculus OS qualification — system UI, firmware upgrades, sensor calibration (head tracking, motion, proximity), connectivity, and permissions across GearVR, Go, Quest, and Rift.</li>
-          <li>Build sign-off for <strong>50+ VR/AR applications</strong> across Master, RC, HotFix, and Custom builds — primary quality gate for every release cycle.</li>
-          <li>Identified and resolved <strong>200+ critical VR OS defects</strong> — reduced test execution time by 35% through optimized regression cycles and systematic defect classification.</li>
-          <li>Verified hardware-software integration and controller firmware compatibility across multiple Oculus device generations.</li>
+          <li>Full Oculus OS qualification — system UI, firmware upgrades, sensor calibration across GearVR, Go, Quest, and Rift.</li>
+          <li>Build sign-off for <strong>50+ VR/AR applications</strong> across Master, RC, HotFix, and Custom builds.</li>
+          <li>Identified and resolved <strong>200+ critical VR OS defects</strong> — reduced test execution time by 35%.</li>
         </ul>
         <span class="achievement-tag">🏆 200+ Critical Defects Resolved</span>
-      </div>
-
-      <!-- CHHAVI -->
-      <div class="timeline-item">
-        <div class="period">May 2015 – Dec 2015</div>
-        <div class="role">Software Engineer</div>
-        <div class="company">CHHAVI · Ahmedabad, India <span class="location">(Web Applications)</span></div>
-        <ul>
-          <li>Conducted functional and integration testing for web application features — <strong>improved application performance by 15%</strong>.</li>
-          <li>Partnered with UI/UX designers and stakeholders to deliver interface improvements aligned with product goals.</li>
-        </ul>
       </div>
 
       <!-- MIUI Alpha -->
@@ -1455,10 +1348,9 @@ body {
         <div class="role">MIUI Alpha Tester</div>
         <div class="company">Xiaomi · MIUI Alpha Testing Program <span class="location">(Mobile OS · Pre-Release)</span></div>
         <ul>
-          <li>Selected for Xiaomi's competitive, application-based closed Alpha Tester program for MIUI OS — running on <strong>hundreds of millions of devices globally</strong>.</li>
-          <li>Validated pre-release MIUI builds for OS stability, UI regressions, performance consistency, battery management, and hardware-software integration across device configurations.</li>
-          <li>Documented and reported edge-case crashes, system UI anomalies, and firmware-level bugs via structured feedback channels — directly influencing production build quality.</li>
-          <li>Developed foundational discipline in mobile OS exploratory testing and defect documentation that later shaped OS qualification work on Oculus/Meta device generations.</li>
+          <li>Selected for Xiaomi's competitive Alpha Tester program — validated pre-release MIUI builds for <strong>100M+ devices</strong>.</li>
+          <li>Tested OS stability, UI regressions, performance, battery management, and hardware-software integration.</li>
+          <li>Documented edge-case crashes and firmware-level bugs via structured feedback channels.</li>
         </ul>
         <span class="achievement-tag">🏆 100M+ Users Protected</span>
       </div>
@@ -1466,35 +1358,102 @@ body {
 
     <!-- Education -->
     <div class="edu-grid reveal">
-      <div class="glass edu-card">
-        <div class="date">March 2025</div>
-        <div class="title">ISTQB Certified Tester</div>
-        <div class="sub">Foundation Level (CTFL)</div>
-      </div>
-      <div class="glass edu-card">
-        <div class="date">Conferred 2015</div>
-        <div class="title">Master of Computer Applications</div>
-        <div class="sub">Gujarat Technological University</div>
-      </div>
-      <div class="glass edu-card">
-        <div class="date">Conferred 2013</div>
-        <div class="title">Bachelor of Computer Applications</div>
-        <div class="sub">GLS Institute of Computer Technology</div>
-      </div>
+      <div class="glass edu-card"><div class="date">March 2025</div><div class="title">ISTQB Certified Tester</div><div class="sub">Foundation Level (CTFL)</div></div>
+      <div class="glass edu-card"><div class="date">Conferred 2015</div><div class="title">Master of Computer Applications</div><div class="sub">Gujarat Technological University</div></div>
+      <div class="glass edu-card"><div class="date">Conferred 2013</div><div class="title">Bachelor of Computer Applications</div><div class="sub">GLS Institute of Computer Technology</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PROJECTS ═══ -->
-<section class="section-pad" id="projects">
+<!-- ═══ PROJECTS / CASE STUDIES ═══ -->
+<section class="section-pad" id="projects" style="background:var(--bg-secondary);">
   <div class="container">
     <div class="section-label reveal">Case Studies</div>
-    <h2 class="section-title reveal">Impact <span class="highlight">Delivered.</span></h2>
+    <h2 class="section-title reveal">Three Domains. <span class="highlight">Three Distinct Challenges.</span></h2>
     <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
-      Each project represents a measurable quality outcome across regulated domains. Click to expand.
+      Each case study documents a real system — real failure risks, real testing strategy, real outcomes.
     </p>
 
     <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ ARTIFACTS ═══ -->
+<section class="section-pad" id="artifacts">
+  <div class="container">
+    <div class="section-label reveal">Work Artifacts</div>
+    <h2 class="section-title reveal">The Evidence <span class="highlight">of Quality Work</span></h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
+      Samples of the documentation, test structures, and validation outputs produced across engagements.
+    </p>
+
+    <div class="artifacts-grid reveal">
+      <div class="glass artifact-card">
+        <div class="title">Payment Gateway Test Suite</div>
+        <div class="sub">Test Case Design</div>
+        <div class="desc">Structured test case library covering all payment modalities with explicit preconditions, steps, expected results, and boundary-value inputs for each transaction type.</div>
+        <div class="code-block">TC-PAY-001: Verifone Swipe — Auth Success
+Precondition: Valid card, non-zero amount
+Steps: 1. Present card 2. Enter PIN 3. Confirm
+Expected: "Approved" + order record in DB</div>
+      </div>
+
+      <div class="glass artifact-card">
+        <div class="title">Clinical Data Exchange — API Test Results</div>
+        <div class="sub">API Validation</div>
+        <div class="desc">Postman collection outputs validating HL7 and FHIR payload accuracy across all clinical endpoints — including auth handshake, fault injection, and timeout recovery scenarios.</div>
+        <div class="code-block">POST /api/v2/clinical/vitals
+Auth: Bearer {token}
+→ 200 OK · Payload validated
+FAULT INJECTION: Invalid token → 401 Unauthorized ✓
+TIMEOUT: 31s request → 408 + retry header ✓</div>
+      </div>
+
+      <div class="glass artifact-card">
+        <div class="title">Cross-Gen Controller Regression — Oculus</div>
+        <div class="sub">Defect Report</div>
+        <div class="desc">Structured defect reports for OS-level regressions in VR controller firmware, including reproduction matrix, affected device/firmware combinations, and root cause analysis.</div>
+        <div class="code-block">DEF-VR-0047 · CRITICAL · Build RC-2.8.1
+Title: Quest FW update breaks Rift touch
+Affects: Rift S + controller FW 1.38+
+RCA: Haptic remapping in firmware 1.38 introduced
+undocumented offset to grip trigger mapping</div>
+      </div>
+
+      <div class="glass artifact-card">
+        <div class="title">FDA 21 CFR Traceability — Sibel Health</div>
+        <div class="sub">Traceability Matrix</div>
+        <div class="desc">Requirement-to-test-to-result traceability document ensuring 100% coverage accountability for each FDA compliance checkpoint in the device validation lifecycle.</div>
+        <div class="code-block">REQ-CLN-012 → TC-012a, TC-012b, TC-012c
+Status: PASS (3/3) · Reviewed by QA Lead
+Evidence: TestRail run #TR-209
+REQ-SEC-007 → TC-SEC-007a (Auth), TC-SEC-007b (Encrypt)
+Status: PASS · Linked to JIRA-4492</div>
+      </div>
+
+      <div class="glass artifact-card">
+        <div class="title">Risk-Based Test Plan — Insurance ETL</div>
+        <div class="sub">Risk Assessment</div>
+        <div class="desc">Pre-execution risk register mapping pipeline transformation stages to failure probability, business impact, and test priority — used to determine coverage depth per ETL stage.</div>
+        <div class="code-block">RISK-ETL-003 · HIGH · Claims Transform
+Failure mode: Decimal truncation in premium field
+Impact: Incorrect billing (severity 5)
+Coverage: 100% — BVA on all numeric transforms
+RISK-ETL-007 · MEDIUM · Deduplication
+Impact: Double-counting policy records</div>
+      </div>
+
+      <div class="glass artifact-card">
+        <div class="title">Receipt Accuracy & Transaction Integrity</div>
+        <div class="sub">Payment Receipt Validation</div>
+        <div class="desc">Validated receipt output accuracy across payment types, charity flows, refund consistency, and modifier scenarios — ensuring the printed and digital receipt exactly reflects the backend transaction record.</div>
+        <div class="code-block">TC-RCPT-001: Credit vs Cash — Label Accuracy
+→ Receipt header shows correct payment type
+TC-RCPT-003: Refund Reprint Consistency
+→ Reprinted receipt matches original ✓
+→ Refunded amount clearly marked ✓</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1502,110 +1461,72 @@ body {
 <section class="section-pad" id="skills" style="background:var(--bg-secondary);">
   <div class="container">
     <div class="section-label reveal">Technical Stack</div>
-    <h2 class="section-title reveal">Core <span class="highlight">Competencies</span></h2>
+    <h2 class="section-title reveal">Tools &amp; Stack <span class="highlight">Grouped by Purpose</span></h2>
     <p class="section-sub reveal reveal-delay-1" style="margin-bottom:48px;">
-      Technologies, frameworks, and compliance standards mastered across industries.
+      The right tool for the right job — selected based on what the system needs tested, not familiarity.
     </p>
 
     <div class="skills-grid reveal">
       <div class="glass skill-category">
-        <span class="label">Testing Disciplines</span>
+        <span class="label">Test Management</span>
         <div class="skill-items">
-          <span class="skill-item">Manual Testing</span>
-          <span class="skill-item">Regression</span>
-          <span class="skill-item">API Testing</span>
-          <span class="skill-item">Integration</span>
-          <span class="skill-item">Mobile Testing</span>
-          <span class="skill-item">Kiosk QA</span>
-          <span class="skill-item">Medical Device</span>
-          <span class="skill-item">Payment Validation</span>
-          <span class="skill-item">VR/AR OS</span>
-          <span class="skill-item">Risk-Based Testing</span>
-          <span class="skill-item">Smoke Testing</span>
-          <span class="skill-item">Exploratory</span>
+          <span class="skill-item">JIRA</span>
+          <span class="skill-item">TestRail</span>
+          <span class="skill-item">MatrixALM</span>
+          <span class="skill-item">Confluence</span>
         </div>
       </div>
 
       <div class="glass skill-category">
-        <span class="label">Compliance &amp; Standards</span>
+        <span class="label">API & Network Testing</span>
+        <div class="skill-items">
+          <span class="skill-item">Postman</span>
+          <span class="skill-item">Charles Proxy</span>
+          <span class="skill-item">Chrome DevTools</span>
+          <span class="skill-item">SOAP UI</span>
+          <span class="skill-item">Playwright (Learning)</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">Database & Cloud</span>
+        <div class="skill-items">
+          <span class="skill-item">MySQL</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">AWS S3</span>
+          <span class="skill-item">Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">Modern Testing Platforms</span>
+        <div class="skill-items">
+          <span class="skill-item">BrowserStack</span>
+          <span class="skill-item">Sauce Labs</span>
+          <span class="skill-item">Docker</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">VR/AR Platforms</span>
+        <div class="skill-items">
+          <span class="skill-item">Oculus OS</span>
+          <span class="skill-item">GearVR</span>
+          <span class="skill-item">Quest</span>
+          <span class="skill-item">Rift</span>
+          <span class="skill-item">Firmware OTA</span>
+        </div>
+      </div>
+
+      <div class="glass skill-category">
+        <span class="label">Compliance & Standards</span>
         <div class="skill-items">
           <span class="skill-item">FDA 21 CFR Part 11</span>
           <span class="skill-item">HIPAA</span>
           <span class="skill-item">HL7</span>
           <span class="skill-item">FHIR</span>
           <span class="skill-item">IEEE 11073 SDC</span>
-          <span class="skill-item">Class I &amp; II</span>
           <span class="skill-item">Traceability Matrix</span>
-          <span class="skill-item">EHR · EHS</span>
-          <span class="skill-item">Requirements Traceability</span>
-        </div>
-      </div>
-
-      <div class="glass skill-category">
-        <span class="label">Tools &amp; Platforms</span>
-        <div class="skill-items">
-          <span class="skill-item">JIRA</span>
-          <span class="skill-item">TestRail</span>
-          <span class="skill-item">Postman</span>
-          <span class="skill-item">MatrixALM</span>
-          <span class="skill-item">Charles Proxy</span>
-          <span class="skill-item">Confluence</span>
-          <span class="skill-item">AWS S3</span>
-          <span class="skill-item">Kubernetes</span>
-          <span class="skill-item">BrowserStack</span>
-          <span class="skill-item">Sauce Labs</span>
-          <span class="skill-item">Playwright (Learning)</span>
-        </div>
-      </div>
-
-      <div class="glass skill-category">
-        <span class="label">Payments, Devices &amp; OS</span>
-        <div class="skill-items">
-          <span class="skill-item">Verifone</span>
-          <span class="skill-item">FreedomPay</span>
-          <span class="skill-item">Olo Pay</span>
-          <span class="skill-item">Clover</span>
-          <span class="skill-item">NFC</span>
-          <span class="skill-item">Digital Wallets</span>
-          <span class="skill-item">Global Payments</span>
-          <span class="skill-item">Oculus OS</span>
-          <span class="skill-item">GearVR/Quest/Rift</span>
-          <span class="skill-item">MIUI</span>
-          <span class="skill-item">BLE Connectivity</span>
-          <span class="skill-item">Sensor Calibration</span>
-        </div>
-      </div>
-
-      <div class="glass skill-category">
-        <span class="label">API &amp; Database</span>
-        <div class="skill-items">
-          <span class="skill-item">REST APIs</span>
-          <span class="skill-item">SOAP</span>
-          <span class="skill-item">JSON</span>
-          <span class="skill-item">XML</span>
-          <span class="skill-item">MySQL</span>
-          <span class="skill-item">PostgreSQL</span>
-          <span class="skill-item">SQL Queries</span>
-          <span class="skill-item">Data Validation</span>
-          <span class="skill-item">Payment Gateway</span>
-          <span class="skill-item">Third-Party Integrations</span>
-        </div>
-      </div>
-
-      <div class="glass skill-category">
-        <span class="label">Leadership &amp; Methods</span>
-        <div class="skill-items">
-          <span class="skill-item">Test Strategy</span>
-          <span class="skill-item">Team Leadership</span>
-          <span class="skill-item">Mentoring</span>
-          <span class="skill-item">Stakeholder Management</span>
-          <span class="skill-item">Agile</span>
-          <span class="skill-item">Scrum</span>
-          <span class="skill-item">Waterfall</span>
-          <span class="skill-item">BVA</span>
-          <span class="skill-item">Equivalence Partitioning</span>
-          <span class="skill-item">Decision Tables</span>
-          <span class="skill-item">Root Cause Analysis</span>
         </div>
       </div>
     </div>
@@ -1616,21 +1537,15 @@ body {
 <section class="section-pad" id="contact">
   <div class="container">
     <div class="section-label reveal">Connect</div>
-    <h2 class="section-title reveal">Ready to Ship <span class="highlight">Zero Defects?</span></h2>
+    <h2 class="section-title reveal">Have a System <span class="highlight">That Needs Owning?</span></h2>
     <p class="section-sub reveal reveal-delay-1" style="max-width:500px;margin:0 auto 40px;text-align:center;">
-      Looking for a QA lead who owns quality from strategy through production? Let's talk.
+      Available for senior and lead QA roles — payments, MedTech compliance, VR systems, or complex integration environments.
     </p>
 
     <div class="contact-channels reveal reveal-delay-2">
-      <a href="mailto:dhruvil.parekh3@gmail.com" class="contact-channel primary">
-        ✉ dhruvil.parekh3@gmail.com
-      </a>
-      <a href="#" class="contact-channel" target="_blank">
-        LinkedIn ↗
-      </a>
-      <a href="tel:+918000164009" class="contact-channel">
-        📞 +91 80001 64009
-      </a>
+      <a href="mailto:dhruvil.parekh3@gmail.com" class="contact-channel primary">✉ dhruvil.parekh3@gmail.com</a>
+      <a href="#" class="contact-channel" target="_blank">LinkedIn ↗</a>
+      <a href="tel:+918000164009" class="contact-channel">📞 +91 80001 64009</a>
     </div>
 
     <div class="footer">
@@ -1638,9 +1553,9 @@ body {
       <span>·</span>
       <span>ISTQB Certified · CTFL</span>
       <span>·</span>
-      <span>Ahmedabad → Worldwide</span>
+      <span>10+ Years · Zero Critical Production Defects</span>
       <span>·</span>
-      <span>10+ Years of Quality Excellence</span>
+      <span>Ahmedabad → Worldwide</span>
     </div>
   </div>
 </section>
@@ -1699,95 +1614,40 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ── PROJECTS DATA ──
+// ── PROJECTS DATA (Enhanced with GitHub content) ──
 const projects = [
   {
-    domain: 'MedTech · FDA · HIPAA',
+    domain: 'Retail Technology · Payments',
+    icon: '🖥️',
+    title: 'GRUBBRR Intelligent Ordering Platform — AI Recommendations, Payments & Customer Experience Validation',
+    blurb: 'Self-ordering kiosks at restaurants, stadiums, and retail venues handling thousands of transactions per hour.',
+    impact: '10+',
+    impactLabel: 'Payment Platforms Validated',
+    tags: ['Verifone', 'FreedomPay', 'Clover', 'Olo Pay', 'NFC', 'Digital Wallets', 'AI Recommendations'],
+    full: 'Led quality assurance across self-ordering kiosk platforms, payment ecosystems, POS integrations, intelligent ordering workflows, recommendation systems, and customer-facing retail experiences. Validated end-to-end ordering journeys including menu management, Smart Upsell recommendations, payment processing, order routing, POS synchronization, inventory management, kiosk interactions, and backend integrations. Performed API testing, database validation, integration testing, regression testing, and production verification across FreedomPay, Verifone, Clover, Olo Pay, NCR, and other third-party systems. Verified request and response payloads, authentication flows, transaction records, pricing calculations, tax calculations, discount applications, and data consistency across integrated platforms. Triaged and resolved 50+ functional and integration defects before production release.',
+    stats: [{ n: '10+', l: 'Payment Methods' }, { n: '50+', l: 'Defects Closed' }, { n: 'Zero', l: 'Production Defects' }]
+  },
+  {
+    domain: 'MedTech · FDA Compliance',
     icon: '🩺',
-    title: 'Sibel Health — FDA-Regulated Wearable Validation',
-    blurb: 'Hospital-grade wireless biosensor patches for continuous patient monitoring — ECG, respiratory rate, SpO2.',
+    title: 'Sibel Health Wearable Devices — FDA-Regulated Validation Lifecycle',
+    blurb: 'Wireless biosensor patches continuously monitoring patient vitals — ECG, respiratory rate, SpO2 — for hospital-grade clinical use.',
     impact: '30%',
     impactLabel: 'Regulatory Defect Reduction',
-    tags: ['FDA 21 CFR Part 11', 'HIPAA', 'HL7', 'FHIR', 'IEEE 11073 SDC', 'REST & SOAP', 'Traceability Matrix'],
-    full: 'Led full QA validation lifecycle for Class I and II medical devices at AimDek Technology. Built verification protocols under FDA 21 CFR Part 11 and HIPAA requirements. Every data exchange between sensor, clinical gateway, and cloud platform was traced, tested, and documented. Wrote and owned requirements traceability matrices that mapped each requirement to a test case and each result to a compliance checkpoint. Clinical data workflows built on HL7, FHIR, and IEEE 11073 SDC required deep integration testing across device-to-platform boundaries. Result: 30% reduction in regulatory defects with zero compliance gaps.',
-    stats: [{ n: '30%', l: 'Regulatory Defect Reduction' }, { n: 'Zero', l: 'Compliance Gaps' }, { n: 'Full', l: 'Traceability Coverage' }]
+    tags: ['FDA 21 CFR', 'HIPAA', 'HL7', 'FHIR', 'IEEE 11073 SDC', 'Traceability Matrix'],
+    full: 'Led the full QA validation lifecycle under FDA 21 CFR Part 11 and HIPAA compliance requirements. Built traceability matrices from the ground up — mapping every requirement to a test case and every test result to a compliance checkpoint. Performed REST and SOAP API testing across all clinical data exchange endpoints — verifying payload accuracy, authentication handling, and fault tolerance at each tier. SQL-based database checks confirmed clinical and operational data accuracy across regulated storage layers. Monitored Kubernetes cluster logs for production healthcare applications, proactively identifying and resolving incidents that improved system uptime by 15%. Result: 30% fewer regulatory defects pre-submission with 100% requirements traceability coverage.',
+    stats: [{ n: '30%', l: 'Regulatory Defect Reduction' }, { n: '100%', l: 'Traceability Coverage' }, { n: '15%', l: 'Uptime Improvement' }]
   },
   {
-    domain: 'VR/AR · Oculus · Firmware',
+    domain: 'VR/AR · Oculus OS · Meta',
     icon: '🥽',
-    title: 'Meta (Oculus) — VR/AR OS & Hardware Qualification',
-    blurb: 'End-to-end OS qualification across GearVR, Go, Quest, and Rift — firmware, sensors, controllers, build sign-off.',
+    title: 'Meta (Oculus) Device Portfolio — VR/AR OS & Application Qualification',
+    blurb: 'End-to-end OS qualification and firmware OTA validation across four Oculus device generations.',
     impact: '200+',
-    impactLabel: 'Critical Defects Resolved',
-    tags: ['OS Qualification', 'Firmware', 'Sensor Calibration', 'Build Sign-off', 'Performance', 'Controller Compatibility'],
-    full: 'Owned OS qualification across four Oculus device generations covering system UI integrity, motion sensor calibration (6DOF, proximity, boundary detection), wireless connectivity, and permission model across every Master, RC, HotFix, and Custom build pipeline. Identified root causes and resolved 200+ critical OS defects, cutting test execution time by 35% through optimized triage workflows, and owned build sign-off for 50+ VR applications.',
-    stats: [{ n: '200+', l: 'Critical OS Defects' }, { n: '35%', l: 'Faster Execution' }, { n: '50+', l: 'Builds Signed Off' }]
-  },
-  {
-    domain: 'FinTech · DLT · Smart Contracts',
-    icon: '⛓️',
-    title: 'Blockchain Platform — Smart Contracts & Ledger Integrity',
-    blurb: 'Distributed ledger platform for digital asset transactions and smart contract execution — where defects are permanent.',
-    impact: '12',
-    impactLabel: 'Zero-Defect Releases',
-    tags: ['Smart Contracts', 'Ledger Integrity', 'Token Workflows', 'Edge Cases', 'REST/SOAP API', 'SQL Validation'],
-    full: 'Led QA for a distributed ledger platform handling digital asset transactions and smart contract execution — verifying not just that contracts executed, but that they executed correctly under every failure condition. Re-entrancy guard behavior, gas estimation failures, partial transaction states, mint-transfer-burn-rollback sequences — each documented and tested. Complemented contract testing with REST and SOAP API validation across 20+ endpoints and SQL-based data sync checks. Twelve consecutive major releases with zero critical defect leakage.',
-    stats: [{ n: '12', l: 'Zero-Defect Releases' }, { n: '20+', l: 'API Endpoints' }, { n: 'Zero', l: 'Defects Escaped' }]
-  },
-  {
-    domain: 'Retail · AI · Payments',
-    icon: '🖥️',
-    title: 'GRUBBRR — Self-Ordering Kiosk & Omnichannel POS',
-    blurb: 'Integrated self-ordering ecosystem for restaurants, stadiums, retail — kiosks, mobile, menu boards, POS, loyalty.',
-    impact: '10+',
-    impactLabel: 'Payment Methods Verified',
-    tags: ['Payment Validation', '10+ Methods', 'POS Integration', 'SQL/DB Testing', 'REST API', 'AI-Assisted Ordering'],
-    full: 'Own full QA lifecycle at GRUBBRR across kiosk software, mobile ordering apps, POS integrations, digital menu boards, and loyalty systems. Validate Smart Upsell workflows, recommendation engine outputs, and AI-assisted menu personalization features — verifying item suggestion accuracy and ordering experience consistency across web, mobile, and kiosk channels. Payment verification covers 10+ methods (Verifone, FreedomPay, Olo Pay, Clover, NFC, digital wallets) — with no production-critical payment defects recorded across all client deployments since Oct 2024.',
-    stats: [{ n: 'Zero', l: 'Payment Defects' }, { n: '10+', l: 'Methods Covered' }, { n: '50+', l: 'Pre-Prod Bugs Closed' }]
-  },
-  {
-    domain: 'Mobile OS · Android · Alpha Testing',
-    icon: '📱',
-    title: 'MIUI Alpha Tester — Xiaomi OS Pre-Release Validation',
-    blurb: 'Selected for Xiaomi\'s closed Alpha Testing program — validating pre-release builds for OS stability and hardware-software integration.',
-    impact: '100M+',
-    impactLabel: 'Users Protected',
-    tags: ['MIUI', 'Android OS', 'OS Stability', 'UI Regression', 'Exploratory Testing', 'Bug Reporting'],
-    full: 'Selected as Xiaomi MIUI Alpha Tester (2013–2015) through a competitive, application-based process. Validated pre-release MIUI builds for OS stability, system UI regressions, performance consistency, notification system behavior, battery and thermal management, and hardware-software integration covering camera, sensors, and connectivity stacks. Defects were documented through Xiaomi\'s internal feedback system with structured reproduction steps, device configuration details, and build version metadata — the same disciplined defect documentation that later became central to OS qualification work on Oculus/Meta devices.',
-    stats: [{ n: '2013-15', l: 'Alpha Testing Tenure' }, { n: 'Pre-Release', l: 'Builds Validated' }, { n: '100M+', l: 'Users Protected' }]
-  },
-  {
-    domain: 'Insurance · ETL · Data Engineering',
-    icon: '🚗',
-    title: 'ETL Vehicle Insurance — Data Pipeline Validation',
-    blurb: 'Multi-stage ETL processing high-volume policyholder, claims, and vehicle records for actuarial reporting.',
-    impact: '100%',
-    impactLabel: 'Row-Count Fidelity',
-    tags: ['ETL Pipeline', 'SQL Validation', 'Data Transformation', 'Row Reconciliation', 'Data Lineage', 'Integration'],
-    full: 'Designed QA strategy for a high-volume ETL pipeline ingesting raw policyholder, vehicle, and claims records, transforming them through layered business logic, and loading validated data into downstream actuarial systems. Testing traced data lineage from source extraction through every transformation stage — verifying field mappings, type conversions, business rule applications, and aggregation logic using deep SQL validation and statistical reconciliation. Ensured zero silent data loss with 100% row-count fidelity across all lifecycle events.',
-    stats: [{ n: '100%', l: 'Row-Count Fidelity' }, { n: 'Zero', l: 'Silent Data Loss' }, { n: 'Full', l: 'Lifecycle Coverage' }]
-  },
-  {
-    domain: 'Digital Health · iOS & Android · Clinical',
-    icon: '💉',
-    title: 'OneTouch — Blood Glucose Monitoring App',
-    blurb: 'Clinically regulated glucose monitoring app — where every displayed number informs a dosing decision.',
-    impact: '2',
-    impactLabel: 'Unit Systems Validated',
-    tags: ['Clinical Accuracy', 'Localization', 'Graphs & Reports', 'mg/dL vs mmol/L', 'BLE Device Sync', 'Cross-Platform'],
-    full: 'Owned full reporting and visualization QA for OneTouch across iOS and Android: verifying trend graph accuracy across daily, weekly, and 90-day views; confirming statistical summaries including average glucose, time-in-range, and A1C estimation. Localization testing validated clinical logic correctness in both mg/dL and mmol/L, numeric formatting, and date/time rendering across regions. Validated Bluetooth pairing reliability and reading sync fidelity between glucometer hardware and app — confirming no readings were dropped or misrepresented.',
-    stats: [{ n: 'Both', l: 'Unit Systems Verified' }, { n: 'Multi-Region', l: 'Localization Validated' }, { n: 'Zero', l: 'Sync Errors Found' }]
-  },
-  {
-    domain: 'Location Services · Crowdsourcing · Real-Time',
-    icon: '📍',
-    title: 'CheckTech — Real-Time Location Verification Platform',
-    blurb: 'Crowdsourced platform connecting requestors with on-ground Checkers for verified, real-time location proof.',
-    impact: '500K+',
-    impactLabel: 'Active Users Served',
-    tags: ['Real-Time Location', 'Geo-Matching', 'Order Lifecycle', 'Concurrency', 'In-App Chat', '200+ Test Cases'],
-    full: 'CheckTech operates in a domain where real-time accuracy is not a quality metric — it is the product. Serving 500,000+ active users across the Middle East, the platform handles continuous location-based orders, dynamic Checker matching within geo-radius logic, real-time status transitions, and live bidirectional chat. Authored and executed 200+ manual test cases applying BVA and Equivalence Partitioning, with particular attention to concurrency scenarios. UI/UX quality reviews across 100+ screens contributed to a 20% improvement in user satisfaction scores. Improved team productivity by 31% through structured defect reporting and QA metrics dashboards.',
-    stats: [{ n: '200+', l: 'Test Cases Authored' }, { n: '20%', l: 'User Satisfaction Uplift' }, { n: '500K+', l: 'Active Users' }]
+    impactLabel: 'Critical OS Defects Resolved',
+    tags: ['Oculus OS', 'Firmware OTA', 'Sensor Calibration', 'Quest/Rift', 'SUPERHOT VR'],
+    full: 'Owned end-to-end OS qualification and firmware OTA validation across four Oculus device generations — GearVR, Oculus Go, Quest, Quest 2, and Rift. Coverage included: system UI integrity, firmware upgrade/downgrade path validation (OTA delta packages, rollback scenarios, brick recovery), sensor calibration (head tracking, 6DOF motion, proximity, guardian boundary detection), wireless connectivity behavior (WiFi 6, Bluetooth LE pairing), and permission model correctness — across every Master, Release Candidate, HotFix, and Custom build pipeline. Applied cross-generational hardware-software matrix testing — each firmware build tested against 4 device generations × 3 controller variants × 2 SDK versions. Rebuilt the defect triage workflow — resulting in a 35% reduction in test execution time. Performed full functional testing of SUPERHOT VR: time-mechanic validation under all player input states, physics-based weapon interaction edge cases, and all replayability modes.',
+    stats: [{ n: '200+', l: 'Critical OS Defects' }, { n: '35%', l: 'Faster Execution' }, { n: '50+', l: 'VR Builds Signed' }]
   }
 ];
 
@@ -1856,7 +1716,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ── NAV SCROLL SPY ──
-const sections = ['hero', 'experience', 'projects', 'skills', 'contact'];
+const sections = ['hero', 'experience', 'domains', 'strengths', 'projects', 'artifacts', 'skills', 'contact'];
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
